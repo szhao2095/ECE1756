@@ -1,0 +1,541 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+% \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{siunitx}
+\usepackage{minted}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+% \lstdefinestyle{SystemVerilog}{
+%     language        = SystemVerilog,
+%     frame           = lines, 
+%     basicstyle      = \footnotesize,
+%     keywordstyle    = \color{blue},
+%     stringstyle     = \color{green},
+%     commentstyle    = \color{red}\ttfamily
+% }
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{ECE 1756}
+\newcommand\hwnumber{1}                  % <-- homework number
+\newcommand\NetIDa{1003273913}           % <-- NetID of person #1
+% \newcommand\NetIDb{netid12038}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+% \lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+\section*{1.0 Introduction}
+
+The following document serves as the lab report for assignment 1 of ECE 1756 (Fall 2021). This report is written by Sheng Zhao (1003273913).
+
+Following section 1.0's introduction, section 2.0 describes the implementations of the pipelined and shared hardware circuits, as well as the corresponding simulations that were conducted. Section 3.0 then summarizes the desired data as specified by the assignment document in the table that was provided, as well as answer the questions provided. Brief calculations for the different entries will be included in the appendix for tidiness.  The appendix goes into section 4.0.
+
+\section*{2.0 Circuit Implementation}
+
+Three circuits were used to complete the assignment. Each subsection seeks to provide the necessary information to describe each circuit in full.
+
+\subsection*{2.1 Baseline Circuit}
+
+For brevity, since the baseline circuit used was provided in full with the assignment document, this section will only provide a brief overview of the circuit. 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{baseline_circuit_block.jpg}
+\caption{Baseline circuit block diagram}
+\end{figure}
+
+With reference to figure 1 (copied from the assignment document), the baseline circuit implements the desired calculations, a Taylor expansion series computed up to the 5\textsuperscript{th} power, with a streaming dataflow model. For every given valid input i\_x, the value is stored in the first register in the first positive edge of the clock. Once stored, the computation begins and completes with enough setup time before the next positive edge for the output register. The output o\_y is then ready after the second positive edge of the clock.
+
+\subsection*{2.2 Pipelined Circuit}
+
+The pipelined circuit seeks to improve the maximum operating frequency by minimizing the amount of computation done within each clock cycle.
+
+\subsubsection*{2.2.1 Datapath}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{pipelined_datapath.jpg}
+\caption{Pipelined circuit datapath}
+\label{fig:pipelined_datapath}
+\end{figure}
+
+With respect to the baseline circuit, and Figure \ref{fig:pipelined_datapath}, more registers are added between the multipliers and adders. Since less work now needs to be down within each clock cycle, the period can be decreased further compared to before, leading to a higher operating frequency. In order to preserve the correctness of the circuit, registers are also added for the the i\_valid propagation path. Since signals will only proceed when the downstream circuit is ready and consuming data, both the valid signals and actual computation result will propagate in sync. 
+
+\subsubsection*{2.2.2 Operation}
+
+Similar to the baseline circuit, the circuit performs calculation in a streaming dataflow way. As valid inputs are inserted into the pipeline, it proceeds through the various steps of the computation every clock cycle. Since there are registers after each multiplier/adder, new inputs can be safely inserted and begin their own computations without interferring with earlier ones. When invalid i\_x values are inserted, the calculation is still performed on them. However, since the valid signal is also propagated down the pipeline in sync, the o\_valid signal will turn false as invalid computations are completed, thereby automatically prevent downstream circuits from receiving invalid outputs.
+
+\newpage
+\subsubsection*{2.2.3 Correctness}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{pipelined_correct_2.jpg}
+\caption{Pipelined circuit correctness}
+\end{figure}
+
+The pipelined circuit successfully passes all test cases in ModelSim.
+
+\subsection*{2.3 Shared Hardware Circuit}
+
+The shared hardware circuit limits the use of multiplier and adder blocks to just one each. A Finite State Machine (FSM) is then added to control the datapath between the input i\_x to the output o\_y to facilitate the proper computation of the desired Taylor series expansion while reusing the same computation units.
+
+\subsubsection*{2.3.1 Datapath}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{fsm_datapath.jpg}
+\caption{Shared hardware circuit datapath}
+\label{fig:shared_hw_datapath}
+\end{figure}
+
+To reuse the multiplier and adder, we first need to construct a circuit that allows us to control the inputs going into these units. With respect to Figure \ref{fig:shared_hw_datapath}, a 2:1 multiplexer is added to the multiplier while a 8:1 multiplexer is added to the adder. The corresponding control signals are named mmux and amux (for multiplier mux and adder mux respectively). In addition, enable signals (named store\_x and store\_y) are added for the input and output registers to prevent these from setting invalid values. 
+
+\subsubsection*{2.3.2 State Transition}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{fsm_states.jpg}
+\caption{Shared hardware circuit state transitions}
+\label{fig:state_transistion}
+\end{figure}
+
+The state transitions for the FSM block are show in Figure \ref{fig:state_transistion}. There are a total of 7 states, one for input phase, five for the computation phase, and one for the output phase. With the exception of states input\_x and output\_y, all other states transit to the next on each subsequent clock cycle since they do not affect circuits downstream or upstream. In the input\_x state, we wait until i\_valid is ready since we need a valid i\_x to begin our calculations. Similarly in the output\_y state, we wait until the downstream circuit is ready and received our computed value before proceeding with the next calculation. 
+
+\begin{table}[ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+         & input\_x & compute\_0 & compute\_1 & compute\_2 & compute\_3 & compute\_4 & output\_y \\ \hline
+o\_valid & \multicolumn{6}{c|}{1'b0}                                                 & 1'b1      \\ \hline
+o\_ready & 1'b1     & \multicolumn{6}{c|}{1'b0}                                                  \\ \hline
+store\_x & 1'b1     & \multicolumn{6}{c|}{1'b0}                                                  \\ \hline
+store\_y & 1'b0     & \multicolumn{5}{c|}{1'b1}                                      & 1'b0      \\ \hline
+mmux     & DC       & 1'b0       & \multicolumn{4}{c|}{1'b1}                         & DC        \\ \hline
+amux     & DC       & 3'b000     & 3'b001     & 3'b010     & 3'b011     & 3'b100     & DC        \\ \hline
+\end{tabular}
+\caption{Control signal values for each state}
+\label{tab:state_outputs}
+\end{table}
+
+The control signals in each state is summarized in Table \ref{tab:state_outputs}. Note that during the input and output phases where no computation is done, signals mmux and amux are irrelevant (although they are both set to zero). 
+
+\subsubsection*{2.3.3 Operation}
+
+Computation for each valid value of i\_x begins with the input\_x state. In this state, instead of making sure the incoming i\_x is valid before storing, any i\_x that is inputted gets stored into the input register. Instead, the state will only transit to the next when i\_valid is toggled true. 
+
+Once the state transits to compute\_0, the computation begins. First, the mmux control signal is set to 1'b0 to select for A5 as the input to the multiplier. Note that since A5 is only 16 bits wide, we have to pad 5 zeros on the left and 11 zeros on the right (to convert from Q2.14 to Q7.25) before passing to the 32x16 multiplier. The amux control signal is set to 3'b000 for A4 and summed with the result from the multiplier. This sum is then stored in the output register. However, since it is only the intermediate result, o\_valid is set to 1'b0 to prevent the downstream circuit from retrieving it. Once done, we simply transit to the next state, compute\_1, to carry on the computation. This time with mmux set to 1'b1 to use the result from the previous state, and amux set to 3'b001 for A3. The process remains the same for all compute\_x states with only the amux control signal changing.
+
+Once we finish computation in compute\_4 and have the final result ready in the output register, we transit to output\_y, which sets the o\_valid signal to 1'b1. We then wait for the downstream circuit to set i\_ready to 1'b1, which signals to us that it is ready and will retrieve the signal. Assuming the result is retrieved in one clock cycle, we can then transit back to input\_x and wait for the next i\_x. Note that the output\_y and input\_x states are not merged since it might introduce an error in the event that the downstream circuit mistakes the output of the previous input to be the one for the new input that was just sent into our circuit.
+
+\newpage
+\subsubsection*{2.3.4 Correctness}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{shared_correct_2.jpg}
+\caption{Shared hardware circuit correctness}
+\end{figure}
+
+The shared hardware circuit successfully passes all test cases in ModelSim.
+
+
+\clearpage
+\section*{3.0 Results}
+
+The following table is a copy of table 1 from the assignment pdf.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{FFFFFF}}c |
+>{\columncolor[HTML]{FFFFFF}}c |
+>{\columncolor[HTML]{FFFFFF}}c |
+>{\columncolor[HTML]{FFFFFF}}c |}
+\hline
+{\color[HTML]{333333} } &
+  \begin{tabular}[c]{@{}c@{}}Baseline Circuit \\ (Appendix A)\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Pipelined Circuit\\ (Appendix B)\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Shared HW Circuit\\ (Appendix C)\end{tabular} \\ \hline
+Resources for one circuit                                                                     & 21 ALMs + 9 DSPs & 98 ALMs + 9 DSPs   & 28 ALMs + 2 DSPs \\ \hline
+Operating frequency                                                                           & 46.1 MHz         & 249.1 MHz          & 161.3 MHz        \\ \hline
+Critical path &
+  \begin{tabular}[c]{@{}c@{}}DSP mult-add + \\ 2x DSP mult + \\ LE-based adder + \\ 6x DSP mult + \\ LE-based adder\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}LE-based mult +\\ LE-based adder +\\ 1x DSP mult\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}LE-based Mux +\\ 2x DSP mult +\\ LE-based adder\end{tabular} \\ \hline
+Cycles per valid output                                                                       & 1                & 1 (once saturated) & 7                \\ \hline
+Max. \# of copies/device                                                                      & 168              & 168                & 759              \\ \hline
+\begin{tabular}[c]{@{}c@{}}Max. throughput for a full \\ device (computations/s)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\num{7.744e9}\\ (@ 46.1 MHz)\\ \num{7.056e9}\\ (@ 42 MHz)\end{tabular}               & \begin{tabular}[c]{@{}c@{}}\num{41.848e9}\\ (@ 249.1 MHz)\\ \num{7.056e9}\\ (@ 42 MHz)\end{tabular}                 & \begin{tabular}[c]{@{}c@{}}\num{23.014e6}\\ (@ 161.3 MHz)\\ \num{7.056e9}\\ (@ 42 MHz)\end{tabular}               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Dynamic power of one \\ circuit @ 42 MHz\end{tabular}              & 1.91 mW          & 2.01 mW            & 0.60 mW          \\ \hline
+\begin{tabular}[c]{@{}c@{}}Max. throughput/Watt for \\ a full device @ 42 MHz\end{tabular}             & \num{3.482e9}              & \num{3.454e9}                & \num{2.109e9}              \\ \hline
+\end{tabular}
+\caption{Implementation results for the 3 different implementations of the studied circuit.
+}
+\label{tab:summary}
+\end{table}
+
+\subsection*{3.1 Questions}
+
+\subsubsection*{3.1.1 What are the different sources of error (i.e. difference between exp(x) and Hardware
+Output in the graph you plotted for the testbench output)? What changes could you
+make to the circuit to reduce this error?}
+
+A significant source of error is due to the formula used to compute the exponential itself. Since we are limited to the amount of hardware resources available, we are not able to expand the Taylor expansion up to higher powers of x indefinitely. As a result, as values of x get larger, the higher power terms, despite having a relatively smaller coefficient compared to the lower power terms, starts to be large enough to cause a difference between the computed value and the true value. This is also supported by the error between the true value and the computed value getting larger as the values of x get larger. Changing the circuits to factor in more terms would increase the accuracy of the computations.
+
+Another source of error would come from the resolution of the calculation, specifically the number of digits used to contain the intermediate and final calculation results. Depending on the values of x and the coefficients of the series, some portion of the results might be lost at each step due to the number of bits not being able to support the resolution required. More bits could be used to increase the accuracy of the computations.
+
+\subsubsection*{3.1.2 Which of the 3 hardware circuits (baseline, pipelined, and shared) achieves the highest
+throughput/device? Explain the reasons for the efficiency differences between them.}
+
+Should each of the three hardware circuits operate at their maximum operating frequency, the pipelined circuit would have the highest throughput by far (\num{41.848e9} computations/s), followed by the baseline circuit (\num{7.744e9} computations/s) and the shared hardware circuit in last (\num{23.014e6} computations/s).
+
+Due to being pipelined, the computations required to be completed within each clock cycle is significantly reduced compared to the baseline circuit. As a result, the overall design can operate at a much higher frequency of 249.1 MHz compared to 46.1 MHz. While each input will now take significantly more cycles to be computed (10 times more), once the pipeline is saturated, it can still produce a valid output every cycle (assuming a valid input is available every cycle). Combined with the much higher frequency, the pipelined circuit achieves a much higher throughput.
+
+The shared hardware circuit on the other hand, due to it reusing the functional units, has siginificantly less functional units compared to the other two. Each valid input thus takes more cycles to finish computing (7 times more) than the baseline circuit. In addition, due to the functional units being reused, new inputs have to wait until the current input is processed before they can get started. Thus, unlike the pipelined circuit, every input will always take seven cycles to complete. While the operating frequency has increase by around four times (161.3 MHz compared to 46.1 MHz), the seven times increase in cycle count caused the shared hardware circuit to have significantly less throughput.
+
+\subsubsection*{3.1.3 Look at the average toggle rates of the blocks for the 3 circuits (this information is in
+the PowerAnalyzer report). Explain why some circuit styles lead to higher toggle rates
+for the DSP blocks and combinational/registered logic cells than others. Comment on
+the relative efficiency of the 3 circuits in terms of computations/J, and explain why
+each style is more or less efficient in computations/J than the others.}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+                                                                                  & Baseline circuit & Pipelined circuit & Shared HW circuit \\ \hline
+\begin{tabular}[c]{@{}c@{}}Toggle rate \\ (millions of transition/s)\end{tabular} & 12.819           & 11.527            & 12.010            \\ \hline
+\end{tabular}
+\caption{Toggle rates for the 3 different circuit implementations (Appendix D)}
+\label{tab:circuit_togglerate}
+\end{table}
+
+With respect to Table \ref{tab:circuit_togglerate}, we can see that the baseline circuit has the highest toggle rate, followed by the shared hardware circuit, and the pipelined circuit in last. 
+
+In terms of power efficiency, calculations were done at 42 MHz (for both power and throughput) for each design since power analysis was only available at 42 MHz. Based on Table \ref{tab:summary}, the baseline circuit was the best at throughput/Watt, followed by the pipelined circuit, and the shared hardware circuit in last. 
+
+With respect to the baseline circuit numbers, the pipeline followed closely after due to the fact that the advantage it gained in terms of higher operating frequency was negated due to the calculation being performed at 42 MHz. As a result, the increase in number of registers present in the pipelined circuit caused the dynamic power to be slightly higher than the baseline circuit, and with the throughput at 42 MHz being the same for the two, the pipelined circuit lost to the baseline circuit in terms of power efficiency by a small margin.
+
+As for the shared hardware circuit, since there are significantly less functional units, the dynamic power was significantly less. However, the throughput fell even more, causing the energy efficiency numbers to not reflect the energy savings.
+
+% ############################
+% ############################
+
+\clearpage
+\section*{4.0 Appendix}
+
+\subsection*{Appendix A: Calculations for baseline circuit}
+\subsubsection*{i. Resources for one circuit}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.75\linewidth]{baseline_i.jpg}
+\caption{Baseline circuit resource usage}
+\end{figure}
+
+\[Used ALMS = 48 - 27 = 21 ALMs\]
+
+\clearpage
+\subsubsection*{ii. Operating frequency}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{baseline_ii.jpg}
+\caption{Baseline circuit compilation report on slacks}
+\end{figure}
+
+\[f_{max} = 1/(1+20.678) \approx 46.1 MHz\]
+
+\subsubsection*{iii. Critical path}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{baseline_iii.jpg}
+\caption{Baseline circuit critical path}
+\end{figure}
+
+Critical path:
+\begin{itemize}
+  \item one DSP block for Mult0 and Addr0
+  \item two DSP blocks for Mult1
+  \item three logic blocks for Addr1
+  \item two DSP blocks for Mult2
+  \item two DSP blocks for Mult3
+  \item two DSP blocks for Mult4
+  \item five logic blocks for Addr4
+\end{itemize}
+
+\subsubsection*{iv. Cycles per valid output}
+
+Each input takes one clock cycle to be processed.
+
+\subsubsection*{v. Max. \# of copies/device}
+
+\[Max.\ copies\ (based\ on\ ALM\ count) = 427200/48 = 8900\]
+\[Max.\ copies\ (based\ on\ DSP\ count) = 1518/9 \approx 168\]
+
+Since DSP count is the limiting factor, approximate maximum number of copies per device is 168.
+
+\subsubsection*{vi. Max. throughput for a full device (computations/s)}
+
+Operating at worst case of 46.1 MHz with each input taking one cycle to compute its corresponding output, we can process up to 46,100,000 inputs per second. Factoring the approximate number of copies per device:
+
+\[Max.\ throughput = \num{46.1e6}*168 \approx \num{7.744e9}\ computations/sec\] 
+
+To facilitate computation of subsection viii., we shall repeat the computation with a operating frequency of 42 MHz:
+
+\[Max.\ throughput = \num{42.1e6}*168 = \num{7.056e9}\ computations/sec\] 
+
+\clearpage
+\subsubsection*{vii. Dynamic power of one circuit at 42 MHz}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{baseline_vii.jpg}
+\caption{Baseline circuit power consumption at 42 MHz}
+\end{figure}
+
+\[Power\ of\ one\ circuit = 1.81 + 0.05 + 0.05 = 1.91 mW\]
+
+\clearpage
+\subsubsection*{viii. Max. throughput/Watt for a full device}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{baseline_viii.jpg}
+\caption{Baseline circuit power consumption summary at 42 MHz}
+\end{figure}
+
+To compute the throughput/Watt, we need to compute the total approximate power consumption assuming we have the maximum number of copies of the circuit on the device. Assuming I/O and static power does not change, with 168 copies of the circuit: 
+
+\[Total\ power\ consumption = (1.91*168) + 1704.8 + 0.06 + 0.11 = 2025.85 mW\]
+\[Throughput/Watt\ @\ 42\ MHz = \num{7.056e9}/\num{2025.85e-3} \approx \num{3.482e9}\ computations/Watt \]
+
+% ############################
+% ############################
+
+\clearpage
+\subsection*{Appendix B: Calculations for pipelined circuit}
+\subsubsection*{i. Resources for one circuit}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.75\linewidth]{pipelined_i.jpg}
+\caption{Pipelined circuit resource usage}
+\end{figure}
+
+\[Used ALMS = 125 - 27 = 98 ALMs\]
+
+\clearpage
+\subsubsection*{ii. Operating frequency}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{pipelined_ii.jpg}
+\caption{Pipelined circuit compilation report on slacks}
+\end{figure}
+
+\[f_{max} = 1/(1+3.014) \approx 249.1 MHz\]
+
+\subsubsection*{iii. Critical path}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{pipelined_iii.jpg}
+\caption{Pipelined circuit critical path}
+\end{figure}
+
+Critical path:
+\begin{itemize}
+  \item 18 logic blocks for Mult1
+  \item 9 logic blocks for Addr1
+  \item one DSP block for Mult2
+\end{itemize}
+
+\subsubsection*{iv. Cycles per valid output}
+
+Although each input takes 10 clock cycles to compute, once the pipeline is saturated, output is ready every clock cycle. Assuming many inputs are to be processed, the average number of cycles per valid output will be one.
+
+\subsubsection*{v. Max. \# of copies/device}
+
+\[Max.\ copies\ (based\ on\ ALM\ count) = 427200/125 = 3417.6\]
+\[Max.\ copies\ (based\ on\ DSP\ count) = 1518/9 \approx 168\]
+
+Since DSP count is the limiting factor, approximate maximum number of copies per device is 168.
+
+\subsubsection*{vi. Max. throughput for a full device (computations/s)}
+
+Operating at worst case of 249.1 MHz with each input taking one cycle to compute its corresponding output, we can process up to 249,100,000 inputs per second. Factoring the approximate number of copies per device:
+
+\[Max.\ throughput = \num{249.1e6}*168 \approx \num{41.848e9}\ computations/sec\] 
+
+To facilitate computation of subsection viii., we shall repeat the computation with a operating frequency of 42 MHz:
+
+\[Max.\ throughput = \num{42.1e6}*168 = \num{7.056e9}\ computations/sec\] 
+
+\clearpage
+\subsubsection*{vii. Dynamic power of one circuit at 42 MHz}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{pipelined_vii.jpg}
+\caption{Pipelined circuit power consumption at 42 MHz}
+\end{figure}
+
+\[Power\ of\ one\ circuit = 0.98 + 0.32 + 0.71 = 2.01 mW\]
+
+\clearpage
+\subsubsection*{viii. Max. throughput/Watt for a full device}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{pipelined_viii.jpg}
+\caption{Pipelined circuit power consumption summary at 42 MHz}
+\end{figure}
+
+To compute the throughput/Watt, we need to compute the total approximate power consumption assuming we have the maximum number of copies of the circuit on the device. Assuming I/O and static power does not change, with 168 copies of the circuit: 
+
+\[Total\ power\ consumption = (2.01*168) + 1704.49 + 0.06 + 0.11 = 2042.34 mW\]
+\[Throughput/Watt\ @\ 42\ MHz = \num{7.056e9}/\num{2042.34e-3} \approx \num{3.454e9}\ computations/Watt \]
+
+% ############################
+% ############################
+
+\clearpage
+\subsection*{Appendix C: Calculations for shared hardware circuit}
+\subsubsection*{i. Resources for one circuit}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.75\linewidth]{shared_i.jpg}
+\caption{Shared hardware circuit resource usage}
+\end{figure}
+
+\[Used ALMS = 55 - 27 = 28 ALMs\]
+
+\clearpage
+\subsubsection*{ii. Operating frequency}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{shared_ii.jpg}
+\caption{Shared hardware circuit compilation report on slacks}
+\end{figure}
+
+\[f_{max} = 1/(1+5.197) \approx 161.3 MHz\]
+
+\subsubsection*{iii. Critical path}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{shared_iii.jpg}
+\caption{Shared hardware circuit critical path}
+\end{figure}
+
+Critical path:
+\begin{itemize}
+  \item one logic block for 2:1 Mux
+  \item two DSP blocks for Mult1
+  \item 18 logic blocks for Addr1
+\end{itemize}
+
+\subsubsection*{iv. Cycles per valid output}
+
+Suppose the circuit is currently processing an input, then for the next input to be processed, it needs to wait one cycle to be stored, five cycles to be computed, and is ready on the seventh. Since the subsequent input cannot be processed until the next set of seven cycles begin (i.e. the eighth cycle in this current computation), each input takes a total of seven cycles despite only requiring five for the computation.
+
+\subsubsection*{v. Max. \# of copies/device}
+
+\[Max.\ copies\ (based\ on\ ALM\ count) = 427200/55 = 7767\]
+\[Max.\ copies\ (based\ on\ DSP\ count) = 1518/2 = 759\]
+
+Since DSP count is the limiting factor, approximate maximum number of copies per device is 759.
+
+\subsubsection*{vi. Max. throughput for a full device (computations/s)}
+
+Operating at worst case of 161.1 MHz with each input taking seven cycle to compute its corresponding output, we can process up to: 
+
+\[Throughput\ per\ second = \num{161.1e6}/7 \approx \num{23.014e6}\ computations/sec\] 
+
+23,014,285 inputs per second. Factoring the approximate number of copies per device:
+
+\[Max.\ throughput = 23014285*759 \approx \num{17.467e9}\ computations/sec\] 
+
+To facilitate computation of subsection viii., we shall repeat the computation with a operating frequency of 42 MHz:
+
+\[Throughput\ per\ second = \num{42e6}/7 = \num{6e6}\ computations/sec\] 
+\[Max.\ throughput = \num{6e6}*759 = \num{4.554e9}\ computations/sec\] 
+
+\clearpage
+\subsubsection*{vii. Dynamic power of one circuit at 42 MHz}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{shared_vii.jpg}
+\caption{Shared hardware circuit power consumption at 42 MHz}
+\end{figure}
+
+\[Power\ of\ one\ circuit = 0.40 + 0.09 + 0.11 = 0.60 mW\]
+
+\clearpage
+\subsubsection*{viii. Max. throughput/Watt for a full device}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{shared_viii.jpg}
+\caption{Shared hardware circuit power consumption summary at 42 MHz}
+\end{figure}
+
+To compute the throughput/Watt, we need to compute the total approximate power consumption assuming we have the maximum number of copies of the circuit on the device. Assuming I/O and static power does not change, with 168 copies of the circuit: 
+
+\[Total\ power\ consumption = (0.60*759) + 1703.85 + 0.06 + 0.11 = 2159.42 mW\]
+\[Throughput/Watt\ @\ 42\ MHz = \num{4.554e9}/\num{2159.42e-3} \approx \num{2.109e9}\ computations/Watt \]
+
+% ############################
+% ############################
+
+\clearpage
+\subsection*{Appendix D: Circuit toggle rates}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\linewidth]{baseline_togglerate.jpg}
+\caption{Baseline circuit toggle rate}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\linewidth]{pipelined_togglerate.jpg}
+\caption{Pipelined circuit toggle rate}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\linewidth]{shared_togglerate.jpg}
+\caption{Shared hardware circuit toggle rate}
+\end{figure}
+
+% ############################
+% ############################
+
+\clearpage
+\subsection*{Appendix E: .sv file for pipelined circuit}
+\inputminted[breaklines]{SystemVerilog}{lab1_pipe.sv}
+
+% ############################
+% ############################
+
+\clearpage
+\subsection*{Appendix F: .sv file for shared hardware circuit}
+\inputminted[breaklines]{SystemVerilog}{lab1_fsm.sv}
+
+\end{document}
+

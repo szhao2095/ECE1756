@@ -1,0 +1,21 @@
+Quartus Prime Archive log --	C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_fsm/lab1_fsm.qarlog
+
+Archive:	C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_fsm/lab1_fsm.qar
+Date:		Fri Oct 08 17:26:17 2021
+Quartus Prime		20.1.1 Build 720 11/11/2020 SJ Standard Edition
+
+	=========== Files Selected: ===========
+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/SDC1.sdc
+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_dump_all_vcd_nodes.tcl
+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_fsm/SDC1.sdc
+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_fsm/lab1_fsm.qpf
+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_fsm/lab1_fsm.qsf
+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_fsm/lab1_fsm.sv
+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_fsm/lab1_fsm.vcd
+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_fsm/lab1_fsm_dump_all_vcd_nodes.tcl
+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_fsm/lab1_fsm_tb.v
+c:/intelfpga/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 10 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

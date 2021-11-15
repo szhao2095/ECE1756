@@ -1,0 +1,18 @@
+Exploration Summary
+Exploration Point,Quality of Fit,f(MAX) Geomean,WC Slack: Setup,WC Slack: Hold,WC Slack: Recovery,WC Slack: Removal,Logic Utilization,Compilation Time
+dse1_1,-1.410,412.880 MHz,-1.422,0.016,No Data,No Data,"2,495",00:06:53
+dse1_2,-1.320,429.000 MHz,-1.331,0.015,No Data,No Data,"2,496",00:06:53
+dse1_3,-1.320,429.000 MHz,-1.331,0.016,No Data,No Data,"2,495",00:06:45
+dse1_4,-1.320,429.180 MHz,-1.330,0.015,No Data,No Data,"2,497",00:06:38
+dse1_5,-1.320,429.180 MHz,-1.330,0.017,No Data,No Data,"2,497",00:07:02
+dse1_6,-1.320,429.000 MHz,-1.331,0.017,No Data,No Data,"2,495",00:06:54
+dse1_7,-1.320,428.820 MHz,-1.332,0.016,No Data,No Data,"2,495",00:06:15
+dse1_8,-1.350,423.910 MHz,-1.359,0.015,No Data,No Data,"2,496",00:06:17
+dse1_9,-1.320,428.820 MHz,-1.332,0.016,No Data,No Data,"2,495",00:06:16
+dse1_10,-1.320,428.820 MHz,-1.332,0.016,No Data,No Data,"2,495",00:07:08
+dse1_11,-1.400,415.110 MHz,-1.409,0.016,No Data,No Data,"2,496",00:07:06
+dse1_12,-1.320,429.000 MHz,-1.331,0.017,No Data,No Data,"2,495",00:07:01
+dse1_13,-1.320,428.820 MHz,-1.332,0.016,No Data,No Data,"2,498",00:05:48
+dse1_14,-1.260,441.500 MHz,-1.265,0.017,No Data,No Data,"2,497",00:05:52
+dse1_15,-1.320,428.820 MHz,-1.332,0.016,No Data,No Data,"2,498",00:05:51
+dse1_base,-1.320,429.000 MHz,-1.331,0.016,No Data,No Data,"2,496",00:05:59

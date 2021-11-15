@@ -1,0 +1,18 @@
+Quartus Prime Archive log --	C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/lab2.qarlog
+
+Archive:	C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/lab2.qar
+Date:		Wed Oct 27 21:49:33 2021
+Quartus Prime		20.1.1 Build 720 11/11/2020 SJ Standard Edition
+
+	=========== Files Selected: ===========
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/SDC1.sdc
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/lab2.dse
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/lab2.qpf
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/lab2.qsf
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/lab2.sv
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/lab2_tb.sv
+c:/intelfpga/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 7 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

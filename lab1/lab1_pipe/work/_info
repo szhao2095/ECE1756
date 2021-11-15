@@ -1,0 +1,151 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe
+vaddr32p16
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1633463742
+!i10b 1
+!s100 J6h5DY`Ln3NAhFB=z7aI<0
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IhJ0C[HTT13a2@IVhW9:m;0
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+Z5 w1633463269
+Z6 8lab1_pipe.sv
+Z7 Flab1_pipe.sv
+!i122 6
+L0 202 10
+Z8 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z9 !s108 1633463742.000000
+Z10 !s107 lab1_pipe.sv|
+Z11 !s90 -reportprogress|300|lab1_pipe.sv|
+!i113 1
+Z12 tCvgOpt 0
+vlab1_pipe
+R1
+R2
+!i10b 1
+!s100 ae1JmRj?0RbLK09c0@<Af0
+R3
+IM8c354JnQC_LVKMzA^hHP2
+R4
+S1
+R0
+R5
+R6
+R7
+!i122 6
+L0 1 154
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+vlab1_pipe_tb
+!s110 1633463751
+!i10b 1
+!s100 IKh<dULM9c^;;ADzDhNV=3
+R3
+IV>0O3BikOL1<f_>P];I5a0
+R4
+R0
+w1633461840
+Z13 8lab1_pipe_tb.v
+Z14 Flab1_pipe_tb.v
+!i122 7
+Z15 L0 3 259
+R8
+r1
+!s85 0
+31
+!s108 1633463751.000000
+Z16 !s107 lab1_pipe_tb.v|
+Z17 !s90 -reportprogress|300|lab1_pipe_tb.v|
+!i113 1
+R12
+vlab1_tb
+!s110 1633461674
+!i10b 1
+!s100 H>PZd:b]N6^87ZW3WTXnk1
+R3
+II@NV?Rd?NVFZgIDKA4QJS0
+R4
+R0
+w1600315907
+R13
+R14
+!i122 1
+R15
+R8
+r1
+!s85 0
+31
+!s108 1633461674.000000
+R16
+R17
+!i113 1
+R12
+vmult16x16
+R1
+R2
+!i10b 1
+!s100 az]EF9a9]4Z?59Bl1DO4H3
+R3
+I2?eMHACe9mLOPIi3fV2OE2
+R4
+S1
+R0
+R5
+R6
+R7
+!i122 6
+L0 159 17
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+vmult32x16
+R1
+R2
+!i10b 1
+!s100 8beXfIiXoaYCec73o3JcB3
+R3
+IF75aJ8Gkb=B5al@mY?ngk3
+R4
+S1
+R0
+R5
+R6
+R7
+!i122 6
+L0 180 18
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12

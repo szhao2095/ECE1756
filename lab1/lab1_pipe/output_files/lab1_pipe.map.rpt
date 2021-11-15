@@ -1,0 +1,592 @@
+Analysis & Synthesis report for lab1_pipe
+Fri Oct 08 15:21:16 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Parameter Settings for User Entity Instance: Top-level Entity: |lab1_pipe
+ 13. Port Connectivity Checks: "addr32p16:Addr4"
+ 14. Port Connectivity Checks: "addr32p16:Addr3"
+ 15. Port Connectivity Checks: "addr32p16:Addr2"
+ 16. Port Connectivity Checks: "addr32p16:Addr1"
+ 17. Port Connectivity Checks: "addr32p16:Addr0"
+ 18. Port Connectivity Checks: "mult16x16:Mult0"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++-----------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Fri Oct 08 15:21:16 2021           ;
+; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Standard Edition ;
+; Revision Name               ; lab1_pipe                                       ;
+; Top-level Entity Name       ; lab1_pipe                                       ;
+; Family                      ; Arria 10                                        ;
+; Logic utilization (in ALMs) ; N/A                                             ;
+; Total registers             ; 534                                             ;
+; Total pins                  ; 1                                               ;
+; Total virtual pins          ; 53                                              ;
+; Total block memory bits     ; 0                                               ;
+; Total DSP Blocks            ; 9                                               ;
+; Total HSSI RX channels      ; 0                                               ;
+; Total HSSI TX channels      ; 0                                               ;
+; Total PLLs                  ; 0                                               ;
++-----------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 10AX115N2F45I1SG   ;                    ;
+; Top-level entity name                                                           ; lab1_pipe          ; lab1_pipe          ;
+; Family name                                                                     ; Arria 10           ; Cyclone V          ;
+; Maximum processors allowed for parallel compilation                             ; 2                  ;                    ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Rows Reported in Synthesis Migration Checks                           ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
+; Disable DSP Negate Inferencing                                                  ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                        ; Library ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+; lab1_pipe.sv                     ; yes             ; Auto-Found SystemVerilog HDL File  ; C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv ;         ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary           ;
++---------------------------------------------+---------+
+; Resource                                    ; Usage   ;
++---------------------------------------------+---------+
+; Estimate of Logic utilization (ALMs needed) ; 289     ;
+;                                             ;         ;
+; Combinational ALUT usage for logic          ; 174     ;
+;     -- 7 input functions                    ; 0       ;
+;     -- 6 input functions                    ; 0       ;
+;     -- 5 input functions                    ; 0       ;
+;     -- 4 input functions                    ; 0       ;
+;     -- <=3 input functions                  ; 174     ;
+;                                             ;         ;
+; Dedicated logic registers                   ; 534     ;
+;                                             ;         ;
+; Virtual pins                                ; 53      ;
+; I/O pins                                    ; 1       ;
+;                                             ;         ;
+; Total DSP Blocks                            ; 9       ;
+;     -- Total Fixed Point DSP Blocks         ; 9       ;
+;     -- Total Floating Point DSP Blocks      ; 0       ;
+;                                             ;         ;
+; Maximum fan-out node                        ; i_ready ;
+; Maximum fan-out                             ; 536     ;
+; Total fan-out                               ; 2842    ;
+; Average fan-out                             ; 3.68    ;
++---------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                           ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name        ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------+-------------+--------------+
+; |lab1_pipe                 ; 174 (2)             ; 534 (342)                 ; 0                 ; 9          ; 1    ; 53           ; |lab1_pipe                 ; lab1_pipe   ; work         ;
+;    |addr32p16:Addr0|       ; 18 (18)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1_pipe|addr32p16:Addr0 ; addr32p16   ; work         ;
+;    |addr32p16:Addr1|       ; 20 (20)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1_pipe|addr32p16:Addr1 ; addr32p16   ; work         ;
+;    |addr32p16:Addr2|       ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1_pipe|addr32p16:Addr2 ; addr32p16   ; work         ;
+;    |addr32p16:Addr3|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1_pipe|addr32p16:Addr3 ; addr32p16   ; work         ;
+;    |addr32p16:Addr4|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1_pipe|addr32p16:Addr4 ; addr32p16   ; work         ;
+;    |mult16x16:Mult0|       ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab1_pipe|mult16x16:Mult0 ; mult16x16   ; work         ;
+;    |mult32x16:Mult1|       ; 28 (28)             ; 48 (48)                   ; 0                 ; 2          ; 0    ; 0            ; |lab1_pipe|mult32x16:Mult1 ; mult32x16   ; work         ;
+;    |mult32x16:Mult2|       ; 28 (28)             ; 48 (48)                   ; 0                 ; 2          ; 0    ; 0            ; |lab1_pipe|mult32x16:Mult2 ; mult32x16   ; work         ;
+;    |mult32x16:Mult3|       ; 28 (28)             ; 48 (48)                   ; 0                 ; 2          ; 0    ; 0            ; |lab1_pipe|mult32x16:Mult3 ; mult32x16   ; work         ;
+;    |mult32x16:Mult4|       ; 28 (28)             ; 48 (48)                   ; 0                 ; 2          ; 0    ; 0            ; |lab1_pipe|mult32x16:Mult4 ; mult32x16   ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary  ;
++---------------------------------+-------------+
+; Statistic                       ; Number Used ;
++---------------------------------+-------------+
+; Two Independent 18x18           ; 9           ;
+; Total number of DSP blocks      ; 9           ;
+;                                 ;             ;
+; Fixed Point Unsigned Multiplier ; 9           ;
++---------------------------------+-------------+
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; m0_out_a0_in_pipe[29..31]               ; Stuck at GND due to stuck port data_in ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][17] ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][16] ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][15] ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][14] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][17] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][16] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][15] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][14] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][17] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][16] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][15] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][14] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][17] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][16] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][15] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][14] ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][0]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][1]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][2]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][3]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][4]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][5]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][6]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][7]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][8]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][9]  ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][10] ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][11] ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][12] ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_ll_pl[0][13] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][0]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][1]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][2]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][3]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][4]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][5]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][6]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][7]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][8]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][9]  ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][10] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][11] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][12] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_ll_pl[0][13] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][0]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][1]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][2]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][3]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][4]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][5]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][6]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][7]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][8]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][9]  ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][10] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][11] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][12] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_ll_pl[0][13] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][0]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][1]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][2]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][3]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][4]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][5]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][6]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][7]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][8]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][9]  ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][10] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][11] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][12] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_ll_pl[0][13] ; Lost fanout                            ;
+; a0_out_m1_in_pipe[30,31]                ; Stuck at GND due to stuck port data_in ;
+; mult32x16:Mult1|Mult0~mult_hl_pl[0][28] ; Lost fanout                            ;
+; mult32x16:Mult1|Mult0~mult_hl_pl[0][29] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_hl_pl[0][28] ; Lost fanout                            ;
+; mult32x16:Mult2|Mult0~mult_hl_pl[0][29] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_hl_pl[0][28] ; Lost fanout                            ;
+; mult32x16:Mult3|Mult0~mult_hl_pl[0][29] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_hl_pl[0][28] ; Lost fanout                            ;
+; mult32x16:Mult4|Mult0~mult_hl_pl[0][29] ; Lost fanout                            ;
+; Total Number of Removed Registers = 85  ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                      ;
++-----------------------+---------------------------+----------------------------------------------+
+; Register name         ; Reason for Removal        ; Registers Removed due to This Register       ;
++-----------------------+---------------------------+----------------------------------------------+
+; m0_out_a0_in_pipe[31] ; Stuck at GND              ; a0_out_m1_in_pipe[31], a0_out_m1_in_pipe[30] ;
+;                       ; due to stuck port data_in ;                                              ;
++-----------------------+---------------------------+----------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 534   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 534   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 534   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |lab1_pipe ;
++----------------+------------------+---------------------------------------+
+; Parameter Name ; Value            ; Type                                  ;
++----------------+------------------+---------------------------------------+
+; WIDTHIN        ; 16               ; Signed Integer                        ;
+; WIDTHOUT       ; 32               ; Signed Integer                        ;
+; A0             ; 0100000000000000 ; Unsigned Binary                       ;
+; A1             ; 0100000000000000 ; Unsigned Binary                       ;
+; A2             ; 0010000000000000 ; Unsigned Binary                       ;
+; A3             ; 0000101010101010 ; Unsigned Binary                       ;
+; A4             ; 0000001010101010 ; Unsigned Binary                       ;
+; A5             ; 0000000010001000 ; Unsigned Binary                       ;
++----------------+------------------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------+
+; Port Connectivity Checks: "addr32p16:Addr4"      ;
++----------------+-------+----------+--------------+
+; Port           ; Type  ; Severity ; Details      ;
++----------------+-------+----------+--------------+
+; i_datab[13..0] ; Input ; Info     ; Stuck at GND ;
+; i_datab[15]    ; Input ; Info     ; Stuck at GND ;
+; i_datab[14]    ; Input ; Info     ; Stuck at VCC ;
++----------------+-------+----------+--------------+
+
+
++--------------------------------------------------+
+; Port Connectivity Checks: "addr32p16:Addr3"      ;
++----------------+-------+----------+--------------+
+; Port           ; Type  ; Severity ; Details      ;
++----------------+-------+----------+--------------+
+; i_datab[13..0] ; Input ; Info     ; Stuck at GND ;
+; i_datab[15]    ; Input ; Info     ; Stuck at GND ;
+; i_datab[14]    ; Input ; Info     ; Stuck at VCC ;
++----------------+-------+----------+--------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "addr32p16:Addr2"       ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; i_datab[15..14] ; Input ; Info     ; Stuck at GND ;
+; i_datab[12..0]  ; Input ; Info     ; Stuck at GND ;
+; i_datab[13]     ; Input ; Info     ; Stuck at VCC ;
++-----------------+-------+----------+--------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "addr32p16:Addr1"       ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; i_datab[15..12] ; Input ; Info     ; Stuck at GND ;
+; i_datab[11]     ; Input ; Info     ; Stuck at VCC ;
+; i_datab[10]     ; Input ; Info     ; Stuck at GND ;
+; i_datab[9]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[8]      ; Input ; Info     ; Stuck at GND ;
+; i_datab[7]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[6]      ; Input ; Info     ; Stuck at GND ;
+; i_datab[5]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[4]      ; Input ; Info     ; Stuck at GND ;
+; i_datab[3]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[2]      ; Input ; Info     ; Stuck at GND ;
+; i_datab[1]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[0]      ; Input ; Info     ; Stuck at GND ;
++-----------------+-------+----------+--------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "addr32p16:Addr0"       ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; i_datab[15..10] ; Input ; Info     ; Stuck at GND ;
+; i_datab[9]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[8]      ; Input ; Info     ; Stuck at GND ;
+; i_datab[7]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[6]      ; Input ; Info     ; Stuck at GND ;
+; i_datab[5]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[4]      ; Input ; Info     ; Stuck at GND ;
+; i_datab[3]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[2]      ; Input ; Info     ; Stuck at GND ;
+; i_datab[1]      ; Input ; Info     ; Stuck at VCC ;
+; i_datab[0]      ; Input ; Info     ; Stuck at GND ;
++-----------------+-------+----------+--------------+
+
+
++--------------------------------------------------+
+; Port Connectivity Checks: "mult16x16:Mult0"      ;
++----------------+-------+----------+--------------+
+; Port           ; Type  ; Severity ; Details      ;
++----------------+-------+----------+--------------+
+; i_dataa[15..8] ; Input ; Info     ; Stuck at GND ;
+; i_dataa[6..4]  ; Input ; Info     ; Stuck at GND ;
+; i_dataa[2..0]  ; Input ; Info     ; Stuck at GND ;
+; i_dataa[7]     ; Input ; Info     ; Stuck at VCC ;
+; i_dataa[3]     ; Input ; Info     ; Stuck at VCC ;
++----------------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 54                          ;
+; twentynm_ff           ; 534                         ;
+;     ENA CLR           ; 534                         ;
+; twentynm_lcell_comb   ; 174                         ;
+;     arith             ; 172                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 107                         ;
+;         2 data inputs ; 64                          ;
+;     normal            ; 2                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 1                           ;
+; twentynm_mac          ; 9                           ;
+;                       ;                             ;
+; Max LUT depth         ; 4.70                        ;
+; Average LUT depth     ; 1.74                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+    Info: Processing started: Fri Oct 08 15:20:53 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab1_pipe -c lab1_pipe
+Info (20032): Parallel compilation is enabled and will use up to 2 processors
+Warning (12019): Can't analyze file -- file lab1.sv is missing
+Warning (12019): Can't analyze file -- file lab1_tb.v is missing
+Warning (12125): Using design file lab1_pipe.sv, which is not specified as a design file for the current project, but contains definitions for 4 design units and 4 entities in project
+    Info (12023): Found entity 1: lab1_pipe File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 1
+    Info (12023): Found entity 2: mult16x16 File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 207
+    Info (12023): Found entity 3: mult32x16 File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 228
+    Info (12023): Found entity 4: addr32p16 File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 250
+Info (12127): Elaborating entity "lab1_pipe" for the top level hierarchy
+Info (12128): Elaborating entity "mult16x16" for hierarchy "mult16x16:Mult0" File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 86
+Info (12128): Elaborating entity "addr32p16" for hierarchy "addr32p16:Addr0" File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 87
+Info (12128): Elaborating entity "mult32x16" for hierarchy "mult32x16:Mult1" File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 89
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 80 registers lost all their fanouts during netlist optimizations.
+Info (15717): Design contains 53 virtual pins; timing numbers associated with paths containing virtual pins are estimates
+    Info (15719): Pin "o_valid" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 19
+    Info (15719): Pin "o_ready" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 20
+    Info (15719): Pin "o_y[0]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[1]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[2]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[3]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[4]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[5]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[6]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[7]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[8]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[9]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[10]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[11]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[12]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[13]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[14]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[15]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[16]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[17]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[18]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[19]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[20]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[21]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[22]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[23]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[24]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[25]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[26]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[27]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[28]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[29]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[30]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15719): Pin "o_y[31]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 24
+    Info (15718): Pin "i_ready" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 18
+    Info (15718): Pin "reset" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 15
+    Info (15718): Pin "i_valid" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 17
+    Info (15718): Pin "i_x[0]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[1]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[2]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[3]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[4]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[5]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[6]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[7]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[8]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[9]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[10]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[11]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[12]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[13]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[14]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+    Info (15718): Pin "i_x[15]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv Line: 22
+Warning (15752): Ignored 3 Virtual Pin logic option assignments
+    Warning (15720): Ignored Virtual Pin assignment to node "o_valid~0"
+    Warning (15751): Ignored Virtual Pin assignment to "o_y".
+    Warning (15751): Ignored Virtual Pin assignment to "i_x".
+Info (21057): Implemented 624 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 0 output pins
+    Info (21061): Implemented 614 logic cells
+    Info (21062): Implemented 9 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4806 megabytes
+    Info: Processing ended: Fri Oct 08 15:21:16 2021
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:18
+
+

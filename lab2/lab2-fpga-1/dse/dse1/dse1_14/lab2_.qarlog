@@ -1,0 +1,19 @@
+Quartus Prime Archive log --	C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/lab2_sheng_zhao.qarlog
+
+Archive:	C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/lab2_sheng_zhao.qar
+Date:		Fri Oct 29 22:47:02 2021
+Quartus Prime		20.1.1 Build 720 11/11/2020 SJ Standard Edition
+
+	=========== Files Selected: ===========
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/SDC1.sdc
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/assignment_defaults.qdf
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/lab2.dse
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/lab2.qpf
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/lab2.qsf
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/lab2.sv
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/lab2_dump_all_vcd_nodes.tcl
+C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_14/lab2_tb.sv
+	======= Total: 8 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

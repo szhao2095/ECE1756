@@ -1,0 +1,10 @@
+
+State Machine - |lab1_fsm|fsm:fsm0|currentState
+Name currentState.output_y currentState.compute_4 currentState.compute_3 currentState.compute_2 currentState.compute_1 currentState.compute_0 currentState.input_x 
+currentState.input_x 0 0 0 0 0 0 0 
+currentState.compute_0 0 0 0 0 0 1 1 
+currentState.compute_1 0 0 0 0 1 0 1 
+currentState.compute_2 0 0 0 1 0 0 1 
+currentState.compute_3 0 0 1 0 0 0 1 
+currentState.compute_4 0 1 0 0 0 0 1 
+currentState.output_y 1 0 0 0 0 0 1 

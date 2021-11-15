@@ -1,0 +1,59 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1
+vlab1
+!s110 1633651236
+!i10b 1
+!s100 6^5KHo<Ec:MmI@QGe^lKF2
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IlG@JS_1JI<z4kXozcHL[01
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1633651191
+8lab1.vo
+Flab1.vo
+!i122 0
+L0 32 4632
+Z3 OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1633651236.000000
+!s107 lab1.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|lab1.vo|
+!i113 1
+Z4 o-vlog01compat -work work
+!s92 -vlog01compat -work work +incdir+.
+Z5 tCvgOpt 0
+vlab1_tb
+!s110 1633651237
+!i10b 1
+!s100 dV02IJbZ`;>ic]LK>8Em62
+R1
+IYJ>Ai`Ej[db7o>e2CJ[LU2
+R2
+R0
+w1600315907
+8C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_tb.v
+FC:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_tb.v
+!i122 1
+L0 3 259
+R3
+r1
+!s85 0
+31
+!s108 1633651237.000000
+!s107 C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1|C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_tb.v|
+!i113 1
+R4
+!s92 -vlog01compat -work work {+incdir+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1}
+R5

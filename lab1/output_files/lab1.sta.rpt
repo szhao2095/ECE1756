@@ -1,0 +1,644 @@
+Timing Analyzer report for lab1
+Thu Oct 07 18:29:31 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. SDC File List
+  5. Clocks
+  6. Slow 900mV 100C Model Fmax Summary
+  7. Timing Closure Recommendations
+  8. Slow 900mV 100C Model Setup Summary
+  9. Slow 900mV 100C Model Hold Summary
+ 10. Slow 900mV 100C Model Recovery Summary
+ 11. Slow 900mV 100C Model Removal Summary
+ 12. Slow 900mV 100C Model Minimum Pulse Width Summary
+ 13. Slow 900mV 100C Model Metastability Summary
+ 14. Slow 900mV 0C Model Fmax Summary
+ 15. Slow 900mV 0C Model Setup Summary
+ 16. Slow 900mV 0C Model Hold Summary
+ 17. Slow 900mV 0C Model Recovery Summary
+ 18. Slow 900mV 0C Model Removal Summary
+ 19. Slow 900mV 0C Model Minimum Pulse Width Summary
+ 20. Slow 900mV 0C Model Metastability Summary
+ 21. Fast 900mV 100C Model Setup Summary
+ 22. Fast 900mV 100C Model Hold Summary
+ 23. Fast 900mV 100C Model Recovery Summary
+ 24. Fast 900mV 100C Model Removal Summary
+ 25. Fast 900mV 100C Model Minimum Pulse Width Summary
+ 26. Fast 900mV 100C Model Metastability Summary
+ 27. Fast 900mV 0C Model Setup Summary
+ 28. Fast 900mV 0C Model Hold Summary
+ 29. Fast 900mV 0C Model Recovery Summary
+ 30. Fast 900mV 0C Model Removal Summary
+ 31. Fast 900mV 0C Model Minimum Pulse Width Summary
+ 32. Fast 900mV 0C Model Metastability Summary
+ 33. Multicorner Timing Analysis Summary
+ 34. Board Trace Model Assignments
+ 35. Input Transition Times
+ 36. Signal Integrity Metrics (Slow 900mv 100c Model)
+ 37. Signal Integrity Metrics (Fast 900mv 0c Model)
+ 38. Setup Transfers
+ 39. Hold Transfers
+ 40. Unconstrained Paths Summary
+ 41. Clock Status Summary
+ 42. Unconstrained Input Ports
+ 43. Unconstrained Output Ports
+ 44. Unconstrained Input Ports
+ 45. Unconstrained Output Ports
+ 46. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++---------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                         ;
++-----------------------+---------------------------------------------------------+
+; Quartus Prime Version ; Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition ;
+; Timing Analyzer       ; Timing Analyzer                                         ;
+; Revision Name         ; lab1                                                    ;
+; Device Family         ; Arria 10                                                ;
+; Device Name           ; 10AX115N2F45I1SG                                        ;
+; Timing Models         ; Final                                                   ;
+; Delay Model           ; Combined                                                ;
+; Rise/Fall Delays      ; Enabled                                                 ;
++-----------------------+---------------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.4%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------+
+; SDC File List                                     ;
++---------------+--------+--------------------------+
+; SDC File Path ; Status ; Read at                  ;
++---------------+--------+--------------------------+
+; SDC1.sdc      ; OK     ; Thu Oct 07 18:29:30 2021 ;
++---------------+--------+--------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                          ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+
+
++-------------------------------------------------+
+; Slow 900mV 100C Model Fmax Summary              ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 48.54 MHz ; 48.54 MHz       ; clk        ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++-------------------------------------+
+; Slow 900mV 100C Model Setup Summary ;
++-------+---------+-------------------+
+; Clock ; Slack   ; End Point TNS     ;
++-------+---------+-------------------+
+; clk   ; -19.600 ; -605.650          ;
++-------+---------+-------------------+
+
+
++------------------------------------+
+; Slow 900mV 100C Model Hold Summary ;
++-------+-------+--------------------+
+; Clock ; Slack ; End Point TNS      ;
++-------+-------+--------------------+
+; clk   ; 0.103 ; 0.000              ;
++-------+-------+--------------------+
+
+
+------------------------------------------
+; Slow 900mV 100C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Slow 900mV 100C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Slow 900mV 100C Model Minimum Pulse Width Summary ;
++-------+--------+----------------------------------+
+; Clock ; Slack  ; End Point TNS                    ;
++-------+--------+----------------------------------+
+; clk   ; -0.820 ; -7.930                           ;
++-------+--------+----------------------------------+
+
+
+-----------------------------------------------
+; Slow 900mV 100C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++-------------------------------------------------+
+; Slow 900mV 0C Model Fmax Summary                ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 46.13 MHz ; 46.13 MHz       ; clk        ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-----------------------------------+
+; Slow 900mV 0C Model Setup Summary ;
++-------+---------+-----------------+
+; Clock ; Slack   ; End Point TNS   ;
++-------+---------+-----------------+
+; clk   ; -20.678 ; -638.550        ;
++-------+---------+-----------------+
+
+
++----------------------------------+
+; Slow 900mV 0C Model Hold Summary ;
++-------+-------+------------------+
+; Clock ; Slack ; End Point TNS    ;
++-------+-------+------------------+
+; clk   ; 0.070 ; 0.000            ;
++-------+-------+------------------+
+
+
+----------------------------------------
+; Slow 900mV 0C Model Recovery Summary ;
+----------------------------------------
+No paths to report.
+
+
+---------------------------------------
+; Slow 900mV 0C Model Removal Summary ;
+---------------------------------------
+No paths to report.
+
+
++-------------------------------------------------+
+; Slow 900mV 0C Model Minimum Pulse Width Summary ;
++-------+--------+--------------------------------+
+; Clock ; Slack  ; End Point TNS                  ;
++-------+--------+--------------------------------+
+; clk   ; -0.820 ; -7.930                         ;
++-------+--------+--------------------------------+
+
+
+---------------------------------------------
+; Slow 900mV 0C Model Metastability Summary ;
+---------------------------------------------
+No synchronizer chains to report.
+
+
++-------------------------------------+
+; Fast 900mV 100C Model Setup Summary ;
++-------+---------+-------------------+
+; Clock ; Slack   ; End Point TNS     ;
++-------+---------+-------------------+
+; clk   ; -10.811 ; -333.532          ;
++-------+---------+-------------------+
+
+
++------------------------------------+
+; Fast 900mV 100C Model Hold Summary ;
++-------+-------+--------------------+
+; Clock ; Slack ; End Point TNS      ;
++-------+-------+--------------------+
+; clk   ; 0.087 ; 0.000              ;
++-------+-------+--------------------+
+
+
+------------------------------------------
+; Fast 900mV 100C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Fast 900mV 100C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Fast 900mV 100C Model Minimum Pulse Width Summary ;
++-------+--------+----------------------------------+
+; Clock ; Slack  ; End Point TNS                    ;
++-------+--------+----------------------------------+
+; clk   ; -0.550 ; -5.320                           ;
++-------+--------+----------------------------------+
+
+
+-----------------------------------------------
+; Fast 900mV 100C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++-----------------------------------+
+; Fast 900mV 0C Model Setup Summary ;
++-------+---------+-----------------+
+; Clock ; Slack   ; End Point TNS   ;
++-------+---------+-----------------+
+; clk   ; -10.102 ; -311.334        ;
++-------+---------+-----------------+
+
+
++----------------------------------+
+; Fast 900mV 0C Model Hold Summary ;
++-------+-------+------------------+
+; Clock ; Slack ; End Point TNS    ;
++-------+-------+------------------+
+; clk   ; 0.059 ; 0.000            ;
++-------+-------+------------------+
+
+
+----------------------------------------
+; Fast 900mV 0C Model Recovery Summary ;
+----------------------------------------
+No paths to report.
+
+
+---------------------------------------
+; Fast 900mV 0C Model Removal Summary ;
+---------------------------------------
+No paths to report.
+
+
++-------------------------------------------------+
+; Fast 900mV 0C Model Minimum Pulse Width Summary ;
++-------+--------+--------------------------------+
+; Clock ; Slack  ; End Point TNS                  ;
++-------+--------+--------------------------------+
+; clk   ; -0.550 ; -5.320                         ;
++-------+--------+--------------------------------+
+
+
+---------------------------------------------
+; Fast 900mV 0C Model Metastability Summary ;
+---------------------------------------------
+No synchronizer chains to report.
+
+
++--------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                            ;
++------------------+----------+-------+----------+---------+---------------------+
+; Clock            ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+----------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -20.678  ; 0.059 ; N/A      ; N/A     ; -0.820              ;
+;  clk             ; -20.678  ; 0.059 ; N/A      ; N/A     ; -0.820              ;
+; Design-wide TNS  ; -638.55  ; 0.0   ; 0.0      ; 0.0     ; -7.93               ;
+;  clk             ; -638.550 ; 0.000 ; N/A      ; N/A     ; -7.930              ;
++------------------+----------+-------+----------+---------+---------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                          ;
++-----+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++-----+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++-------------------------------------------------------------------+
+; Input Transition Times                                            ;
++----------------+--------------+-----------------+-----------------+
+; Pin            ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++----------------+--------------+-----------------+-----------------+
+; clk            ; 1.8 V        ; 1440 ps         ; 1440 ps         ;
+; ~ALTERA_DATA0~ ; 1.8 V        ; 1440 ps         ; 1440 ps         ;
++----------------+--------------+-----------------+-----------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 900mv 100c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
++-----+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++-----+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 900mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ;
++-----+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++-----+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Transfers                                                       ;
++------------+----------+--------------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths     ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+--------------+----------+----------+----------+
+; clk        ; clk      ; > 2147483647 ; 0        ; 0        ; 0        ;
++------------+----------+--------------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-----------------------------------------------------------------------+
+; Hold Transfers                                                        ;
++------------+----------+--------------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths     ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+--------------+----------+----------+----------+
+; clk        ; clk      ; > 2147483647 ; 0        ; 0        ; 0        ;
++------------+----------+--------------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 19    ; 19   ;
+; Unconstrained Input Port Paths  ; 233   ; 233  ;
+; Unconstrained Output Ports      ; 34    ; 34   ;
+; Unconstrained Output Port Paths ; 35    ; 35   ;
++---------------------------------+-------+------+
+
+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; clk    ; clk   ; Base ; Constrained ;
++--------+-------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; i_ready    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_valid    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[0]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[1]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[2]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[3]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[4]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[5]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[6]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[7]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[8]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[9]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[10]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[11]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[12]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[13]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[14]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[15]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; o_ready     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_valid     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[6]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[7]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[8]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[9]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[10]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[11]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[12]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[13]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[14]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[15]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[16]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[17]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[18]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[19]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[20]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[21]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[22]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[23]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[24]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[25]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[26]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[27]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[28]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[29]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[30]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[31]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; i_ready    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_valid    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[0]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[1]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[2]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[3]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[4]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[5]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[6]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[7]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[8]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[9]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[10]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[11]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[12]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[13]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[14]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; i_x[15]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; o_ready     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_valid     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[6]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[7]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[8]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[9]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[10]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[11]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[12]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[13]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[14]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[15]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[16]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[17]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[18]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[19]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[20]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[21]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[22]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[23]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[24]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[25]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[26]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[27]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[28]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[29]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[30]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; o_y[31]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+    Info: Processing started: Thu Oct 07 18:29:09 2021
+Info: Command: quartus_sta lab1 -c lab1
+Info: qsta_default_script.tcl version: #1
+Info (20032): Parallel compilation is enabled and will use up to 2 processors
+Info (21076): Core supply voltage operating condition is not set. Assuming a default value of '0.9V'.
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 100 degrees C
+Info (332104): Reading SDC File: 'SDC1.sdc'
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 900mV 100C Model
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -19.600
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -19.600            -605.650 clk 
+Info (332146): Worst-case hold slack is 0.103
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.103               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -0.820
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.820              -7.930 clk 
+Info: Analyzing Slow 900mV 0C Model
+Info (332146): Worst-case setup slack is -20.678
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -20.678            -638.550 clk 
+Info (332146): Worst-case hold slack is 0.070
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.070               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -0.820
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.820              -7.930 clk 
+Info: Analyzing Fast 900mV 100C Model
+Info (332146): Worst-case setup slack is -10.811
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -10.811            -333.532 clk 
+Info (332146): Worst-case hold slack is 0.087
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.087               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -0.550
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.550              -5.320 clk 
+Info: Analyzing Fast 900mV 0C Model
+Info (332146): Worst-case setup slack is -10.102
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -10.102            -311.334 clk 
+Info (332146): Worst-case hold slack is 0.059
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.059               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -0.550
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.550              -5.320 clk 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 6960 megabytes
+    Info: Processing ended: Thu Oct 07 18:29:31 2021
+    Info: Elapsed time: 00:00:22
+    Info: Total CPU time (on all processors): 00:00:14
+
+

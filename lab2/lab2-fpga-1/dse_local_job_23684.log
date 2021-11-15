@@ -1,0 +1,40 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Worker Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+Info: Your use of Intel Corporation's design tools, logic functions 
+Info: and other software and tools, and any partner logic 
+Info: functions, and any output files from any of the foregoing 
+Info: (including device programming or simulation files), and any 
+Info: associated documentation or information are expressly subject 
+Info: to the terms and conditions of the Intel Program License 
+Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+Info: the Intel FPGA IP License Agreement, or other applicable license
+Info: agreement, including, without limitation, that your use is for
+Info: the sole purpose of programming logic devices manufactured by
+Info: Intel and sold by Intel or its authorized distributors.  Please
+Info: refer to the applicable agreement for further details, at
+Info: https://fpgasoftware.intel.com/eula.
+Info: *******************************************************************
+Info: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Successfully registered with server.
+Info: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Sent timestamps successfully
+Info: Preparing to compile lab2 ...
+Info: Downloading lab2.qar.sha256 ...
+Info: Finished download.
+Info: Verified dse/dse1/dse1_15\lab2.qar.sha256 exists.
+Info: Downloading lab2.qar ...
+Info: Finished download.
+Info: Verified dse/dse1/dse1_15\lab2.qar exists.
+Info: Download successful. Checksum matched expected value.
+Info: Running quartus_sh --restore -output dse/dse1/dse1_15 dse/dse1/dse1_15\lab2.qar
+Info: Downloading dse1_15.qsf ...
+Info: Finished download.
+Info: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_15\lab2.qsf exists.
+Info: Downloading dse1_15.qpf ...
+Info: Finished download.
+Info: Verified dse/dse1/dse1_15\lab2.qpf exists.
+Info: Sent timestamps successfully
+Info: Sent timestamps successfully
+Info: Compilation finished. 0 msgs
+Info: Processing keep results option: all
+Info: Sent timestamps successfully

@@ -1,0 +1,247 @@
+# Reading pref.tcl
+# do lab1_run_msim_gate_verilog.do
+# if {[file exists gate_work]} {
+# 	vdel -lib gate_work -all
+# }
+# vlib gate_work
+# vmap work gate_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work gate_work 
+# Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+. {lab1.vo}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:30:24 on Oct 07,2021
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+." lab1.vo 
+# -- Compiling module lab1
+# 
+# Top level modules:
+# 	lab1
+# End time: 19:30:24 on Oct 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/ZaKaye/Desktop/Pixiv/MEng\ Study\ 2021\ Fall/FPGA/lab1 {C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_tb.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:30:24 on Oct 07,2021
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1" C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_tb.v 
+# -- Compiling module lab1_tb
+# 
+# Top level modules:
+# 	lab1_tb
+# End time: 19:30:24 on Oct 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L twentynm_ver -L lpm_ver -L sgate_ver -L twentynm_hssi_ver -L twentynm_hip_ver -L gate_work -L work -voptargs="+acc"  lab1_tb
+# vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L twentynm_ver -L lpm_ver -L sgate_ver -L twentynm_hssi_ver -L twentynm_hip_ver -L gate_work -L work -voptargs=""+acc"" lab1_tb 
+# Start time: 19:30:24 on Oct 07,2021
+# Loading work.lab1_tb
+# Loading work.lab1
+# Loading twentynm_ver.twentynm_io_obuf
+# Loading twentynm_ver.twentynm_io_ibuf
+# Loading twentynm_ver.twentynm_clkena
+# Loading altera_ver.dffeas
+# Loading twentynm_ver.twentynm_lcell_comb
+# Loading twentynm_ver.twentynm_mac
+# Loading altera_ver.PRIM_GDFF_LOW
+# ** Warning: (vsim-3016) Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3016) Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3810).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3016) Port type is incompatible with connection (port 'bx').
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3016) Port type is incompatible with connection (port 'bx').
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3016) Port type is incompatible with connection (port 'bx').
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3016) Port type is incompatible with connection (port 'by').
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3016) Port type is incompatible with connection (port 'by').
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3814).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (27) for port 'scanin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3816).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3817).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult0_aMult0_amac File: lab1.vo Line: 2169
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult0_aMult0_amac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult0_aMult0_amac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3810).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_a12 File: lab1.vo Line: 2255
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3812).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_a12 File: lab1.vo Line: 2255
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3813).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_a12 File: lab1.vo Line: 2255
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3814).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_a12 File: lab1.vo Line: 2255
+# ** Warning: (vsim-3015) [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3816).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_a12 File: lab1.vo Line: 2255
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3817).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_a12 File: lab1.vo Line: 2255
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult1_aMult0_a12/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult1_aMult0_a12/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3810).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_amult_hlmac File: lab1.vo Line: 2340
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3814).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_amult_hlmac File: lab1.vo Line: 2340
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (27) for port 'scanin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3816).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_amult_hlmac File: lab1.vo Line: 2340
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3817).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult1_aMult0_amult_hlmac File: lab1.vo Line: 2340
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult1_aMult0_amult_hlmac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult1_aMult0_amult_hlmac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3810).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_a12 File: lab1.vo Line: 2577
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3812).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_a12 File: lab1.vo Line: 2577
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3813).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_a12 File: lab1.vo Line: 2577
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3814).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_a12 File: lab1.vo Line: 2577
+# ** Warning: (vsim-3015) [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3816).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_a12 File: lab1.vo Line: 2577
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3817).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_a12 File: lab1.vo Line: 2577
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult2_aMult0_a12/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult2_aMult0_a12/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3810).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_amult_hlmac File: lab1.vo Line: 3011
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3814).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_amult_hlmac File: lab1.vo Line: 3011
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (27) for port 'scanin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3816).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_amult_hlmac File: lab1.vo Line: 3011
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3817).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult2_aMult0_amult_hlmac File: lab1.vo Line: 3011
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult2_aMult0_amult_hlmac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult2_aMult0_amult_hlmac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3810).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_a12 File: lab1.vo Line: 3099
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3812).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_a12 File: lab1.vo Line: 3099
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3813).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_a12 File: lab1.vo Line: 3099
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3814).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_a12 File: lab1.vo Line: 3099
+# ** Warning: (vsim-3015) [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3816).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_a12 File: lab1.vo Line: 3099
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3817).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_a12 File: lab1.vo Line: 3099
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult3_aMult0_a12/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult3_aMult0_a12/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3810).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_amult_hlmac File: lab1.vo Line: 3382
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3814).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_amult_hlmac File: lab1.vo Line: 3382
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (27) for port 'scanin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3816).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_amult_hlmac File: lab1.vo Line: 3382
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3817).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult3_aMult0_amult_hlmac File: lab1.vo Line: 3382
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult3_aMult0_amult_hlmac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult3_aMult0_amult_hlmac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3810).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_a12 File: lab1.vo Line: 3469
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3812).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_a12 File: lab1.vo Line: 3469
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3813).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_a12 File: lab1.vo Line: 3469
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3814).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_a12 File: lab1.vo Line: 3469
+# ** Warning: (vsim-3015) [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3816).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_a12 File: lab1.vo Line: 3469
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3817).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_a12 File: lab1.vo Line: 3469
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult4_aMult0_a12/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult4_aMult0_a12/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3810).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_amult_hlmac File: lab1.vo Line: 3803
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3814).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_amult_hlmac File: lab1.vo Line: 3803
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (27) for port 'scanin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3816).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_amult_hlmac File: lab1.vo Line: 3803
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: $MODEL_TECH/../altera/verilog/src/twentynm_atoms.v(3817).
+#    Time: 0 ps  Iteration: 0  Instance: /lab1_tb/dut/Mult4_aMult0_amult_hlmac File: lab1.vo Line: 3803
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult4_aMult0_amult_hlmac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# ** Warning: (vsim-3015) [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /lab1_tb/dut/Mult4_aMult0_amult_hlmac/inst/<protected> File: $MODEL_TECH/../altera/verilog/src/mentor/twentynm_atoms_ncrypt.v Line: 38
+# 
+# source lab1_dump_all_vcd_nodes.tcl
+# 0
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# at          93ns SUCCESS	 X:  0.000122	 Expected Y:  1.000122	 Got Y:  1.000122	 Error:  0.000000	 <  0.045000
+# at         117ns SUCCESS	 X:  0.437500	 Expected Y:  1.548820	 Got Y:  1.548814	 Error:  0.000006	 <  0.045000
+# at         141ns SUCCESS	 X:  1.741333	 Expected Y:  5.653997	 Got Y:  5.652892	 Error:  0.001105	 <  0.045000
+# at         165ns SUCCESS	 X:  0.175354	 Expected Y:  1.191668	 Got Y:  1.191668	 Error:  0.000000	 <  0.045000
+# at         189ns SUCCESS	 X:  3.548218	 Expected Y: 29.578277	 Got Y: 29.552900	 Error:  0.025378	 <  0.045000
+# at         213ns SUCCESS	 X:  3.890381	 Expected Y: 39.240435	 Got Y: 39.201718	 Error:  0.038717	 <  0.045000
+# at         381ns SUCCESS	 X:  0.740234	 Expected Y:  2.096173	 Got Y:  2.096136	 Error:  0.000038	 <  0.045000
+# at         405ns SUCCESS	 X:  3.255310	 Expected Y: 23.027957	 Got Y: 23.010813	 Error:  0.017144	 <  0.045000
+# at         429ns SUCCESS	 X:  1.052307	 Expected Y:  2.862044	 Got Y:  2.861901	 Error:  0.000143	 <  0.045000
+# at         453ns SUCCESS	 X:  1.834961	 Expected Y:  6.193981	 Got Y:  6.192602	 Error:  0.001379	 <  0.045000
+# at         477ns SUCCESS	 X:  2.957642	 Expected Y: 17.717524	 Got Y: 17.706403	 Error:  0.011121	 <  0.045000
+# at         501ns SUCCESS	 X:  1.379883	 Expected Y:  3.962578	 Got Y:  3.962157	 Error:  0.000422	 <  0.045000
+# at         525ns SUCCESS	 X:  3.171143	 Expected Y: 21.399463	 Got Y: 21.384237	 Error:  0.015226	 <  0.045000
+# at         549ns SUCCESS	 X:  3.684875	 Expected Y: 33.155227	 Got Y: 33.125056	 Error:  0.030170	 <  0.045000
+# at         573ns SUCCESS	 X:  2.703796	 Expected Y: 14.084164	 Got Y: 14.076718	 Error:  0.007446	 <  0.045000
+# at         597ns SUCCESS	 X:  0.554443	 Expected Y:  1.740929	 Got Y:  1.740915	 Error:  0.000013	 <  0.045000
+# at         621ns SUCCESS	 X:  2.880005	 Expected Y: 16.525907	 Got Y: 16.516037	 Error:  0.009870	 <  0.045000
+# at         645ns SUCCESS	 X:  3.082764	 Expected Y: 19.800061	 Got Y: 19.786659	 Error:  0.013402	 <  0.045000
+# at         669ns SUCCESS	 X:  3.428040	 Expected Y: 26.715896	 Got Y: 26.694210	 Error:  0.021686	 <  0.045000
+# at         693ns SUCCESS	 X:  3.298218	 Expected Y: 23.899509	 Got Y: 23.881316	 Error:  0.018193	 <  0.045000
+# at         717ns SUCCESS	 X:  0.639221	 Expected Y:  1.894901	 Got Y:  1.894879	 Error:  0.000022	 <  0.045000
+# at         741ns SUCCESS	 X:  2.401550	 Expected Y: 10.645304	 Got Y: 10.640895	 Error:  0.004409	 <  0.045000
+# at         765ns SUCCESS	 X:  0.701355	 Expected Y:  2.016301	 Got Y:  2.016270	 Error:  0.000031	 <  0.045000
+# at         789ns SUCCESS	 X:  1.910767	 Expected Y:  6.666646	 Got Y:  6.665008	 Error:  0.001638	 <  0.045000
+# at         813ns SUCCESS	 X:  2.775940	 Expected Y: 15.041535	 Got Y: 15.033163	 Error:  0.008372	 <  0.045000
+# at         909ns SUCCESS	 X:  3.417664	 Expected Y: 26.480547	 Got Y: 26.459158	 Error:  0.021389	 <  0.045000
+# at         933ns SUCCESS	 X:  2.634399	 Expected Y: 13.215598	 Got Y: 13.208965	 Error:  0.006633	 <  0.045000
+# at         957ns SUCCESS	 X:  3.368408	 Expected Y: 25.387968	 Got Y: 25.367948	 Error:  0.020021	 <  0.045000
+# at         981ns SUCCESS	 X:  0.598083	 Expected Y:  1.818561	 Got Y:  1.818544	 Error:  0.000017	 <  0.045000
+# at        1005ns SUCCESS	 X:  1.034790	 Expected Y:  2.812525	 Got Y:  2.812391	 Error:  0.000134	 <  0.045000
+# at        1029ns SUCCESS	 X:  3.951538	 Expected Y: 41.228160	 Got Y: 41.186558	 Error:  0.041602	 <  0.045000
+# at        1053ns SUCCESS	 X:  0.823242	 Expected Y:  2.277386	 Got Y:  2.277330	 Error:  0.000056	 <  0.045000
+# at        1077ns SUCCESS	 X:  0.559326	 Expected Y:  1.749448	 Got Y:  1.749434	 Error:  0.000014	 <  0.045000
+# at        1101ns SUCCESS	 X:  0.140198	 Expected Y:  1.150501	 Got Y:  1.150501	 Error:  0.000000	 <  0.045000
+# at        1125ns SUCCESS	 X:  3.374756	 Expected Y: 25.526511	 Got Y: 25.506319	 Error:  0.020193	 <  0.045000
+# at        1149ns SUCCESS	 X:  3.054749	 Expected Y: 19.315723	 Got Y: 19.302862	 Error:  0.012861	 <  0.045000
+# at        1173ns SUCCESS	 X:  0.445984	 Expected Y:  1.562015	 Got Y:  1.562009	 Error:  0.000006	 <  0.045000
+# at        1197ns SUCCESS	 X:  3.698364	 Expected Y: 33.527879	 Got Y: 33.497199	 Error:  0.030680	 <  0.045000
+# at        1221ns SUCCESS	 X:  2.359924	 Expected Y: 10.237271	 Got Y: 10.233188	 Error:  0.004083	 <  0.045000
+# at        1245ns SUCCESS	 X:  1.651001	 Expected Y:  5.175761	 Got Y:  5.174877	 Error:  0.000884	 <  0.045000
+# at        1269ns SUCCESS	 X:  1.010254	 Expected Y:  2.744582	 Got Y:  2.744460	 Error:  0.000122	 <  0.045000
+# at        1293ns SUCCESS	 X:  1.281128	 Expected Y:  3.593229	 Got Y:  3.592917	 Error:  0.000312	 <  0.045000
+# at        1317ns SUCCESS	 X:  2.267822	 Expected Y:  9.385154	 Got Y:  9.381723	 Error:  0.003431	 <  0.045000
+# at        1341ns SUCCESS	 X:  0.239319	 Expected Y:  1.270383	 Got Y:  1.270383	 Error:  0.000001	 <  0.045000
+# at        1365ns SUCCESS	 X:  1.531799	 Expected Y:  4.603725	 Got Y:  4.603078	 Error:  0.000647	 <  0.045000
+# at        1389ns SUCCESS	 X:  3.903503	 Expected Y: 39.659827	 Got Y: 39.620505	 Error:  0.039322	 <  0.045000
+# at        1413ns SUCCESS	 X:  3.112427	 Expected Y: 20.324626	 Got Y: 20.310633	 Error:  0.013993	 <  0.045000
+# at        1437ns SUCCESS	 X:  0.248901	 Expected Y:  1.282615	 Got Y:  1.282614	 Error:  0.000001	 <  0.045000
+# at        1461ns SUCCESS	 X:  3.393311	 Expected Y: 25.935299	 Got Y: 25.914596	 Error:  0.020703	 <  0.045000
+# at        1485ns SUCCESS	 X:  0.620972	 Expected Y:  1.860649	 Got Y:  1.860629	 Error:  0.000020	 <  0.045000
+#  ALL TESTS PASSED
+# Break in Module lab1_tb at C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_tb.v line 258
+# End time: 19:38:11 on Oct 07,2021, Elapsed time: 0:07:47
+# Errors: 0, Warnings: 69

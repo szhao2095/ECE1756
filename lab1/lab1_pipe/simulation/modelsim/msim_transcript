@@ -1,0 +1,39 @@
+# Reading pref.tcl
+# do lab1_pipe_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+C:/Users/ZaKaye/Desktop/Pixiv/MEng\ Study\ 2021\ Fall/FPGA/lab1/lab1_pipe {C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:33:01 on Oct 08,2021
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe" C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_pipe.sv 
+# -- Compiling module lab1_pipe
+# -- Compiling module mult16x16
+# -- Compiling module mult32x16
+# -- Compiling module addr32p16
+# 
+# Top level modules:
+# 	lab1_pipe
+# End time: 14:33:01 on Oct 08,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/ZaKaye/Desktop/Pixiv/MEng\ Study\ 2021\ Fall/FPGA/lab1/lab1_pipe {C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_tb.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 14:33:01 on Oct 08,2021
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe" C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_tb.v 
+# ** Error: (vlog-7) Failed to open design unit file "C:/Users/ZaKaye/Desktop/Pixiv/MEng Study 2021 Fall/FPGA/lab1/lab1_pipe/lab1_tb.v" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 14:33:01 on Oct 08,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA/20.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./lab1_pipe_run_msim_rtl_verilog.do line 10
+# C:/intelFPGA/20.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog -vlog01compat -work work +incdir+C:/Users/ZaKaye/Desktop/Pixiv/MEng\ Study\ 2021\ Fall/FPGA/lab1/lab1_pipe {C:/Users/ZaKaye/Desktop/Pixiv/MEng St..."

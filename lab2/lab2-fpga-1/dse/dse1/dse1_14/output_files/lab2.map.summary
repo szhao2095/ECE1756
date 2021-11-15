@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Oct 28 19:16:11 2021
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+Revision Name : lab2
+Top-level Entity Name : lab2
+Family : Arria 10
+Logic utilization (in ALMs) : N/A
+Total registers : 9796
+Total pins : 1
+Total virtual pins : 93
+Total block memory bits : 0
+Total DSP Blocks : 9
+Total HSSI RX channels : 0
+Total HSSI TX channels : 0
+Total PLLs : 0

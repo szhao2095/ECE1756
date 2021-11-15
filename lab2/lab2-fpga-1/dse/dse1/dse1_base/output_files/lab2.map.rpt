@@ -1,0 +1,743 @@
+Analysis & Synthesis report for lab2
+Wed Oct 27 21:50:48 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Source assignments for mult8x8:convo_mult_0
+ 13. Source assignments for mult8x8:convo_mult_1
+ 14. Source assignments for mult8x8:convo_mult_2
+ 15. Source assignments for mult8x8:convo_mult_3
+ 16. Source assignments for mult8x8:convo_mult_4
+ 17. Source assignments for mult8x8:convo_mult_5
+ 18. Source assignments for mult8x8:convo_mult_6
+ 19. Source assignments for mult8x8:convo_mult_7
+ 20. Source assignments for mult8x8:convo_mult_8
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+ 24. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++-----------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Wed Oct 27 21:50:48 2021           ;
+; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Standard Edition ;
+; Revision Name               ; lab2                                            ;
+; Top-level Entity Name       ; lab2                                            ;
+; Family                      ; Arria 10                                        ;
+; Logic utilization (in ALMs) ; N/A                                             ;
+; Total registers             ; 9796                                            ;
+; Total pins                  ; 1                                               ;
+; Total virtual pins          ; 93                                              ;
+; Total block memory bits     ; 0                                               ;
+; Total DSP Blocks            ; 9                                               ;
+; Total HSSI RX channels      ; 0                                               ;
+; Total HSSI TX channels      ; 0                                               ;
+; Total PLLs                  ; 0                                               ;
++-----------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 10AX115N1F45I1SG   ;                    ;
+; Top-level entity name                                                           ; lab2               ; lab2               ;
+; Family name                                                                     ; Arria 10           ; Cyclone V          ;
+; Maximum processors allowed for parallel compilation                             ; 4                  ;                    ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Rows Reported in Synthesis Migration Checks                           ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
+; Disable DSP Negate Inferencing                                                  ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 2.09        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  54.3%      ;
+;     Processor 3            ;  54.3%      ;
+;     Processor 4            ;   0.5%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                            ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                        ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------+---------+
+; lab2.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 4951      ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 237       ;
+;     -- 7 input functions                    ; 0         ;
+;     -- 6 input functions                    ; 15        ;
+;     -- 5 input functions                    ; 3         ;
+;     -- 4 input functions                    ; 0         ;
+;     -- <=3 input functions                  ; 219       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 9796      ;
+;                                             ;           ;
+; Virtual pins                                ; 93        ;
+; I/O pins                                    ; 1         ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 9         ;
+;     -- Total Fixed Point DSP Blocks         ; 9         ;
+;     -- Total Floating Point DSP Blocks      ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 9796      ;
+; Total fan-out                               ; 39580     ;
+; Average fan-out                             ; 3.90      ;
++---------------------------------------------+-----------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                              ;
++-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------+-------------+--------------+
+; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                  ; Entity Name ; Library Name ;
++-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------+-------------+--------------+
+; |lab2                               ; 237 (41)            ; 9796 (9796)               ; 0                 ; 9          ; 1    ; 93           ; |lab2                                ; lab2        ; work         ;
+;    |addr32p32:convo_addr_stage_1_0| ; 17 (17)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2|addr32p32:convo_addr_stage_1_0 ; addr32p32   ; work         ;
+;    |addr32p32:convo_addr_stage_1_1| ; 17 (17)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2|addr32p32:convo_addr_stage_1_1 ; addr32p32   ; work         ;
+;    |addr32p32:convo_addr_stage_1_2| ; 17 (17)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2|addr32p32:convo_addr_stage_1_2 ; addr32p32   ; work         ;
+;    |addr32p32:convo_addr_stage_1_3| ; 17 (17)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2|addr32p32:convo_addr_stage_1_3 ; addr32p32   ; work         ;
+;    |addr32p32:convo_addr_stage_2_0| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2|addr32p32:convo_addr_stage_2_0 ; addr32p32   ; work         ;
+;    |addr32p32:convo_addr_stage_2_1| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2|addr32p32:convo_addr_stage_2_1 ; addr32p32   ; work         ;
+;    |addr32p32:convo_addr_stage_3_0| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2|addr32p32:convo_addr_stage_3_0 ; addr32p32   ; work         ;
+;    |addr32p32:convo_addr_stage_4_0| ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2|addr32p32:convo_addr_stage_4_0 ; addr32p32   ; work         ;
+;    |mult8x8:convo_mult_0|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab2|mult8x8:convo_mult_0           ; mult8x8     ; work         ;
+;    |mult8x8:convo_mult_1|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab2|mult8x8:convo_mult_1           ; mult8x8     ; work         ;
+;    |mult8x8:convo_mult_2|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab2|mult8x8:convo_mult_2           ; mult8x8     ; work         ;
+;    |mult8x8:convo_mult_3|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab2|mult8x8:convo_mult_3           ; mult8x8     ; work         ;
+;    |mult8x8:convo_mult_4|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab2|mult8x8:convo_mult_4           ; mult8x8     ; work         ;
+;    |mult8x8:convo_mult_5|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab2|mult8x8:convo_mult_5           ; mult8x8     ; work         ;
+;    |mult8x8:convo_mult_6|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab2|mult8x8:convo_mult_6           ; mult8x8     ; work         ;
+;    |mult8x8:convo_mult_7|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab2|mult8x8:convo_mult_7           ; mult8x8     ; work         ;
+;    |mult8x8:convo_mult_8|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |lab2|mult8x8:convo_mult_8           ; mult8x8     ; work         ;
++-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary    ;
++-----------------------------------+-------------+
+; Statistic                         ; Number Used ;
++-----------------------------------+-------------+
+; Two Independent 18x18             ; 9           ;
+; Total number of DSP blocks        ; 9           ;
+;                                   ;             ;
+; Fixed Point Mixed Sign Multiplier ; 9           ;
++-----------------------------------+-------------+
+
+
++------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                 ;
++-----------------------------------------+------------------------------------------+
+; Register name                           ; Reason for Removal                       ;
++-----------------------------------------+------------------------------------------+
+; addr_stage_3_out_pipe[1][16]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][17]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][18]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][19]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][20]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][21]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][22]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][23]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][24]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][25]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][26]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][27]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][28]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][29]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][30]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_3_out_pipe[1][31]            ; Merged with addr_stage_3_out_pipe[1][15] ;
+; addr_stage_2_out_pipe[2][16]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][17]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][18]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][19]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][20]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][21]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][22]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][23]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][24]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][25]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][26]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][27]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][28]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][29]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][30]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_2_out_pipe[2][31]            ; Merged with addr_stage_2_out_pipe[2][15] ;
+; addr_stage_1_out_pipe[4][16]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][17]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][18]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][19]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][20]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][21]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][22]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][23]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][24]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][25]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][26]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][27]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][28]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][29]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][30]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; addr_stage_1_out_pipe[4][31]            ; Merged with addr_stage_1_out_pipe[4][15] ;
+; mult_out_pipe[0][16]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][17]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][18]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][19]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][20]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][21]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][22]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][23]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][24]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][25]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][26]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][27]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][28]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][29]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][30]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[0][31]                    ; Merged with mult_out_pipe[0][15]         ;
+; mult_out_pipe[1][16]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][17]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][18]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][19]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][20]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][21]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][22]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][23]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][24]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][25]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][26]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][27]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][28]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][29]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][30]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[1][31]                    ; Merged with mult_out_pipe[1][15]         ;
+; mult_out_pipe[2][16]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][17]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][18]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][19]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][20]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][21]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][22]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][23]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][24]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][25]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][26]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][27]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][28]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][29]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][30]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[2][31]                    ; Merged with mult_out_pipe[2][15]         ;
+; mult_out_pipe[3][16]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][17]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][18]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][19]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][20]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][21]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][22]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][23]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][24]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][25]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][26]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][27]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][28]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][29]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][30]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[3][31]                    ; Merged with mult_out_pipe[3][15]         ;
+; mult_out_pipe[4][16]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][17]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][18]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][19]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][20]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][21]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][22]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][23]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][24]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][25]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][26]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][27]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][28]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][29]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][30]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[4][31]                    ; Merged with mult_out_pipe[4][15]         ;
+; mult_out_pipe[5][16]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][17]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][18]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][19]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][20]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][21]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][22]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][23]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][24]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][25]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][26]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][27]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][28]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][29]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][30]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[5][31]                    ; Merged with mult_out_pipe[5][15]         ;
+; mult_out_pipe[6][16]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][17]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][18]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][19]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][20]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][21]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][22]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][23]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][24]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][25]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][26]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][27]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][28]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][29]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][30]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[6][31]                    ; Merged with mult_out_pipe[6][15]         ;
+; mult_out_pipe[7][16]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][17]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][18]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][19]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][20]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][21]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][22]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][23]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][24]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][25]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][26]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][27]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][28]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][29]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][30]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[7][31]                    ; Merged with mult_out_pipe[7][15]         ;
+; mult_out_pipe[8][16]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][17]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][18]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][19]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][20]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][21]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][22]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][23]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][24]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][25]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][26]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][27]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][28]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][29]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][30]                    ; Merged with mult_out_pipe[8][15]         ;
+; mult_out_pipe[8][31]                    ; Merged with mult_out_pipe[8][15]         ;
+; Total Number of Removed Registers = 192 ;                                          ;
++-----------------------------------------+------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 9796  ;
+; Number of registers using Synchronous Clear  ; 9374  ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 9724  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; 3:1                ; 9279 bits ; 18558 LEs     ; 0 LEs                ; 18558 LEs              ; Yes        ; |lab2|data_valid[1030]         ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lab2|counter[0]               ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |lab2|addr_stage_4_out_pipe[0] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+
+
++----------------------------------------------+
+; Source assignments for mult8x8:convo_mult_0  ;
++---------------------+------------+------+----+
+; Assignment          ; Value      ; From ; To ;
++---------------------+------------+------+----+
+; DSP_BLOCK_BALANCING ; DSP blocks ; -    ; -  ;
++---------------------+------------+------+----+
+
+
++----------------------------------------------+
+; Source assignments for mult8x8:convo_mult_1  ;
++---------------------+------------+------+----+
+; Assignment          ; Value      ; From ; To ;
++---------------------+------------+------+----+
+; DSP_BLOCK_BALANCING ; DSP blocks ; -    ; -  ;
++---------------------+------------+------+----+
+
+
++----------------------------------------------+
+; Source assignments for mult8x8:convo_mult_2  ;
++---------------------+------------+------+----+
+; Assignment          ; Value      ; From ; To ;
++---------------------+------------+------+----+
+; DSP_BLOCK_BALANCING ; DSP blocks ; -    ; -  ;
++---------------------+------------+------+----+
+
+
++----------------------------------------------+
+; Source assignments for mult8x8:convo_mult_3  ;
++---------------------+------------+------+----+
+; Assignment          ; Value      ; From ; To ;
++---------------------+------------+------+----+
+; DSP_BLOCK_BALANCING ; DSP blocks ; -    ; -  ;
++---------------------+------------+------+----+
+
+
++----------------------------------------------+
+; Source assignments for mult8x8:convo_mult_4  ;
++---------------------+------------+------+----+
+; Assignment          ; Value      ; From ; To ;
++---------------------+------------+------+----+
+; DSP_BLOCK_BALANCING ; DSP blocks ; -    ; -  ;
++---------------------+------------+------+----+
+
+
++----------------------------------------------+
+; Source assignments for mult8x8:convo_mult_5  ;
++---------------------+------------+------+----+
+; Assignment          ; Value      ; From ; To ;
++---------------------+------------+------+----+
+; DSP_BLOCK_BALANCING ; DSP blocks ; -    ; -  ;
++---------------------+------------+------+----+
+
+
++----------------------------------------------+
+; Source assignments for mult8x8:convo_mult_6  ;
++---------------------+------------+------+----+
+; Assignment          ; Value      ; From ; To ;
++---------------------+------------+------+----+
+; DSP_BLOCK_BALANCING ; DSP blocks ; -    ; -  ;
++---------------------+------------+------+----+
+
+
++----------------------------------------------+
+; Source assignments for mult8x8:convo_mult_7  ;
++---------------------+------------+------+----+
+; Assignment          ; Value      ; From ; To ;
++---------------------+------------+------+----+
+; DSP_BLOCK_BALANCING ; DSP blocks ; -    ; -  ;
++---------------------+------------+------+----+
+
+
++----------------------------------------------+
+; Source assignments for mult8x8:convo_mult_8  ;
++---------------------+------------+------+----+
+; Assignment          ; Value      ; From ; To ;
++---------------------+------------+------+----+
+; DSP_BLOCK_BALANCING ; DSP blocks ; -    ; -  ;
++---------------------+------------+------+----+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 94                          ;
+; twentynm_ff           ; 9796                        ;
+;     ENA               ; 421                         ;
+;     ENA SCLR          ; 9303                        ;
+;     SCLR              ; 71                          ;
+;     plain             ; 1                           ;
+; twentynm_lcell_comb   ; 237                         ;
+;     arith             ; 212                         ;
+;         1 data inputs ; 16                          ;
+;         2 data inputs ; 196                         ;
+;     normal            ; 25                          ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 5                           ;
+;         5 data inputs ; 3                           ;
+;         6 data inputs ; 15                          ;
+; twentynm_mac          ; 9                           ;
+;                       ;                             ;
+; Max LUT depth         ; 5.80                        ;
+; Average LUT depth     ; 0.23                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:15     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+    Info: Processing started: Wed Oct 27 21:50:13 2021
+Info: Command: quartus_map --read_settings_files=off --write_settings_files=off lab2 -c lab2
+Info (20032): Parallel compilation is enabled and will use up to 4 processors
+Info (12021): Found 1 design units, including 1 entities, in source file lab2_tb.sv
+    Info (12023): Found entity 1: lab2_tb File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2_tb.sv Line: 3
+Info (12021): Found 3 design units, including 3 entities, in source file lab2.sv
+    Info (12023): Found entity 1: lab2 File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 7
+    Info (12023): Found entity 2: mult8x8 File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 212
+    Info (12023): Found entity 3: addr32p32 File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 235
+Info (12127): Elaborating entity "lab2" for the top level hierarchy
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "r_f" into its bus
+Info (12128): Elaborating entity "mult8x8" for hierarchy "mult8x8:convo_mult_0" File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 92
+Info (12128): Elaborating entity "addr32p32" for hierarchy "addr32p32:convo_addr_stage_1_0" File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 103
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/output_files/lab2.map.smsg
+Info (14661): Generated JSON formatted report files in C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/db/lab2.map.json_files/
+Info (14661): Generated JSON formatted report files in C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/db/lab2.flow.json_files/
+Info (15717): Design contains 93 virtual pins; timing numbers associated with paths containing virtual pins are estimates
+    Info (15719): Pin "o_y[0]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 17
+    Info (15719): Pin "o_y[1]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 17
+    Info (15719): Pin "o_y[2]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 17
+    Info (15719): Pin "o_y[3]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 17
+    Info (15719): Pin "o_y[4]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 17
+    Info (15719): Pin "o_y[5]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 17
+    Info (15719): Pin "o_y[6]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 17
+    Info (15719): Pin "o_y[7]" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 17
+    Info (15719): Pin "o_valid" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 14
+    Info (15719): Pin "o_ready" is virtual output pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 15
+    Info (15718): Pin "i_ready" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 12
+    Info (15718): Pin "reset" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 9
+    Info (15718): Pin "i_valid" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 11
+    Info (15718): Pin "i_x[0]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 13
+    Info (15718): Pin "i_x[1]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 13
+    Info (15718): Pin "i_x[2]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 13
+    Info (15718): Pin "i_x[3]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 13
+    Info (15718): Pin "i_x[4]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 13
+    Info (15718): Pin "i_x[5]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 13
+    Info (15718): Pin "i_x[6]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 13
+    Info (15718): Pin "i_x[7]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 13
+    Info (15718): Pin "i_f[64]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[65]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[66]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[67]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[68]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[69]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[70]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[71]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[0]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[1]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[2]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[3]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[4]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[5]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[6]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[7]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[8]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[9]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[10]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[11]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[12]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[13]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[14]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[15]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[16]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[17]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[18]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[19]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[20]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[21]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[22]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[23]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[24]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[25]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[26]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[27]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[28]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[29]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[30]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[31]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[32]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[33]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[34]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[35]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[36]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[37]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[38]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[39]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[40]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[41]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[42]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[43]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[44]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[45]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[46]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[47]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[48]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[49]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[50]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[51]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[52]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[53]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[54]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[55]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[56]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[57]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[58]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[59]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[60]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[61]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[62]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+    Info (15718): Pin "i_f[63]" is virtual input pin File: C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/lab2.sv Line: 10
+Warning (15720): Ignored Virtual Pin assignment to node "o_valid~0"
+Info (21057): Implemented 9871 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 0 output pins
+    Info (21061): Implemented 9861 logic cells
+    Info (21062): Implemented 9 DSP elements
+Info (14661): Generated JSON formatted report files in C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/db/lab2.map.json_files/
+Info (14661): Generated JSON formatted report files in C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/db/lab2.flow.json_files/
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4910 megabytes
+    Info: Processing ended: Wed Oct 27 21:50:48 2021
+    Info: Elapsed time: 00:00:35
+    Info: Total CPU time (on all processors): 00:00:25
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/dse/dse1/dse1_base/output_files/lab2.map.smsg.
+
+

@@ -1,0 +1,146 @@
+Flow report for lab2
+Wed Oct 27 21:56:21 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++-----------------------------+-------------------------------------------------+
+; Flow Status                 ; Successful - Wed Oct 27 21:56:21 2021           ;
+; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Standard Edition ;
+; Revision Name               ; lab2                                            ;
+; Top-level Entity Name       ; lab2                                            ;
+; Family                      ; Arria 10                                        ;
+; Device                      ; 10AX115N1F45I1SG                                ;
+; Timing Models               ; Final                                           ;
+; Logic utilization (in ALMs) ; 2,496 / 427,200 ( < 1 % )                       ;
+; Total registers             ; 9572                                            ;
+; Total pins                  ; 1 / 992 ( < 1 % )                               ;
+; Total virtual pins          ; 93                                              ;
+; Total block memory bits     ; 0 / 55,562,240 ( 0 % )                          ;
+; Total DSP Blocks            ; 9 / 1,518 ( < 1 % )                             ;
+; Total HSSI RX channels      ; 0 / 48 ( 0 % )                                  ;
+; Total HSSI TX channels      ; 0 / 48 ( 0 % )                                  ;
+; Total PLLs                  ; 0 / 112 ( 0 % )                                 ;
++-----------------------------+-------------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 10/27/2021 21:50:24 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; lab2                ;
++-------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                                            ;
++-------------------------------------+-----------------------------------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
+; Assignment Name                     ; Value                                                                                               ; Default Value ; Entity Name ; Section Id                        ;
++-------------------------------------+-----------------------------------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
+; CLOUD_NOTIFY_ENABLE                 ; Off                                                                                                 ; --            ; --          ; --                                ;
+; CLOUD_NOTIFY_GROUP_ID               ; dse1                                                                                                ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 198112232495693.163538582421896                                                                     ; --            ; --          ; --                                ;
+; DSE_SEND_REPORT_PANEL               ; ^Timing Analyzer/(Slow|Fast)\s.*Model/(Slow|Fast)\s.*Model\s(Setup|Hold|Recovery|Removal)\sSummary$ ; --            ; --          ; --                                ;
+; DSE_SEND_REPORT_PANEL               ; Fitter/(Resource Section|Place Stage)/Fitter Resource Usage Summary                                 ; --            ; --          ; --                                ;
+; DSE_SEND_REPORT_PANEL               ; ^Timing Analyzer/Clocks$                                                                            ; --            ; --          ; --                                ;
+; DSE_SEND_REPORT_PANEL               ; ^Timing Analyzer/(Slow|Fast)\s.*Model/(Slow|Fast)\s.*Model\sFmax\sSummary$                          ; --            ; --          ; --                                ;
+; DSE_SEND_REPORT_PANEL               ; Flow Elapsed Time                                                                                   ; --            ; --          ; --                                ;
+; DSE_SERVER_SEND_REPORTS             ; On                                                                                                  ; --            ; --          ; --                                ;
+; DSE_SERVER_URL                      ; http://localhost:62868                                                                              ; --            ; --          ; --                                ;
+; DSE_WORKER_ID                       ; 0                                                                                                   ; --            ; --          ; --                                ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                                                                 ; --            ; --          ; eda_board_design_timing           ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                                                                 ; --            ; --          ; eda_board_design_boundary_scan    ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                                                                 ; --            ; --          ; eda_board_design_signal_integrity ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                                                                 ; --            ; --          ; eda_board_design_symbol           ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                                                         ; --            ; --          ; eda_simulation                    ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                                                           ; <None>        ; --          ; --                                ;
+; EDA_TIME_SCALE                      ; 1 ps                                                                                                ; --            ; --          ; eda_simulation                    ;
+; MAX_CORE_JUNCTION_TEMP              ; 100                                                                                                 ; --            ; --          ; --                                ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                                                                   ; --            ; --          ; --                                ;
+; NUM_PARALLEL_PROCESSORS             ; 4                                                                                                   ; --            ; --          ; --                                ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                                                              ; --            ; --          ; Top                               ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                                                              ; --            ; --          ; Top                               ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                                                              ; --            ; --          ; Top                               ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                                                 ; --            ; --          ; --                                ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                                               ; --            ; --          ; --                                ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                                                        ; --            ; --          ; --                                ;
++-------------------------------------+-----------------------------------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:34     ; 2.1                     ; 4909 MB             ; 00:00:24                           ;
+; Fitter               ; 00:03:38     ; 1.3                     ; 12341 MB            ; 00:07:28                           ;
+; Assembler            ; 00:01:11     ; 1.0                     ; 10838 MB            ; 00:00:57                           ;
+; Timing Analyzer      ; 00:00:24     ; 1.1                     ; 7194 MB             ; 00:00:27                           ;
+; EDA Netlist Writer   ; 00:00:12     ; 1.0                     ; 4788 MB             ; 00:00:02                           ;
+; Total                ; 00:05:59     ; --                      ; --                  ; 00:09:18                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; DESKTOP-G052NLR  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; DESKTOP-G052NLR  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; DESKTOP-G052NLR  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; DESKTOP-G052NLR  ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; DESKTOP-G052NLR  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=off --write_settings_files=off lab2 -c lab2
+quartus_fit --read_settings_files=off --write_settings_files=off lab2 -c lab2
+quartus_asm --read_settings_files=off --write_settings_files=off lab2 -c lab2
+quartus_sta lab2 -c lab2
+quartus_eda --read_settings_files=off --write_settings_files=off lab2 -c lab2
+
+
+

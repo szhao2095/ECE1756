@@ -1,0 +1,4663 @@
+// Copyright (C) 2020  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and any partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details, at
+// https://fpgasoftware.intel.com/eula.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus Prime"
+// VERSION "Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition"
+
+// DATE "10/07/2021 19:20:20"
+
+// 
+// Device: Altera 10AX115N2F45I1SG Package FBGA1932
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module lab1 (
+	clk,
+	reset,
+	i_valid,
+	i_ready,
+	o_valid,
+	o_ready,
+	i_x,
+	o_y);
+input 	clk;
+input 	reset;
+input 	i_valid;
+input 	i_ready;
+output 	o_valid;
+output 	o_ready;
+input 	[15:0] i_x;
+output 	[31:0] o_y;
+
+// Design Ports Information
+// clk	=>  Location: PIN_G37,	 I/O Standard: 1.8 V,	 Current Strength: Default
+// ~ALTERA_DATA0~	=>  Location: PIN_BD19,	 I/O Standard: 1.8 V,	 Current Strength: Default
+// o_valid	=>  Location: MLABCELL_X114_Y59_N3,	 I/O Standard: None,	 Current Strength: Default
+// o_ready	=>  Location: LABCELL_X115_Y58_N0,	 I/O Standard: None,	 Current Strength: Default
+// o_y[0]	=>  Location: MLABCELL_X114_Y59_N6,	 I/O Standard: None,	 Current Strength: Default
+// o_y[1]	=>  Location: MLABCELL_X114_Y59_N15,	 I/O Standard: None,	 Current Strength: Default
+// o_y[2]	=>  Location: MLABCELL_X114_Y59_N18,	 I/O Standard: None,	 Current Strength: Default
+// o_y[3]	=>  Location: MLABCELL_X114_Y59_N33,	 I/O Standard: None,	 Current Strength: Default
+// o_y[4]	=>  Location: MLABCELL_X113_Y60_N3,	 I/O Standard: None,	 Current Strength: Default
+// o_y[5]	=>  Location: LABCELL_X118_Y60_N3,	 I/O Standard: None,	 Current Strength: Default
+// o_y[6]	=>  Location: MLABCELL_X114_Y60_N0,	 I/O Standard: None,	 Current Strength: Default
+// o_y[7]	=>  Location: MLABCELL_X113_Y60_N6,	 I/O Standard: None,	 Current Strength: Default
+// o_y[8]	=>  Location: MLABCELL_X114_Y60_N9,	 I/O Standard: None,	 Current Strength: Default
+// o_y[9]	=>  Location: MLABCELL_X114_Y60_N12,	 I/O Standard: None,	 Current Strength: Default
+// o_y[10]	=>  Location: MLABCELL_X114_Y60_N21,	 I/O Standard: None,	 Current Strength: Default
+// o_y[11]	=>  Location: MLABCELL_X114_Y60_N24,	 I/O Standard: None,	 Current Strength: Default
+// o_y[12]	=>  Location: MLABCELL_X114_Y60_N30,	 I/O Standard: None,	 Current Strength: Default
+// o_y[13]	=>  Location: MLABCELL_X114_Y60_N27,	 I/O Standard: None,	 Current Strength: Default
+// o_y[14]	=>  Location: MLABCELL_X113_Y60_N15,	 I/O Standard: None,	 Current Strength: Default
+// o_y[15]	=>  Location: MLABCELL_X114_Y60_N39,	 I/O Standard: None,	 Current Strength: Default
+// o_y[16]	=>  Location: MLABCELL_X114_Y60_N45,	 I/O Standard: None,	 Current Strength: Default
+// o_y[17]	=>  Location: MLABCELL_X114_Y60_N48,	 I/O Standard: None,	 Current Strength: Default
+// o_y[18]	=>  Location: MLABCELL_X113_Y60_N21,	 I/O Standard: None,	 Current Strength: Default
+// o_y[19]	=>  Location: MLABCELL_X114_Y60_N6,	 I/O Standard: None,	 Current Strength: Default
+// o_y[20]	=>  Location: MLABCELL_X114_Y60_N18,	 I/O Standard: None,	 Current Strength: Default
+// o_y[21]	=>  Location: MLABCELL_X114_Y60_N51,	 I/O Standard: None,	 Current Strength: Default
+// o_y[22]	=>  Location: MLABCELL_X114_Y60_N33,	 I/O Standard: None,	 Current Strength: Default
+// o_y[23]	=>  Location: MLABCELL_X114_Y60_N57,	 I/O Standard: None,	 Current Strength: Default
+// o_y[24]	=>  Location: MLABCELL_X114_Y60_N36,	 I/O Standard: None,	 Current Strength: Default
+// o_y[25]	=>  Location: LABCELL_X115_Y57_N0,	 I/O Standard: None,	 Current Strength: Default
+// o_y[26]	=>  Location: MLABCELL_X114_Y60_N15,	 I/O Standard: None,	 Current Strength: Default
+// o_y[27]	=>  Location: MLABCELL_X114_Y60_N54,	 I/O Standard: None,	 Current Strength: Default
+// o_y[28]	=>  Location: LABCELL_X115_Y58_N12,	 I/O Standard: None,	 Current Strength: Default
+// o_y[29]	=>  Location: LABCELL_X115_Y57_N6,	 I/O Standard: None,	 Current Strength: Default
+// o_y[30]	=>  Location: MLABCELL_X114_Y60_N42,	 I/O Standard: None,	 Current Strength: Default
+// o_y[31]	=>  Location: MLABCELL_X114_Y60_N3,	 I/O Standard: None,	 Current Strength: Default
+// i_ready	=>  Location: LABCELL_X115_Y58_N9,	 I/O Standard: None,	 Current Strength: Default
+// reset	=>  Location: MLABCELL_X117_Y59_N21,	 I/O Standard: None,	 Current Strength: Default
+// i_valid	=>  Location: MLABCELL_X114_Y59_N24,	 I/O Standard: None,	 Current Strength: Default
+// i_x[0]	=>  Location: MLABCELL_X117_Y59_N30,	 I/O Standard: None,	 Current Strength: Default
+// i_x[1]	=>  Location: MLABCELL_X117_Y61_N21,	 I/O Standard: None,	 Current Strength: Default
+// i_x[2]	=>  Location: MLABCELL_X117_Y59_N39,	 I/O Standard: None,	 Current Strength: Default
+// i_x[3]	=>  Location: MLABCELL_X117_Y61_N39,	 I/O Standard: None,	 Current Strength: Default
+// i_x[4]	=>  Location: MLABCELL_X117_Y61_N12,	 I/O Standard: None,	 Current Strength: Default
+// i_x[5]	=>  Location: MLABCELL_X117_Y61_N18,	 I/O Standard: None,	 Current Strength: Default
+// i_x[6]	=>  Location: MLABCELL_X117_Y61_N30,	 I/O Standard: None,	 Current Strength: Default
+// i_x[7]	=>  Location: MLABCELL_X117_Y61_N33,	 I/O Standard: None,	 Current Strength: Default
+// i_x[8]	=>  Location: MLABCELL_X117_Y59_N45,	 I/O Standard: None,	 Current Strength: Default
+// i_x[9]	=>  Location: MLABCELL_X117_Y61_N15,	 I/O Standard: None,	 Current Strength: Default
+// i_x[10]	=>  Location: MLABCELL_X117_Y61_N45,	 I/O Standard: None,	 Current Strength: Default
+// i_x[11]	=>  Location: MLABCELL_X117_Y59_N12,	 I/O Standard: None,	 Current Strength: Default
+// i_x[12]	=>  Location: MLABCELL_X117_Y61_N54,	 I/O Standard: None,	 Current Strength: Default
+// i_x[13]	=>  Location: MLABCELL_X117_Y59_N3,	 I/O Standard: None,	 Current Strength: Default
+// i_x[14]	=>  Location: MLABCELL_X117_Y59_N51,	 I/O Standard: None,	 Current Strength: Default
+// i_x[15]	=>  Location: MLABCELL_X117_Y59_N57,	 I/O Standard: None,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire a_aALTERA_DATA0_a_apadout;
+wire Mult4_aMult0_a12_resulta;
+wire Mult4_aMult0_a13;
+wire Mult4_aMult0_a14;
+wire Mult4_aMult0_a15;
+wire Mult4_aMult0_a16;
+wire Mult4_aMult0_a17;
+wire Mult4_aMult0_a18;
+wire Mult4_aMult0_a19;
+wire Mult4_aMult0_a20;
+wire Mult4_aMult0_a21;
+wire Mult4_aMult0_a22;
+wire Mult4_aMult0_a23;
+wire Mult4_aMult0_a24;
+wire Mult4_aMult0_a25;
+wire Mult4_aMult0_a42;
+wire Mult4_aMult0_a43;
+wire Mult4_aMult0_a44;
+wire Mult4_aMult0_a45;
+wire Mult4_aMult0_a46;
+wire Mult4_aMult0_a47;
+wire Mult4_aMult0_a48;
+wire Mult4_aMult0_a49;
+wire Mult4_aMult0_a50;
+wire Mult4_aMult0_a51;
+wire Mult4_aMult0_a52;
+wire Mult4_aMult0_a53;
+wire Mult4_aMult0_a54;
+wire Mult4_aMult0_a55;
+wire Mult4_aMult0_a56;
+wire Mult4_aMult0_a57;
+wire Mult4_aMult0_a58;
+wire Mult4_aMult0_a59;
+wire Mult4_aMult0_a60;
+wire Mult4_aMult0_a61;
+wire Mult4_aMult0_a62;
+wire Mult4_aMult0_a63;
+wire Mult4_aMult0_a64;
+wire Mult4_aMult0_a65;
+wire Mult4_aMult0_a66;
+wire Mult4_aMult0_a67;
+wire Mult4_aMult0_a68;
+wire Mult4_aMult0_a69;
+wire Mult4_aMult0_a70;
+wire Mult4_aMult0_a71;
+wire Mult4_aMult0_amult_hlmac_resulta;
+wire Mult4_aMult0_a937;
+wire Mult4_aMult0_a938;
+wire Mult4_aMult0_a494;
+wire Mult4_aMult0_a495;
+wire Mult4_aMult0_a496;
+wire Mult4_aMult0_a497;
+wire Mult4_aMult0_a498;
+wire Mult4_aMult0_a499;
+wire Mult4_aMult0_a500;
+wire Mult4_aMult0_a501;
+wire Mult4_aMult0_a502;
+wire Mult4_aMult0_a503;
+wire Mult4_aMult0_a504;
+wire Mult4_aMult0_a505;
+wire Mult4_aMult0_a506;
+wire Mult4_aMult0_a507;
+wire Mult4_aMult0_a508;
+wire Mult4_aMult0_a509;
+wire Mult4_aMult0_a510;
+wire Mult4_aMult0_a511;
+wire Mult4_aMult0_a512;
+wire Mult4_aMult0_a513;
+wire Mult4_aMult0_a514;
+wire Mult4_aMult0_a515;
+wire Mult4_aMult0_a516;
+wire Mult4_aMult0_a517;
+wire Mult4_aMult0_a518;
+wire Mult4_aMult0_a519;
+wire Mult4_aMult0_a520;
+wire Mult4_aMult0_a521;
+wire Mult4_aMult0_a522;
+wire Mult4_aMult0_a523;
+wire Mult4_aMult0_a524;
+wire Mult4_aMult0_a525;
+wire Mult4_aMult0_a526;
+wire Mult3_aMult0_a12_resulta;
+wire Mult3_aMult0_a13;
+wire Mult3_aMult0_a14;
+wire Mult3_aMult0_a15;
+wire Mult3_aMult0_a16;
+wire Mult3_aMult0_a17;
+wire Mult3_aMult0_a18;
+wire Mult3_aMult0_a19;
+wire Mult3_aMult0_a20;
+wire Mult3_aMult0_a21;
+wire Mult3_aMult0_a22;
+wire Mult3_aMult0_a23;
+wire Mult3_aMult0_a24;
+wire Mult3_aMult0_a25;
+wire Mult3_aMult0_a42;
+wire Mult3_aMult0_a43;
+wire Mult3_aMult0_a44;
+wire Mult3_aMult0_a45;
+wire Mult3_aMult0_a46;
+wire Mult3_aMult0_a47;
+wire Mult3_aMult0_a48;
+wire Mult3_aMult0_a49;
+wire Mult3_aMult0_a50;
+wire Mult3_aMult0_a51;
+wire Mult3_aMult0_a52;
+wire Mult3_aMult0_a53;
+wire Mult3_aMult0_a54;
+wire Mult3_aMult0_a55;
+wire Mult3_aMult0_a56;
+wire Mult3_aMult0_a57;
+wire Mult3_aMult0_a58;
+wire Mult3_aMult0_a59;
+wire Mult3_aMult0_a60;
+wire Mult3_aMult0_a61;
+wire Mult3_aMult0_a62;
+wire Mult3_aMult0_a63;
+wire Mult3_aMult0_a64;
+wire Mult3_aMult0_a65;
+wire Mult3_aMult0_a66;
+wire Mult3_aMult0_a67;
+wire Mult3_aMult0_a68;
+wire Mult3_aMult0_a69;
+wire Mult3_aMult0_a70;
+wire Mult3_aMult0_a71;
+wire Mult3_aMult0_amult_hlmac_resulta;
+wire Mult3_aMult0_a937;
+wire Mult3_aMult0_a938;
+wire Mult3_aMult0_a494;
+wire Mult3_aMult0_a495;
+wire Mult3_aMult0_a496;
+wire Mult3_aMult0_a497;
+wire Mult3_aMult0_a498;
+wire Mult3_aMult0_a499;
+wire Mult3_aMult0_a500;
+wire Mult3_aMult0_a501;
+wire Mult3_aMult0_a502;
+wire Mult3_aMult0_a503;
+wire Mult3_aMult0_a504;
+wire Mult3_aMult0_a505;
+wire Mult3_aMult0_a506;
+wire Mult3_aMult0_a507;
+wire Mult3_aMult0_a508;
+wire Mult3_aMult0_a509;
+wire Mult3_aMult0_a510;
+wire Mult3_aMult0_a511;
+wire Mult3_aMult0_a512;
+wire Mult3_aMult0_a513;
+wire Mult3_aMult0_a514;
+wire Mult3_aMult0_a515;
+wire Mult3_aMult0_a516;
+wire Mult3_aMult0_a517;
+wire Mult3_aMult0_a518;
+wire Mult3_aMult0_a519;
+wire Mult3_aMult0_a520;
+wire Mult3_aMult0_a521;
+wire Mult3_aMult0_a522;
+wire Mult3_aMult0_a523;
+wire Mult3_aMult0_a524;
+wire Mult3_aMult0_a525;
+wire Mult3_aMult0_a526;
+wire Mult2_aMult0_a12_resulta;
+wire Mult2_aMult0_a13;
+wire Mult2_aMult0_a14;
+wire Mult2_aMult0_a15;
+wire Mult2_aMult0_a16;
+wire Mult2_aMult0_a17;
+wire Mult2_aMult0_a18;
+wire Mult2_aMult0_a19;
+wire Mult2_aMult0_a20;
+wire Mult2_aMult0_a21;
+wire Mult2_aMult0_a22;
+wire Mult2_aMult0_a23;
+wire Mult2_aMult0_a24;
+wire Mult2_aMult0_a25;
+wire Mult2_aMult0_a42;
+wire Mult2_aMult0_a43;
+wire Mult2_aMult0_a44;
+wire Mult2_aMult0_a45;
+wire Mult2_aMult0_a46;
+wire Mult2_aMult0_a47;
+wire Mult2_aMult0_a48;
+wire Mult2_aMult0_a49;
+wire Mult2_aMult0_a50;
+wire Mult2_aMult0_a51;
+wire Mult2_aMult0_a52;
+wire Mult2_aMult0_a53;
+wire Mult2_aMult0_a54;
+wire Mult2_aMult0_a55;
+wire Mult2_aMult0_a56;
+wire Mult2_aMult0_a57;
+wire Mult2_aMult0_a58;
+wire Mult2_aMult0_a59;
+wire Mult2_aMult0_a60;
+wire Mult2_aMult0_a61;
+wire Mult2_aMult0_a62;
+wire Mult2_aMult0_a63;
+wire Mult2_aMult0_a64;
+wire Mult2_aMult0_a65;
+wire Mult2_aMult0_a66;
+wire Mult2_aMult0_a67;
+wire Mult2_aMult0_a68;
+wire Mult2_aMult0_a69;
+wire Mult2_aMult0_a70;
+wire Mult2_aMult0_a71;
+wire Mult2_aMult0_amult_hlmac_resulta;
+wire Mult2_aMult0_a937;
+wire Mult2_aMult0_a938;
+wire Mult2_aMult0_a494;
+wire Mult2_aMult0_a495;
+wire Mult2_aMult0_a496;
+wire Mult2_aMult0_a497;
+wire Mult2_aMult0_a498;
+wire Mult2_aMult0_a499;
+wire Mult2_aMult0_a500;
+wire Mult2_aMult0_a501;
+wire Mult2_aMult0_a502;
+wire Mult2_aMult0_a503;
+wire Mult2_aMult0_a504;
+wire Mult2_aMult0_a505;
+wire Mult2_aMult0_a506;
+wire Mult2_aMult0_a507;
+wire Mult2_aMult0_a508;
+wire Mult2_aMult0_a509;
+wire Mult2_aMult0_a510;
+wire Mult2_aMult0_a511;
+wire Mult2_aMult0_a512;
+wire Mult2_aMult0_a513;
+wire Mult2_aMult0_a514;
+wire Mult2_aMult0_a515;
+wire Mult2_aMult0_a516;
+wire Mult2_aMult0_a517;
+wire Mult2_aMult0_a518;
+wire Mult2_aMult0_a519;
+wire Mult2_aMult0_a520;
+wire Mult2_aMult0_a521;
+wire Mult2_aMult0_a522;
+wire Mult2_aMult0_a523;
+wire Mult2_aMult0_a524;
+wire Mult2_aMult0_a525;
+wire Mult2_aMult0_a526;
+wire Mult1_aMult0_a12_resulta;
+wire Mult1_aMult0_a13;
+wire Mult1_aMult0_a14;
+wire Mult1_aMult0_a15;
+wire Mult1_aMult0_a16;
+wire Mult1_aMult0_a17;
+wire Mult1_aMult0_a18;
+wire Mult1_aMult0_a19;
+wire Mult1_aMult0_a20;
+wire Mult1_aMult0_a21;
+wire Mult1_aMult0_a22;
+wire Mult1_aMult0_a23;
+wire Mult1_aMult0_a24;
+wire Mult1_aMult0_a25;
+wire Mult1_aMult0_a42;
+wire Mult1_aMult0_a43;
+wire Mult1_aMult0_a44;
+wire Mult1_aMult0_a45;
+wire Mult1_aMult0_a46;
+wire Mult1_aMult0_a47;
+wire Mult1_aMult0_a48;
+wire Mult1_aMult0_a49;
+wire Mult1_aMult0_a50;
+wire Mult1_aMult0_a51;
+wire Mult1_aMult0_a52;
+wire Mult1_aMult0_a53;
+wire Mult1_aMult0_a54;
+wire Mult1_aMult0_a55;
+wire Mult1_aMult0_a56;
+wire Mult1_aMult0_a57;
+wire Mult1_aMult0_a58;
+wire Mult1_aMult0_a59;
+wire Mult1_aMult0_a60;
+wire Mult1_aMult0_a61;
+wire Mult1_aMult0_a62;
+wire Mult1_aMult0_a63;
+wire Mult1_aMult0_a64;
+wire Mult1_aMult0_a65;
+wire Mult1_aMult0_a66;
+wire Mult1_aMult0_a67;
+wire Mult1_aMult0_a68;
+wire Mult1_aMult0_a69;
+wire Mult1_aMult0_a70;
+wire Mult1_aMult0_a71;
+wire Mult1_aMult0_amult_hlmac_resulta;
+wire Mult1_aMult0_a937;
+wire Mult1_aMult0_a938;
+wire Mult1_aMult0_a494;
+wire Mult1_aMult0_a495;
+wire Mult1_aMult0_a496;
+wire Mult1_aMult0_a497;
+wire Mult1_aMult0_a498;
+wire Mult1_aMult0_a499;
+wire Mult1_aMult0_a500;
+wire Mult1_aMult0_a501;
+wire Mult1_aMult0_a502;
+wire Mult1_aMult0_a503;
+wire Mult1_aMult0_a504;
+wire Mult1_aMult0_a505;
+wire Mult1_aMult0_a506;
+wire Mult1_aMult0_a507;
+wire Mult1_aMult0_a508;
+wire Mult1_aMult0_a509;
+wire Mult1_aMult0_a510;
+wire Mult1_aMult0_a511;
+wire Mult1_aMult0_a512;
+wire Mult1_aMult0_a513;
+wire Mult1_aMult0_a514;
+wire Mult1_aMult0_a515;
+wire Mult1_aMult0_a516;
+wire Mult1_aMult0_a517;
+wire Mult1_aMult0_a518;
+wire Mult1_aMult0_a519;
+wire Mult1_aMult0_a520;
+wire Mult1_aMult0_a521;
+wire Mult1_aMult0_a522;
+wire Mult1_aMult0_a523;
+wire Mult1_aMult0_a524;
+wire Mult1_aMult0_a525;
+wire Mult1_aMult0_a526;
+wire Mult0_aMult0_amac_resulta;
+wire Mult0_aMult0_a451;
+wire Mult0_aMult0_a452;
+wire Mult0_aMult0_a12;
+wire Mult0_aMult0_a13;
+wire Mult0_aMult0_a14;
+wire Mult0_aMult0_a15;
+wire Mult0_aMult0_a16;
+wire Mult0_aMult0_a17;
+wire Mult0_aMult0_a18;
+wire Mult0_aMult0_a19;
+wire Mult0_aMult0_a20;
+wire Mult0_aMult0_a21;
+wire Mult0_aMult0_a22;
+wire Mult0_aMult0_a23;
+wire Mult0_aMult0_a24;
+wire Mult0_aMult0_a25;
+wire Mult0_aMult0_a26;
+wire Mult0_aMult0_a27;
+wire Mult0_aMult0_a28;
+wire Mult0_aMult0_a29;
+wire Mult0_aMult0_a30;
+wire Mult0_aMult0_a31;
+wire Mult0_aMult0_a32;
+wire Mult0_aMult0_a33;
+wire Mult0_aMult0_a34;
+wire Mult0_aMult0_a35;
+wire Mult0_aMult0_a36;
+wire Mult0_aMult0_a37;
+wire Mult0_aMult0_a38;
+wire Mult0_aMult0_a39;
+wire Mult0_aMult0_a40;
+wire a_aALTERA_DATA0_a_aibuf_o;
+wire o_valid_aoutput1_o;
+wire o_ready_aoutput1_o;
+wire o_y_a0_a_aoutput1_o;
+wire o_y_a1_a_aoutput1_o;
+wire o_y_a2_a_aoutput1_o;
+wire o_y_a3_a_aoutput1_o;
+wire o_y_a4_a_aoutput1_o;
+wire o_y_a5_a_aoutput1_o;
+wire o_y_a6_a_aoutput1_o;
+wire o_y_a7_a_aoutput1_o;
+wire o_y_a8_a_aoutput1_o;
+wire o_y_a9_a_aoutput1_o;
+wire o_y_a10_a_aoutput1_o;
+wire o_y_a11_a_aoutput1_o;
+wire o_y_a12_a_aoutput1_o;
+wire o_y_a13_a_aoutput1_o;
+wire o_y_a14_a_aoutput1_o;
+wire o_y_a15_a_aoutput1_o;
+wire o_y_a16_a_aoutput1_o;
+wire o_y_a17_a_aoutput1_o;
+wire o_y_a18_a_aoutput1_o;
+wire o_y_a19_a_aoutput1_o;
+wire o_y_a20_a_aoutput1_o;
+wire o_y_a21_a_aoutput1_o;
+wire o_y_a22_a_aoutput1_o;
+wire o_y_a23_a_aoutput1_o;
+wire o_y_a24_a_aoutput1_o;
+wire o_y_a25_a_aoutput1_o;
+wire o_y_a26_a_aoutput1_o;
+wire o_y_a27_a_aoutput1_o;
+wire o_y_a28_a_aoutput1_o;
+wire o_y_a29_a_aoutput1_o;
+wire o_y_a30_a_aoutput1_o;
+wire o_y_a31_a_aoutput1_o;
+wire clk_ainput_o;
+wire clk_ainputCLKENA0_outclk;
+wire i_valid_ainput3;
+wire reset_ainput3;
+wire i_ready_ainput3;
+wire valid_Q1_aq;
+wire valid_Q2_aq;
+wire o_valid_a0_combout;
+wire i_x_a0_a_ainput3;
+wire i_x_a1_a_ainput3;
+wire i_x_a2_a_ainput3;
+wire i_x_a3_a_ainput3;
+wire i_x_a4_a_ainput3;
+wire i_x_a5_a_ainput3;
+wire i_x_a6_a_ainput3;
+wire i_x_a7_a_ainput3;
+wire i_x_a8_a_ainput3;
+wire i_x_a9_a_ainput3;
+wire i_x_a10_a_ainput3;
+wire i_x_a11_a_ainput3;
+wire i_x_a12_a_ainput3;
+wire i_x_a13_a_ainput3;
+wire i_x_a14_a_ainput3;
+wire i_x_a15_a_ainput3;
+wire Mult0_aMult0_a453;
+wire Mult0_aMult0_a454;
+wire Mult0_aMult0_a455;
+wire Mult0_aMult0_a456;
+wire Mult0_aMult0_a457;
+wire Mult0_aMult0_a458;
+wire Mult0_aMult0_a459;
+wire Mult0_aMult0_a460;
+wire Mult0_aMult0_a461;
+wire Mult0_aMult0_a462;
+wire Mult0_aMult0_a463;
+wire Mult1_aMult0_a26;
+wire Mult1_aMult0_a27;
+wire Mult1_aMult0_a28;
+wire Mult1_aMult0_a29;
+wire Mult1_aMult0_a30;
+wire Mult1_aMult0_a31;
+wire Mult1_aMult0_a32;
+wire Mult1_aMult0_a33;
+wire Mult1_aMult0_a34;
+wire Mult1_aMult0_a35;
+wire Mult1_aMult0_a36;
+wire Mult1_aMult0_a37;
+wire Mult1_aMult0_a38;
+wire Mult1_aMult0_a39;
+wire Mult1_aMult0_a40;
+wire Mult1_aMult0_a41;
+wire Addr1_aAdd0_a1_sumout;
+wire Addr1_aAdd0_a2;
+wire Addr1_aAdd0_a5_sumout;
+wire Addr1_aAdd0_a6;
+wire Addr1_aAdd0_a9_sumout;
+wire Addr1_aAdd0_a10;
+wire Addr1_aAdd0_a13_sumout;
+wire Addr1_aAdd0_a14;
+wire Addr1_aAdd0_a17_sumout;
+wire Addr1_aAdd0_a18;
+wire Addr1_aAdd0_a21_sumout;
+wire Addr1_aAdd0_a22;
+wire Addr1_aAdd0_a25_sumout;
+wire Addr1_aAdd0_a26;
+wire Addr1_aAdd0_a29_sumout;
+wire Addr1_aAdd0_a30;
+wire Addr1_aAdd0_a33_sumout;
+wire Addr1_aAdd0_a34;
+wire Addr1_aAdd0_a37_sumout;
+wire Addr1_aAdd0_a38;
+wire Addr1_aAdd0_a41_sumout;
+wire Addr1_aAdd0_a42;
+wire Addr1_aAdd0_a45_sumout;
+wire Addr1_aAdd0_a46;
+wire Addr1_aAdd0_a49_sumout;
+wire Addr1_aAdd0_a50;
+wire Addr1_aAdd0_a53_sumout;
+wire Addr1_aAdd0_a54;
+wire Addr1_aAdd0_a57_sumout;
+wire Addr1_aAdd0_a58;
+wire Addr1_aAdd0_a61_sumout;
+wire Addr1_aAdd0_a62;
+wire Addr1_aAdd0_a65_sumout;
+wire Addr1_aAdd0_a66;
+wire Addr1_aAdd0_a69_sumout;
+wire Addr1_aAdd0_a70;
+wire Addr1_aAdd0_a73_sumout;
+wire Addr1_aAdd0_a74;
+wire Addr1_aAdd0_a77_sumout;
+wire Mult2_aMult0_a26;
+wire Mult2_aMult0_a27;
+wire Mult2_aMult0_a28;
+wire Mult2_aMult0_a29;
+wire Mult2_aMult0_a30;
+wire Mult2_aMult0_a31;
+wire Mult2_aMult0_a32;
+wire Mult2_aMult0_a33;
+wire Mult2_aMult0_a34;
+wire Mult2_aMult0_a35;
+wire Mult2_aMult0_a36;
+wire Mult2_aMult0_a37;
+wire Mult2_aMult0_a38;
+wire Mult2_aMult0_a39;
+wire Mult2_aMult0_a40;
+wire Mult2_aMult0_a41;
+wire Addr2_aAdd0_a1_sumout;
+wire Addr2_aAdd0_a2;
+wire Addr2_aAdd0_a5_sumout;
+wire Addr2_aAdd0_a6;
+wire Addr2_aAdd0_a9_sumout;
+wire Addr2_aAdd0_a10;
+wire Addr2_aAdd0_a13_sumout;
+wire Addr2_aAdd0_a14;
+wire Addr2_aAdd0_a17_sumout;
+wire Addr2_aAdd0_a18;
+wire Addr2_aAdd0_a21_sumout;
+wire Addr2_aAdd0_a22;
+wire Addr2_aAdd0_a25_sumout;
+wire Addr2_aAdd0_a26;
+wire Addr2_aAdd0_a29_sumout;
+wire Mult3_aMult0_a26;
+wire Mult3_aMult0_a27;
+wire Mult3_aMult0_a28;
+wire Mult3_aMult0_a29;
+wire Mult3_aMult0_a30;
+wire Mult3_aMult0_a31;
+wire Mult3_aMult0_a32;
+wire Mult3_aMult0_a33;
+wire Mult3_aMult0_a34;
+wire Mult3_aMult0_a35;
+wire Mult3_aMult0_a36;
+wire Mult3_aMult0_a37;
+wire Mult3_aMult0_a38;
+wire Mult3_aMult0_a39;
+wire Mult3_aMult0_a40;
+wire Mult3_aMult0_a41;
+wire Addr3_aAdd0_a1_sumout;
+wire Addr3_aAdd0_a2;
+wire Addr3_aAdd0_a5_sumout;
+wire Addr3_aAdd0_a6;
+wire Addr3_aAdd0_a9_sumout;
+wire Addr3_aAdd0_a10;
+wire Addr3_aAdd0_a13_sumout;
+wire Addr3_aAdd0_a14;
+wire Addr3_aAdd0_a17_sumout;
+wire Addr3_aAdd0_a18;
+wire Addr3_aAdd0_a21_sumout;
+wire Addr3_aAdd0_a22;
+wire Addr3_aAdd0_a25_sumout;
+wire Mult4_aMult0_a26;
+wire Mult4_aMult0_a27;
+wire Mult4_aMult0_a28;
+wire Mult4_aMult0_a29;
+wire Mult4_aMult0_a30;
+wire Mult4_aMult0_a31;
+wire Mult4_aMult0_a32;
+wire Mult4_aMult0_a33;
+wire Mult4_aMult0_a34;
+wire Mult4_aMult0_a35;
+wire Mult4_aMult0_a36;
+wire Mult4_aMult0_a37;
+wire Mult4_aMult0_a38;
+wire Mult4_aMult0_a39;
+wire Mult4_aMult0_a40;
+wire Mult4_aMult0_a41;
+wire Addr4_aAdd0_a1_sumout;
+wire Addr4_aAdd0_a2;
+wire Addr4_aAdd0_a5_sumout;
+wire Addr4_aAdd0_a6;
+wire Addr4_aAdd0_a9_sumout;
+wire Addr4_aAdd0_a10;
+wire Addr4_aAdd0_a13_sumout;
+wire Addr4_aAdd0_a14;
+wire Addr4_aAdd0_a17_sumout;
+wire Addr4_aAdd0_a18;
+wire Addr4_aAdd0_a21_sumout;
+wire Addr4_aAdd0_a22;
+wire Addr4_aAdd0_a25_sumout;
+wire [31:0] Mult4_ao_res;
+wire [31:0] y_Q;
+wire [31:0] Addr0_ao_res;
+wire [31:0] Mult3_ao_res;
+wire [31:0] Mult2_ao_res;
+wire [31:0] Mult1_ao_res;
+
+wire [63:0] Mult4_aMult0_a12_RESULTA_bus;
+wire [63:0] Mult4_aMult0_amult_hlmac_RESULTA_bus;
+wire [63:0] Mult3_aMult0_a12_RESULTA_bus;
+wire [63:0] Mult3_aMult0_amult_hlmac_RESULTA_bus;
+wire [63:0] Mult2_aMult0_a12_RESULTA_bus;
+wire [63:0] Mult2_aMult0_amult_hlmac_RESULTA_bus;
+wire [63:0] Mult1_aMult0_a12_RESULTA_bus;
+wire [63:0] Mult1_aMult0_amult_hlmac_RESULTA_bus;
+wire [63:0] Mult0_aMult0_amac_RESULTA_bus;
+
+assign Mult4_aMult0_a12_resulta = Mult4_aMult0_a12_RESULTA_bus[0];
+assign Mult4_aMult0_a13 = Mult4_aMult0_a12_RESULTA_bus[1];
+assign Mult4_aMult0_a14 = Mult4_aMult0_a12_RESULTA_bus[2];
+assign Mult4_aMult0_a15 = Mult4_aMult0_a12_RESULTA_bus[3];
+assign Mult4_aMult0_a16 = Mult4_aMult0_a12_RESULTA_bus[4];
+assign Mult4_aMult0_a17 = Mult4_aMult0_a12_RESULTA_bus[5];
+assign Mult4_aMult0_a18 = Mult4_aMult0_a12_RESULTA_bus[6];
+assign Mult4_aMult0_a19 = Mult4_aMult0_a12_RESULTA_bus[7];
+assign Mult4_aMult0_a20 = Mult4_aMult0_a12_RESULTA_bus[8];
+assign Mult4_aMult0_a21 = Mult4_aMult0_a12_RESULTA_bus[9];
+assign Mult4_aMult0_a22 = Mult4_aMult0_a12_RESULTA_bus[10];
+assign Mult4_aMult0_a23 = Mult4_aMult0_a12_RESULTA_bus[11];
+assign Mult4_aMult0_a24 = Mult4_aMult0_a12_RESULTA_bus[12];
+assign Mult4_aMult0_a25 = Mult4_aMult0_a12_RESULTA_bus[13];
+assign Mult4_ao_res[0] = Mult4_aMult0_a12_RESULTA_bus[14];
+assign Mult4_ao_res[1] = Mult4_aMult0_a12_RESULTA_bus[15];
+assign Mult4_ao_res[2] = Mult4_aMult0_a12_RESULTA_bus[16];
+assign Mult4_ao_res[3] = Mult4_aMult0_a12_RESULTA_bus[17];
+assign Mult4_aMult0_a26 = Mult4_aMult0_a12_RESULTA_bus[18];
+assign Mult4_aMult0_a27 = Mult4_aMult0_a12_RESULTA_bus[19];
+assign Mult4_aMult0_a28 = Mult4_aMult0_a12_RESULTA_bus[20];
+assign Mult4_aMult0_a29 = Mult4_aMult0_a12_RESULTA_bus[21];
+assign Mult4_aMult0_a30 = Mult4_aMult0_a12_RESULTA_bus[22];
+assign Mult4_aMult0_a31 = Mult4_aMult0_a12_RESULTA_bus[23];
+assign Mult4_aMult0_a32 = Mult4_aMult0_a12_RESULTA_bus[24];
+assign Mult4_aMult0_a33 = Mult4_aMult0_a12_RESULTA_bus[25];
+assign Mult4_aMult0_a34 = Mult4_aMult0_a12_RESULTA_bus[26];
+assign Mult4_aMult0_a35 = Mult4_aMult0_a12_RESULTA_bus[27];
+assign Mult4_aMult0_a36 = Mult4_aMult0_a12_RESULTA_bus[28];
+assign Mult4_aMult0_a37 = Mult4_aMult0_a12_RESULTA_bus[29];
+assign Mult4_aMult0_a38 = Mult4_aMult0_a12_RESULTA_bus[30];
+assign Mult4_aMult0_a39 = Mult4_aMult0_a12_RESULTA_bus[31];
+assign Mult4_aMult0_a40 = Mult4_aMult0_a12_RESULTA_bus[32];
+assign Mult4_aMult0_a41 = Mult4_aMult0_a12_RESULTA_bus[33];
+assign Mult4_aMult0_a42 = Mult4_aMult0_a12_RESULTA_bus[34];
+assign Mult4_aMult0_a43 = Mult4_aMult0_a12_RESULTA_bus[35];
+assign Mult4_aMult0_a44 = Mult4_aMult0_a12_RESULTA_bus[36];
+assign Mult4_aMult0_a45 = Mult4_aMult0_a12_RESULTA_bus[37];
+assign Mult4_aMult0_a46 = Mult4_aMult0_a12_RESULTA_bus[38];
+assign Mult4_aMult0_a47 = Mult4_aMult0_a12_RESULTA_bus[39];
+assign Mult4_aMult0_a48 = Mult4_aMult0_a12_RESULTA_bus[40];
+assign Mult4_aMult0_a49 = Mult4_aMult0_a12_RESULTA_bus[41];
+assign Mult4_aMult0_a50 = Mult4_aMult0_a12_RESULTA_bus[42];
+assign Mult4_aMult0_a51 = Mult4_aMult0_a12_RESULTA_bus[43];
+assign Mult4_aMult0_a52 = Mult4_aMult0_a12_RESULTA_bus[44];
+assign Mult4_aMult0_a53 = Mult4_aMult0_a12_RESULTA_bus[45];
+assign Mult4_aMult0_a54 = Mult4_aMult0_a12_RESULTA_bus[46];
+assign Mult4_aMult0_a55 = Mult4_aMult0_a12_RESULTA_bus[47];
+assign Mult4_aMult0_a56 = Mult4_aMult0_a12_RESULTA_bus[48];
+assign Mult4_aMult0_a57 = Mult4_aMult0_a12_RESULTA_bus[49];
+assign Mult4_aMult0_a58 = Mult4_aMult0_a12_RESULTA_bus[50];
+assign Mult4_aMult0_a59 = Mult4_aMult0_a12_RESULTA_bus[51];
+assign Mult4_aMult0_a60 = Mult4_aMult0_a12_RESULTA_bus[52];
+assign Mult4_aMult0_a61 = Mult4_aMult0_a12_RESULTA_bus[53];
+assign Mult4_aMult0_a62 = Mult4_aMult0_a12_RESULTA_bus[54];
+assign Mult4_aMult0_a63 = Mult4_aMult0_a12_RESULTA_bus[55];
+assign Mult4_aMult0_a64 = Mult4_aMult0_a12_RESULTA_bus[56];
+assign Mult4_aMult0_a65 = Mult4_aMult0_a12_RESULTA_bus[57];
+assign Mult4_aMult0_a66 = Mult4_aMult0_a12_RESULTA_bus[58];
+assign Mult4_aMult0_a67 = Mult4_aMult0_a12_RESULTA_bus[59];
+assign Mult4_aMult0_a68 = Mult4_aMult0_a12_RESULTA_bus[60];
+assign Mult4_aMult0_a69 = Mult4_aMult0_a12_RESULTA_bus[61];
+assign Mult4_aMult0_a70 = Mult4_aMult0_a12_RESULTA_bus[62];
+assign Mult4_aMult0_a71 = Mult4_aMult0_a12_RESULTA_bus[63];
+
+assign Mult4_ao_res[4] = Mult4_aMult0_amult_hlmac_RESULTA_bus[0];
+assign Mult4_ao_res[5] = Mult4_aMult0_amult_hlmac_RESULTA_bus[1];
+assign Mult4_ao_res[6] = Mult4_aMult0_amult_hlmac_RESULTA_bus[2];
+assign Mult4_ao_res[7] = Mult4_aMult0_amult_hlmac_RESULTA_bus[3];
+assign Mult4_ao_res[8] = Mult4_aMult0_amult_hlmac_RESULTA_bus[4];
+assign Mult4_ao_res[9] = Mult4_aMult0_amult_hlmac_RESULTA_bus[5];
+assign Mult4_ao_res[10] = Mult4_aMult0_amult_hlmac_RESULTA_bus[6];
+assign Mult4_ao_res[11] = Mult4_aMult0_amult_hlmac_RESULTA_bus[7];
+assign Mult4_ao_res[12] = Mult4_aMult0_amult_hlmac_RESULTA_bus[8];
+assign Mult4_ao_res[13] = Mult4_aMult0_amult_hlmac_RESULTA_bus[9];
+assign Mult4_ao_res[14] = Mult4_aMult0_amult_hlmac_RESULTA_bus[10];
+assign Mult4_ao_res[15] = Mult4_aMult0_amult_hlmac_RESULTA_bus[11];
+assign Mult4_ao_res[16] = Mult4_aMult0_amult_hlmac_RESULTA_bus[12];
+assign Mult4_ao_res[17] = Mult4_aMult0_amult_hlmac_RESULTA_bus[13];
+assign Mult4_ao_res[18] = Mult4_aMult0_amult_hlmac_RESULTA_bus[14];
+assign Mult4_ao_res[19] = Mult4_aMult0_amult_hlmac_RESULTA_bus[15];
+assign Mult4_ao_res[20] = Mult4_aMult0_amult_hlmac_RESULTA_bus[16];
+assign Mult4_ao_res[21] = Mult4_aMult0_amult_hlmac_RESULTA_bus[17];
+assign Mult4_ao_res[22] = Mult4_aMult0_amult_hlmac_RESULTA_bus[18];
+assign Mult4_ao_res[23] = Mult4_aMult0_amult_hlmac_RESULTA_bus[19];
+assign Mult4_ao_res[24] = Mult4_aMult0_amult_hlmac_RESULTA_bus[20];
+assign Mult4_ao_res[25] = Mult4_aMult0_amult_hlmac_RESULTA_bus[21];
+assign Mult4_ao_res[26] = Mult4_aMult0_amult_hlmac_RESULTA_bus[22];
+assign Mult4_ao_res[27] = Mult4_aMult0_amult_hlmac_RESULTA_bus[23];
+assign Mult4_ao_res[28] = Mult4_aMult0_amult_hlmac_RESULTA_bus[24];
+assign Mult4_ao_res[29] = Mult4_aMult0_amult_hlmac_RESULTA_bus[25];
+assign Mult4_ao_res[30] = Mult4_aMult0_amult_hlmac_RESULTA_bus[26];
+assign Mult4_ao_res[31] = Mult4_aMult0_amult_hlmac_RESULTA_bus[27];
+assign Mult4_aMult0_amult_hlmac_resulta = Mult4_aMult0_amult_hlmac_RESULTA_bus[28];
+assign Mult4_aMult0_a937 = Mult4_aMult0_amult_hlmac_RESULTA_bus[29];
+assign Mult4_aMult0_a938 = Mult4_aMult0_amult_hlmac_RESULTA_bus[30];
+assign Mult4_aMult0_a494 = Mult4_aMult0_amult_hlmac_RESULTA_bus[31];
+assign Mult4_aMult0_a495 = Mult4_aMult0_amult_hlmac_RESULTA_bus[32];
+assign Mult4_aMult0_a496 = Mult4_aMult0_amult_hlmac_RESULTA_bus[33];
+assign Mult4_aMult0_a497 = Mult4_aMult0_amult_hlmac_RESULTA_bus[34];
+assign Mult4_aMult0_a498 = Mult4_aMult0_amult_hlmac_RESULTA_bus[35];
+assign Mult4_aMult0_a499 = Mult4_aMult0_amult_hlmac_RESULTA_bus[36];
+assign Mult4_aMult0_a500 = Mult4_aMult0_amult_hlmac_RESULTA_bus[37];
+assign Mult4_aMult0_a501 = Mult4_aMult0_amult_hlmac_RESULTA_bus[38];
+assign Mult4_aMult0_a502 = Mult4_aMult0_amult_hlmac_RESULTA_bus[39];
+assign Mult4_aMult0_a503 = Mult4_aMult0_amult_hlmac_RESULTA_bus[40];
+assign Mult4_aMult0_a504 = Mult4_aMult0_amult_hlmac_RESULTA_bus[41];
+assign Mult4_aMult0_a505 = Mult4_aMult0_amult_hlmac_RESULTA_bus[42];
+assign Mult4_aMult0_a506 = Mult4_aMult0_amult_hlmac_RESULTA_bus[43];
+assign Mult4_aMult0_a507 = Mult4_aMult0_amult_hlmac_RESULTA_bus[44];
+assign Mult4_aMult0_a508 = Mult4_aMult0_amult_hlmac_RESULTA_bus[45];
+assign Mult4_aMult0_a509 = Mult4_aMult0_amult_hlmac_RESULTA_bus[46];
+assign Mult4_aMult0_a510 = Mult4_aMult0_amult_hlmac_RESULTA_bus[47];
+assign Mult4_aMult0_a511 = Mult4_aMult0_amult_hlmac_RESULTA_bus[48];
+assign Mult4_aMult0_a512 = Mult4_aMult0_amult_hlmac_RESULTA_bus[49];
+assign Mult4_aMult0_a513 = Mult4_aMult0_amult_hlmac_RESULTA_bus[50];
+assign Mult4_aMult0_a514 = Mult4_aMult0_amult_hlmac_RESULTA_bus[51];
+assign Mult4_aMult0_a515 = Mult4_aMult0_amult_hlmac_RESULTA_bus[52];
+assign Mult4_aMult0_a516 = Mult4_aMult0_amult_hlmac_RESULTA_bus[53];
+assign Mult4_aMult0_a517 = Mult4_aMult0_amult_hlmac_RESULTA_bus[54];
+assign Mult4_aMult0_a518 = Mult4_aMult0_amult_hlmac_RESULTA_bus[55];
+assign Mult4_aMult0_a519 = Mult4_aMult0_amult_hlmac_RESULTA_bus[56];
+assign Mult4_aMult0_a520 = Mult4_aMult0_amult_hlmac_RESULTA_bus[57];
+assign Mult4_aMult0_a521 = Mult4_aMult0_amult_hlmac_RESULTA_bus[58];
+assign Mult4_aMult0_a522 = Mult4_aMult0_amult_hlmac_RESULTA_bus[59];
+assign Mult4_aMult0_a523 = Mult4_aMult0_amult_hlmac_RESULTA_bus[60];
+assign Mult4_aMult0_a524 = Mult4_aMult0_amult_hlmac_RESULTA_bus[61];
+assign Mult4_aMult0_a525 = Mult4_aMult0_amult_hlmac_RESULTA_bus[62];
+assign Mult4_aMult0_a526 = Mult4_aMult0_amult_hlmac_RESULTA_bus[63];
+
+assign Mult3_aMult0_a12_resulta = Mult3_aMult0_a12_RESULTA_bus[0];
+assign Mult3_aMult0_a13 = Mult3_aMult0_a12_RESULTA_bus[1];
+assign Mult3_aMult0_a14 = Mult3_aMult0_a12_RESULTA_bus[2];
+assign Mult3_aMult0_a15 = Mult3_aMult0_a12_RESULTA_bus[3];
+assign Mult3_aMult0_a16 = Mult3_aMult0_a12_RESULTA_bus[4];
+assign Mult3_aMult0_a17 = Mult3_aMult0_a12_RESULTA_bus[5];
+assign Mult3_aMult0_a18 = Mult3_aMult0_a12_RESULTA_bus[6];
+assign Mult3_aMult0_a19 = Mult3_aMult0_a12_RESULTA_bus[7];
+assign Mult3_aMult0_a20 = Mult3_aMult0_a12_RESULTA_bus[8];
+assign Mult3_aMult0_a21 = Mult3_aMult0_a12_RESULTA_bus[9];
+assign Mult3_aMult0_a22 = Mult3_aMult0_a12_RESULTA_bus[10];
+assign Mult3_aMult0_a23 = Mult3_aMult0_a12_RESULTA_bus[11];
+assign Mult3_aMult0_a24 = Mult3_aMult0_a12_RESULTA_bus[12];
+assign Mult3_aMult0_a25 = Mult3_aMult0_a12_RESULTA_bus[13];
+assign Mult3_ao_res[0] = Mult3_aMult0_a12_RESULTA_bus[14];
+assign Mult3_ao_res[1] = Mult3_aMult0_a12_RESULTA_bus[15];
+assign Mult3_ao_res[2] = Mult3_aMult0_a12_RESULTA_bus[16];
+assign Mult3_ao_res[3] = Mult3_aMult0_a12_RESULTA_bus[17];
+assign Mult3_aMult0_a26 = Mult3_aMult0_a12_RESULTA_bus[18];
+assign Mult3_aMult0_a27 = Mult3_aMult0_a12_RESULTA_bus[19];
+assign Mult3_aMult0_a28 = Mult3_aMult0_a12_RESULTA_bus[20];
+assign Mult3_aMult0_a29 = Mult3_aMult0_a12_RESULTA_bus[21];
+assign Mult3_aMult0_a30 = Mult3_aMult0_a12_RESULTA_bus[22];
+assign Mult3_aMult0_a31 = Mult3_aMult0_a12_RESULTA_bus[23];
+assign Mult3_aMult0_a32 = Mult3_aMult0_a12_RESULTA_bus[24];
+assign Mult3_aMult0_a33 = Mult3_aMult0_a12_RESULTA_bus[25];
+assign Mult3_aMult0_a34 = Mult3_aMult0_a12_RESULTA_bus[26];
+assign Mult3_aMult0_a35 = Mult3_aMult0_a12_RESULTA_bus[27];
+assign Mult3_aMult0_a36 = Mult3_aMult0_a12_RESULTA_bus[28];
+assign Mult3_aMult0_a37 = Mult3_aMult0_a12_RESULTA_bus[29];
+assign Mult3_aMult0_a38 = Mult3_aMult0_a12_RESULTA_bus[30];
+assign Mult3_aMult0_a39 = Mult3_aMult0_a12_RESULTA_bus[31];
+assign Mult3_aMult0_a40 = Mult3_aMult0_a12_RESULTA_bus[32];
+assign Mult3_aMult0_a41 = Mult3_aMult0_a12_RESULTA_bus[33];
+assign Mult3_aMult0_a42 = Mult3_aMult0_a12_RESULTA_bus[34];
+assign Mult3_aMult0_a43 = Mult3_aMult0_a12_RESULTA_bus[35];
+assign Mult3_aMult0_a44 = Mult3_aMult0_a12_RESULTA_bus[36];
+assign Mult3_aMult0_a45 = Mult3_aMult0_a12_RESULTA_bus[37];
+assign Mult3_aMult0_a46 = Mult3_aMult0_a12_RESULTA_bus[38];
+assign Mult3_aMult0_a47 = Mult3_aMult0_a12_RESULTA_bus[39];
+assign Mult3_aMult0_a48 = Mult3_aMult0_a12_RESULTA_bus[40];
+assign Mult3_aMult0_a49 = Mult3_aMult0_a12_RESULTA_bus[41];
+assign Mult3_aMult0_a50 = Mult3_aMult0_a12_RESULTA_bus[42];
+assign Mult3_aMult0_a51 = Mult3_aMult0_a12_RESULTA_bus[43];
+assign Mult3_aMult0_a52 = Mult3_aMult0_a12_RESULTA_bus[44];
+assign Mult3_aMult0_a53 = Mult3_aMult0_a12_RESULTA_bus[45];
+assign Mult3_aMult0_a54 = Mult3_aMult0_a12_RESULTA_bus[46];
+assign Mult3_aMult0_a55 = Mult3_aMult0_a12_RESULTA_bus[47];
+assign Mult3_aMult0_a56 = Mult3_aMult0_a12_RESULTA_bus[48];
+assign Mult3_aMult0_a57 = Mult3_aMult0_a12_RESULTA_bus[49];
+assign Mult3_aMult0_a58 = Mult3_aMult0_a12_RESULTA_bus[50];
+assign Mult3_aMult0_a59 = Mult3_aMult0_a12_RESULTA_bus[51];
+assign Mult3_aMult0_a60 = Mult3_aMult0_a12_RESULTA_bus[52];
+assign Mult3_aMult0_a61 = Mult3_aMult0_a12_RESULTA_bus[53];
+assign Mult3_aMult0_a62 = Mult3_aMult0_a12_RESULTA_bus[54];
+assign Mult3_aMult0_a63 = Mult3_aMult0_a12_RESULTA_bus[55];
+assign Mult3_aMult0_a64 = Mult3_aMult0_a12_RESULTA_bus[56];
+assign Mult3_aMult0_a65 = Mult3_aMult0_a12_RESULTA_bus[57];
+assign Mult3_aMult0_a66 = Mult3_aMult0_a12_RESULTA_bus[58];
+assign Mult3_aMult0_a67 = Mult3_aMult0_a12_RESULTA_bus[59];
+assign Mult3_aMult0_a68 = Mult3_aMult0_a12_RESULTA_bus[60];
+assign Mult3_aMult0_a69 = Mult3_aMult0_a12_RESULTA_bus[61];
+assign Mult3_aMult0_a70 = Mult3_aMult0_a12_RESULTA_bus[62];
+assign Mult3_aMult0_a71 = Mult3_aMult0_a12_RESULTA_bus[63];
+
+assign Mult3_ao_res[4] = Mult3_aMult0_amult_hlmac_RESULTA_bus[0];
+assign Mult3_ao_res[5] = Mult3_aMult0_amult_hlmac_RESULTA_bus[1];
+assign Mult3_ao_res[6] = Mult3_aMult0_amult_hlmac_RESULTA_bus[2];
+assign Mult3_ao_res[7] = Mult3_aMult0_amult_hlmac_RESULTA_bus[3];
+assign Mult3_ao_res[8] = Mult3_aMult0_amult_hlmac_RESULTA_bus[4];
+assign Mult3_ao_res[9] = Mult3_aMult0_amult_hlmac_RESULTA_bus[5];
+assign Mult3_ao_res[10] = Mult3_aMult0_amult_hlmac_RESULTA_bus[6];
+assign Mult3_ao_res[11] = Mult3_aMult0_amult_hlmac_RESULTA_bus[7];
+assign Mult3_ao_res[12] = Mult3_aMult0_amult_hlmac_RESULTA_bus[8];
+assign Mult3_ao_res[13] = Mult3_aMult0_amult_hlmac_RESULTA_bus[9];
+assign Mult3_ao_res[14] = Mult3_aMult0_amult_hlmac_RESULTA_bus[10];
+assign Mult3_ao_res[15] = Mult3_aMult0_amult_hlmac_RESULTA_bus[11];
+assign Mult3_ao_res[16] = Mult3_aMult0_amult_hlmac_RESULTA_bus[12];
+assign Mult3_ao_res[17] = Mult3_aMult0_amult_hlmac_RESULTA_bus[13];
+assign Mult3_ao_res[18] = Mult3_aMult0_amult_hlmac_RESULTA_bus[14];
+assign Mult3_ao_res[19] = Mult3_aMult0_amult_hlmac_RESULTA_bus[15];
+assign Mult3_ao_res[20] = Mult3_aMult0_amult_hlmac_RESULTA_bus[16];
+assign Mult3_ao_res[21] = Mult3_aMult0_amult_hlmac_RESULTA_bus[17];
+assign Mult3_ao_res[22] = Mult3_aMult0_amult_hlmac_RESULTA_bus[18];
+assign Mult3_ao_res[23] = Mult3_aMult0_amult_hlmac_RESULTA_bus[19];
+assign Mult3_ao_res[24] = Mult3_aMult0_amult_hlmac_RESULTA_bus[20];
+assign Mult3_ao_res[25] = Mult3_aMult0_amult_hlmac_RESULTA_bus[21];
+assign Mult3_ao_res[26] = Mult3_aMult0_amult_hlmac_RESULTA_bus[22];
+assign Mult3_ao_res[27] = Mult3_aMult0_amult_hlmac_RESULTA_bus[23];
+assign Mult3_ao_res[28] = Mult3_aMult0_amult_hlmac_RESULTA_bus[24];
+assign Mult3_ao_res[29] = Mult3_aMult0_amult_hlmac_RESULTA_bus[25];
+assign Mult3_ao_res[30] = Mult3_aMult0_amult_hlmac_RESULTA_bus[26];
+assign Mult3_ao_res[31] = Mult3_aMult0_amult_hlmac_RESULTA_bus[27];
+assign Mult3_aMult0_amult_hlmac_resulta = Mult3_aMult0_amult_hlmac_RESULTA_bus[28];
+assign Mult3_aMult0_a937 = Mult3_aMult0_amult_hlmac_RESULTA_bus[29];
+assign Mult3_aMult0_a938 = Mult3_aMult0_amult_hlmac_RESULTA_bus[30];
+assign Mult3_aMult0_a494 = Mult3_aMult0_amult_hlmac_RESULTA_bus[31];
+assign Mult3_aMult0_a495 = Mult3_aMult0_amult_hlmac_RESULTA_bus[32];
+assign Mult3_aMult0_a496 = Mult3_aMult0_amult_hlmac_RESULTA_bus[33];
+assign Mult3_aMult0_a497 = Mult3_aMult0_amult_hlmac_RESULTA_bus[34];
+assign Mult3_aMult0_a498 = Mult3_aMult0_amult_hlmac_RESULTA_bus[35];
+assign Mult3_aMult0_a499 = Mult3_aMult0_amult_hlmac_RESULTA_bus[36];
+assign Mult3_aMult0_a500 = Mult3_aMult0_amult_hlmac_RESULTA_bus[37];
+assign Mult3_aMult0_a501 = Mult3_aMult0_amult_hlmac_RESULTA_bus[38];
+assign Mult3_aMult0_a502 = Mult3_aMult0_amult_hlmac_RESULTA_bus[39];
+assign Mult3_aMult0_a503 = Mult3_aMult0_amult_hlmac_RESULTA_bus[40];
+assign Mult3_aMult0_a504 = Mult3_aMult0_amult_hlmac_RESULTA_bus[41];
+assign Mult3_aMult0_a505 = Mult3_aMult0_amult_hlmac_RESULTA_bus[42];
+assign Mult3_aMult0_a506 = Mult3_aMult0_amult_hlmac_RESULTA_bus[43];
+assign Mult3_aMult0_a507 = Mult3_aMult0_amult_hlmac_RESULTA_bus[44];
+assign Mult3_aMult0_a508 = Mult3_aMult0_amult_hlmac_RESULTA_bus[45];
+assign Mult3_aMult0_a509 = Mult3_aMult0_amult_hlmac_RESULTA_bus[46];
+assign Mult3_aMult0_a510 = Mult3_aMult0_amult_hlmac_RESULTA_bus[47];
+assign Mult3_aMult0_a511 = Mult3_aMult0_amult_hlmac_RESULTA_bus[48];
+assign Mult3_aMult0_a512 = Mult3_aMult0_amult_hlmac_RESULTA_bus[49];
+assign Mult3_aMult0_a513 = Mult3_aMult0_amult_hlmac_RESULTA_bus[50];
+assign Mult3_aMult0_a514 = Mult3_aMult0_amult_hlmac_RESULTA_bus[51];
+assign Mult3_aMult0_a515 = Mult3_aMult0_amult_hlmac_RESULTA_bus[52];
+assign Mult3_aMult0_a516 = Mult3_aMult0_amult_hlmac_RESULTA_bus[53];
+assign Mult3_aMult0_a517 = Mult3_aMult0_amult_hlmac_RESULTA_bus[54];
+assign Mult3_aMult0_a518 = Mult3_aMult0_amult_hlmac_RESULTA_bus[55];
+assign Mult3_aMult0_a519 = Mult3_aMult0_amult_hlmac_RESULTA_bus[56];
+assign Mult3_aMult0_a520 = Mult3_aMult0_amult_hlmac_RESULTA_bus[57];
+assign Mult3_aMult0_a521 = Mult3_aMult0_amult_hlmac_RESULTA_bus[58];
+assign Mult3_aMult0_a522 = Mult3_aMult0_amult_hlmac_RESULTA_bus[59];
+assign Mult3_aMult0_a523 = Mult3_aMult0_amult_hlmac_RESULTA_bus[60];
+assign Mult3_aMult0_a524 = Mult3_aMult0_amult_hlmac_RESULTA_bus[61];
+assign Mult3_aMult0_a525 = Mult3_aMult0_amult_hlmac_RESULTA_bus[62];
+assign Mult3_aMult0_a526 = Mult3_aMult0_amult_hlmac_RESULTA_bus[63];
+
+assign Mult2_aMult0_a12_resulta = Mult2_aMult0_a12_RESULTA_bus[0];
+assign Mult2_aMult0_a13 = Mult2_aMult0_a12_RESULTA_bus[1];
+assign Mult2_aMult0_a14 = Mult2_aMult0_a12_RESULTA_bus[2];
+assign Mult2_aMult0_a15 = Mult2_aMult0_a12_RESULTA_bus[3];
+assign Mult2_aMult0_a16 = Mult2_aMult0_a12_RESULTA_bus[4];
+assign Mult2_aMult0_a17 = Mult2_aMult0_a12_RESULTA_bus[5];
+assign Mult2_aMult0_a18 = Mult2_aMult0_a12_RESULTA_bus[6];
+assign Mult2_aMult0_a19 = Mult2_aMult0_a12_RESULTA_bus[7];
+assign Mult2_aMult0_a20 = Mult2_aMult0_a12_RESULTA_bus[8];
+assign Mult2_aMult0_a21 = Mult2_aMult0_a12_RESULTA_bus[9];
+assign Mult2_aMult0_a22 = Mult2_aMult0_a12_RESULTA_bus[10];
+assign Mult2_aMult0_a23 = Mult2_aMult0_a12_RESULTA_bus[11];
+assign Mult2_aMult0_a24 = Mult2_aMult0_a12_RESULTA_bus[12];
+assign Mult2_aMult0_a25 = Mult2_aMult0_a12_RESULTA_bus[13];
+assign Mult2_ao_res[0] = Mult2_aMult0_a12_RESULTA_bus[14];
+assign Mult2_ao_res[1] = Mult2_aMult0_a12_RESULTA_bus[15];
+assign Mult2_ao_res[2] = Mult2_aMult0_a12_RESULTA_bus[16];
+assign Mult2_ao_res[3] = Mult2_aMult0_a12_RESULTA_bus[17];
+assign Mult2_aMult0_a26 = Mult2_aMult0_a12_RESULTA_bus[18];
+assign Mult2_aMult0_a27 = Mult2_aMult0_a12_RESULTA_bus[19];
+assign Mult2_aMult0_a28 = Mult2_aMult0_a12_RESULTA_bus[20];
+assign Mult2_aMult0_a29 = Mult2_aMult0_a12_RESULTA_bus[21];
+assign Mult2_aMult0_a30 = Mult2_aMult0_a12_RESULTA_bus[22];
+assign Mult2_aMult0_a31 = Mult2_aMult0_a12_RESULTA_bus[23];
+assign Mult2_aMult0_a32 = Mult2_aMult0_a12_RESULTA_bus[24];
+assign Mult2_aMult0_a33 = Mult2_aMult0_a12_RESULTA_bus[25];
+assign Mult2_aMult0_a34 = Mult2_aMult0_a12_RESULTA_bus[26];
+assign Mult2_aMult0_a35 = Mult2_aMult0_a12_RESULTA_bus[27];
+assign Mult2_aMult0_a36 = Mult2_aMult0_a12_RESULTA_bus[28];
+assign Mult2_aMult0_a37 = Mult2_aMult0_a12_RESULTA_bus[29];
+assign Mult2_aMult0_a38 = Mult2_aMult0_a12_RESULTA_bus[30];
+assign Mult2_aMult0_a39 = Mult2_aMult0_a12_RESULTA_bus[31];
+assign Mult2_aMult0_a40 = Mult2_aMult0_a12_RESULTA_bus[32];
+assign Mult2_aMult0_a41 = Mult2_aMult0_a12_RESULTA_bus[33];
+assign Mult2_aMult0_a42 = Mult2_aMult0_a12_RESULTA_bus[34];
+assign Mult2_aMult0_a43 = Mult2_aMult0_a12_RESULTA_bus[35];
+assign Mult2_aMult0_a44 = Mult2_aMult0_a12_RESULTA_bus[36];
+assign Mult2_aMult0_a45 = Mult2_aMult0_a12_RESULTA_bus[37];
+assign Mult2_aMult0_a46 = Mult2_aMult0_a12_RESULTA_bus[38];
+assign Mult2_aMult0_a47 = Mult2_aMult0_a12_RESULTA_bus[39];
+assign Mult2_aMult0_a48 = Mult2_aMult0_a12_RESULTA_bus[40];
+assign Mult2_aMult0_a49 = Mult2_aMult0_a12_RESULTA_bus[41];
+assign Mult2_aMult0_a50 = Mult2_aMult0_a12_RESULTA_bus[42];
+assign Mult2_aMult0_a51 = Mult2_aMult0_a12_RESULTA_bus[43];
+assign Mult2_aMult0_a52 = Mult2_aMult0_a12_RESULTA_bus[44];
+assign Mult2_aMult0_a53 = Mult2_aMult0_a12_RESULTA_bus[45];
+assign Mult2_aMult0_a54 = Mult2_aMult0_a12_RESULTA_bus[46];
+assign Mult2_aMult0_a55 = Mult2_aMult0_a12_RESULTA_bus[47];
+assign Mult2_aMult0_a56 = Mult2_aMult0_a12_RESULTA_bus[48];
+assign Mult2_aMult0_a57 = Mult2_aMult0_a12_RESULTA_bus[49];
+assign Mult2_aMult0_a58 = Mult2_aMult0_a12_RESULTA_bus[50];
+assign Mult2_aMult0_a59 = Mult2_aMult0_a12_RESULTA_bus[51];
+assign Mult2_aMult0_a60 = Mult2_aMult0_a12_RESULTA_bus[52];
+assign Mult2_aMult0_a61 = Mult2_aMult0_a12_RESULTA_bus[53];
+assign Mult2_aMult0_a62 = Mult2_aMult0_a12_RESULTA_bus[54];
+assign Mult2_aMult0_a63 = Mult2_aMult0_a12_RESULTA_bus[55];
+assign Mult2_aMult0_a64 = Mult2_aMult0_a12_RESULTA_bus[56];
+assign Mult2_aMult0_a65 = Mult2_aMult0_a12_RESULTA_bus[57];
+assign Mult2_aMult0_a66 = Mult2_aMult0_a12_RESULTA_bus[58];
+assign Mult2_aMult0_a67 = Mult2_aMult0_a12_RESULTA_bus[59];
+assign Mult2_aMult0_a68 = Mult2_aMult0_a12_RESULTA_bus[60];
+assign Mult2_aMult0_a69 = Mult2_aMult0_a12_RESULTA_bus[61];
+assign Mult2_aMult0_a70 = Mult2_aMult0_a12_RESULTA_bus[62];
+assign Mult2_aMult0_a71 = Mult2_aMult0_a12_RESULTA_bus[63];
+
+assign Mult2_ao_res[4] = Mult2_aMult0_amult_hlmac_RESULTA_bus[0];
+assign Mult2_ao_res[5] = Mult2_aMult0_amult_hlmac_RESULTA_bus[1];
+assign Mult2_ao_res[6] = Mult2_aMult0_amult_hlmac_RESULTA_bus[2];
+assign Mult2_ao_res[7] = Mult2_aMult0_amult_hlmac_RESULTA_bus[3];
+assign Mult2_ao_res[8] = Mult2_aMult0_amult_hlmac_RESULTA_bus[4];
+assign Mult2_ao_res[9] = Mult2_aMult0_amult_hlmac_RESULTA_bus[5];
+assign Mult2_ao_res[10] = Mult2_aMult0_amult_hlmac_RESULTA_bus[6];
+assign Mult2_ao_res[11] = Mult2_aMult0_amult_hlmac_RESULTA_bus[7];
+assign Mult2_ao_res[12] = Mult2_aMult0_amult_hlmac_RESULTA_bus[8];
+assign Mult2_ao_res[13] = Mult2_aMult0_amult_hlmac_RESULTA_bus[9];
+assign Mult2_ao_res[14] = Mult2_aMult0_amult_hlmac_RESULTA_bus[10];
+assign Mult2_ao_res[15] = Mult2_aMult0_amult_hlmac_RESULTA_bus[11];
+assign Mult2_ao_res[16] = Mult2_aMult0_amult_hlmac_RESULTA_bus[12];
+assign Mult2_ao_res[17] = Mult2_aMult0_amult_hlmac_RESULTA_bus[13];
+assign Mult2_ao_res[18] = Mult2_aMult0_amult_hlmac_RESULTA_bus[14];
+assign Mult2_ao_res[19] = Mult2_aMult0_amult_hlmac_RESULTA_bus[15];
+assign Mult2_ao_res[20] = Mult2_aMult0_amult_hlmac_RESULTA_bus[16];
+assign Mult2_ao_res[21] = Mult2_aMult0_amult_hlmac_RESULTA_bus[17];
+assign Mult2_ao_res[22] = Mult2_aMult0_amult_hlmac_RESULTA_bus[18];
+assign Mult2_ao_res[23] = Mult2_aMult0_amult_hlmac_RESULTA_bus[19];
+assign Mult2_ao_res[24] = Mult2_aMult0_amult_hlmac_RESULTA_bus[20];
+assign Mult2_ao_res[25] = Mult2_aMult0_amult_hlmac_RESULTA_bus[21];
+assign Mult2_ao_res[26] = Mult2_aMult0_amult_hlmac_RESULTA_bus[22];
+assign Mult2_ao_res[27] = Mult2_aMult0_amult_hlmac_RESULTA_bus[23];
+assign Mult2_ao_res[28] = Mult2_aMult0_amult_hlmac_RESULTA_bus[24];
+assign Mult2_ao_res[29] = Mult2_aMult0_amult_hlmac_RESULTA_bus[25];
+assign Mult2_ao_res[30] = Mult2_aMult0_amult_hlmac_RESULTA_bus[26];
+assign Mult2_ao_res[31] = Mult2_aMult0_amult_hlmac_RESULTA_bus[27];
+assign Mult2_aMult0_amult_hlmac_resulta = Mult2_aMult0_amult_hlmac_RESULTA_bus[28];
+assign Mult2_aMult0_a937 = Mult2_aMult0_amult_hlmac_RESULTA_bus[29];
+assign Mult2_aMult0_a938 = Mult2_aMult0_amult_hlmac_RESULTA_bus[30];
+assign Mult2_aMult0_a494 = Mult2_aMult0_amult_hlmac_RESULTA_bus[31];
+assign Mult2_aMult0_a495 = Mult2_aMult0_amult_hlmac_RESULTA_bus[32];
+assign Mult2_aMult0_a496 = Mult2_aMult0_amult_hlmac_RESULTA_bus[33];
+assign Mult2_aMult0_a497 = Mult2_aMult0_amult_hlmac_RESULTA_bus[34];
+assign Mult2_aMult0_a498 = Mult2_aMult0_amult_hlmac_RESULTA_bus[35];
+assign Mult2_aMult0_a499 = Mult2_aMult0_amult_hlmac_RESULTA_bus[36];
+assign Mult2_aMult0_a500 = Mult2_aMult0_amult_hlmac_RESULTA_bus[37];
+assign Mult2_aMult0_a501 = Mult2_aMult0_amult_hlmac_RESULTA_bus[38];
+assign Mult2_aMult0_a502 = Mult2_aMult0_amult_hlmac_RESULTA_bus[39];
+assign Mult2_aMult0_a503 = Mult2_aMult0_amult_hlmac_RESULTA_bus[40];
+assign Mult2_aMult0_a504 = Mult2_aMult0_amult_hlmac_RESULTA_bus[41];
+assign Mult2_aMult0_a505 = Mult2_aMult0_amult_hlmac_RESULTA_bus[42];
+assign Mult2_aMult0_a506 = Mult2_aMult0_amult_hlmac_RESULTA_bus[43];
+assign Mult2_aMult0_a507 = Mult2_aMult0_amult_hlmac_RESULTA_bus[44];
+assign Mult2_aMult0_a508 = Mult2_aMult0_amult_hlmac_RESULTA_bus[45];
+assign Mult2_aMult0_a509 = Mult2_aMult0_amult_hlmac_RESULTA_bus[46];
+assign Mult2_aMult0_a510 = Mult2_aMult0_amult_hlmac_RESULTA_bus[47];
+assign Mult2_aMult0_a511 = Mult2_aMult0_amult_hlmac_RESULTA_bus[48];
+assign Mult2_aMult0_a512 = Mult2_aMult0_amult_hlmac_RESULTA_bus[49];
+assign Mult2_aMult0_a513 = Mult2_aMult0_amult_hlmac_RESULTA_bus[50];
+assign Mult2_aMult0_a514 = Mult2_aMult0_amult_hlmac_RESULTA_bus[51];
+assign Mult2_aMult0_a515 = Mult2_aMult0_amult_hlmac_RESULTA_bus[52];
+assign Mult2_aMult0_a516 = Mult2_aMult0_amult_hlmac_RESULTA_bus[53];
+assign Mult2_aMult0_a517 = Mult2_aMult0_amult_hlmac_RESULTA_bus[54];
+assign Mult2_aMult0_a518 = Mult2_aMult0_amult_hlmac_RESULTA_bus[55];
+assign Mult2_aMult0_a519 = Mult2_aMult0_amult_hlmac_RESULTA_bus[56];
+assign Mult2_aMult0_a520 = Mult2_aMult0_amult_hlmac_RESULTA_bus[57];
+assign Mult2_aMult0_a521 = Mult2_aMult0_amult_hlmac_RESULTA_bus[58];
+assign Mult2_aMult0_a522 = Mult2_aMult0_amult_hlmac_RESULTA_bus[59];
+assign Mult2_aMult0_a523 = Mult2_aMult0_amult_hlmac_RESULTA_bus[60];
+assign Mult2_aMult0_a524 = Mult2_aMult0_amult_hlmac_RESULTA_bus[61];
+assign Mult2_aMult0_a525 = Mult2_aMult0_amult_hlmac_RESULTA_bus[62];
+assign Mult2_aMult0_a526 = Mult2_aMult0_amult_hlmac_RESULTA_bus[63];
+
+assign Mult1_aMult0_a12_resulta = Mult1_aMult0_a12_RESULTA_bus[0];
+assign Mult1_aMult0_a13 = Mult1_aMult0_a12_RESULTA_bus[1];
+assign Mult1_aMult0_a14 = Mult1_aMult0_a12_RESULTA_bus[2];
+assign Mult1_aMult0_a15 = Mult1_aMult0_a12_RESULTA_bus[3];
+assign Mult1_aMult0_a16 = Mult1_aMult0_a12_RESULTA_bus[4];
+assign Mult1_aMult0_a17 = Mult1_aMult0_a12_RESULTA_bus[5];
+assign Mult1_aMult0_a18 = Mult1_aMult0_a12_RESULTA_bus[6];
+assign Mult1_aMult0_a19 = Mult1_aMult0_a12_RESULTA_bus[7];
+assign Mult1_aMult0_a20 = Mult1_aMult0_a12_RESULTA_bus[8];
+assign Mult1_aMult0_a21 = Mult1_aMult0_a12_RESULTA_bus[9];
+assign Mult1_aMult0_a22 = Mult1_aMult0_a12_RESULTA_bus[10];
+assign Mult1_aMult0_a23 = Mult1_aMult0_a12_RESULTA_bus[11];
+assign Mult1_aMult0_a24 = Mult1_aMult0_a12_RESULTA_bus[12];
+assign Mult1_aMult0_a25 = Mult1_aMult0_a12_RESULTA_bus[13];
+assign Mult1_ao_res[0] = Mult1_aMult0_a12_RESULTA_bus[14];
+assign Mult1_ao_res[1] = Mult1_aMult0_a12_RESULTA_bus[15];
+assign Mult1_ao_res[2] = Mult1_aMult0_a12_RESULTA_bus[16];
+assign Mult1_ao_res[3] = Mult1_aMult0_a12_RESULTA_bus[17];
+assign Mult1_aMult0_a26 = Mult1_aMult0_a12_RESULTA_bus[18];
+assign Mult1_aMult0_a27 = Mult1_aMult0_a12_RESULTA_bus[19];
+assign Mult1_aMult0_a28 = Mult1_aMult0_a12_RESULTA_bus[20];
+assign Mult1_aMult0_a29 = Mult1_aMult0_a12_RESULTA_bus[21];
+assign Mult1_aMult0_a30 = Mult1_aMult0_a12_RESULTA_bus[22];
+assign Mult1_aMult0_a31 = Mult1_aMult0_a12_RESULTA_bus[23];
+assign Mult1_aMult0_a32 = Mult1_aMult0_a12_RESULTA_bus[24];
+assign Mult1_aMult0_a33 = Mult1_aMult0_a12_RESULTA_bus[25];
+assign Mult1_aMult0_a34 = Mult1_aMult0_a12_RESULTA_bus[26];
+assign Mult1_aMult0_a35 = Mult1_aMult0_a12_RESULTA_bus[27];
+assign Mult1_aMult0_a36 = Mult1_aMult0_a12_RESULTA_bus[28];
+assign Mult1_aMult0_a37 = Mult1_aMult0_a12_RESULTA_bus[29];
+assign Mult1_aMult0_a38 = Mult1_aMult0_a12_RESULTA_bus[30];
+assign Mult1_aMult0_a39 = Mult1_aMult0_a12_RESULTA_bus[31];
+assign Mult1_aMult0_a40 = Mult1_aMult0_a12_RESULTA_bus[32];
+assign Mult1_aMult0_a41 = Mult1_aMult0_a12_RESULTA_bus[33];
+assign Mult1_aMult0_a42 = Mult1_aMult0_a12_RESULTA_bus[34];
+assign Mult1_aMult0_a43 = Mult1_aMult0_a12_RESULTA_bus[35];
+assign Mult1_aMult0_a44 = Mult1_aMult0_a12_RESULTA_bus[36];
+assign Mult1_aMult0_a45 = Mult1_aMult0_a12_RESULTA_bus[37];
+assign Mult1_aMult0_a46 = Mult1_aMult0_a12_RESULTA_bus[38];
+assign Mult1_aMult0_a47 = Mult1_aMult0_a12_RESULTA_bus[39];
+assign Mult1_aMult0_a48 = Mult1_aMult0_a12_RESULTA_bus[40];
+assign Mult1_aMult0_a49 = Mult1_aMult0_a12_RESULTA_bus[41];
+assign Mult1_aMult0_a50 = Mult1_aMult0_a12_RESULTA_bus[42];
+assign Mult1_aMult0_a51 = Mult1_aMult0_a12_RESULTA_bus[43];
+assign Mult1_aMult0_a52 = Mult1_aMult0_a12_RESULTA_bus[44];
+assign Mult1_aMult0_a53 = Mult1_aMult0_a12_RESULTA_bus[45];
+assign Mult1_aMult0_a54 = Mult1_aMult0_a12_RESULTA_bus[46];
+assign Mult1_aMult0_a55 = Mult1_aMult0_a12_RESULTA_bus[47];
+assign Mult1_aMult0_a56 = Mult1_aMult0_a12_RESULTA_bus[48];
+assign Mult1_aMult0_a57 = Mult1_aMult0_a12_RESULTA_bus[49];
+assign Mult1_aMult0_a58 = Mult1_aMult0_a12_RESULTA_bus[50];
+assign Mult1_aMult0_a59 = Mult1_aMult0_a12_RESULTA_bus[51];
+assign Mult1_aMult0_a60 = Mult1_aMult0_a12_RESULTA_bus[52];
+assign Mult1_aMult0_a61 = Mult1_aMult0_a12_RESULTA_bus[53];
+assign Mult1_aMult0_a62 = Mult1_aMult0_a12_RESULTA_bus[54];
+assign Mult1_aMult0_a63 = Mult1_aMult0_a12_RESULTA_bus[55];
+assign Mult1_aMult0_a64 = Mult1_aMult0_a12_RESULTA_bus[56];
+assign Mult1_aMult0_a65 = Mult1_aMult0_a12_RESULTA_bus[57];
+assign Mult1_aMult0_a66 = Mult1_aMult0_a12_RESULTA_bus[58];
+assign Mult1_aMult0_a67 = Mult1_aMult0_a12_RESULTA_bus[59];
+assign Mult1_aMult0_a68 = Mult1_aMult0_a12_RESULTA_bus[60];
+assign Mult1_aMult0_a69 = Mult1_aMult0_a12_RESULTA_bus[61];
+assign Mult1_aMult0_a70 = Mult1_aMult0_a12_RESULTA_bus[62];
+assign Mult1_aMult0_a71 = Mult1_aMult0_a12_RESULTA_bus[63];
+
+assign Mult1_ao_res[4] = Mult1_aMult0_amult_hlmac_RESULTA_bus[0];
+assign Mult1_ao_res[5] = Mult1_aMult0_amult_hlmac_RESULTA_bus[1];
+assign Mult1_ao_res[6] = Mult1_aMult0_amult_hlmac_RESULTA_bus[2];
+assign Mult1_ao_res[7] = Mult1_aMult0_amult_hlmac_RESULTA_bus[3];
+assign Mult1_ao_res[8] = Mult1_aMult0_amult_hlmac_RESULTA_bus[4];
+assign Mult1_ao_res[9] = Mult1_aMult0_amult_hlmac_RESULTA_bus[5];
+assign Mult1_ao_res[10] = Mult1_aMult0_amult_hlmac_RESULTA_bus[6];
+assign Mult1_ao_res[11] = Mult1_aMult0_amult_hlmac_RESULTA_bus[7];
+assign Mult1_ao_res[12] = Mult1_aMult0_amult_hlmac_RESULTA_bus[8];
+assign Mult1_ao_res[13] = Mult1_aMult0_amult_hlmac_RESULTA_bus[9];
+assign Mult1_ao_res[14] = Mult1_aMult0_amult_hlmac_RESULTA_bus[10];
+assign Mult1_ao_res[15] = Mult1_aMult0_amult_hlmac_RESULTA_bus[11];
+assign Mult1_ao_res[16] = Mult1_aMult0_amult_hlmac_RESULTA_bus[12];
+assign Mult1_ao_res[17] = Mult1_aMult0_amult_hlmac_RESULTA_bus[13];
+assign Mult1_ao_res[18] = Mult1_aMult0_amult_hlmac_RESULTA_bus[14];
+assign Mult1_ao_res[19] = Mult1_aMult0_amult_hlmac_RESULTA_bus[15];
+assign Mult1_ao_res[20] = Mult1_aMult0_amult_hlmac_RESULTA_bus[16];
+assign Mult1_ao_res[21] = Mult1_aMult0_amult_hlmac_RESULTA_bus[17];
+assign Mult1_ao_res[22] = Mult1_aMult0_amult_hlmac_RESULTA_bus[18];
+assign Mult1_ao_res[23] = Mult1_aMult0_amult_hlmac_RESULTA_bus[19];
+assign Mult1_ao_res[24] = Mult1_aMult0_amult_hlmac_RESULTA_bus[20];
+assign Mult1_ao_res[25] = Mult1_aMult0_amult_hlmac_RESULTA_bus[21];
+assign Mult1_ao_res[26] = Mult1_aMult0_amult_hlmac_RESULTA_bus[22];
+assign Mult1_ao_res[27] = Mult1_aMult0_amult_hlmac_RESULTA_bus[23];
+assign Mult1_ao_res[28] = Mult1_aMult0_amult_hlmac_RESULTA_bus[24];
+assign Mult1_ao_res[29] = Mult1_aMult0_amult_hlmac_RESULTA_bus[25];
+assign Mult1_ao_res[30] = Mult1_aMult0_amult_hlmac_RESULTA_bus[26];
+assign Mult1_ao_res[31] = Mult1_aMult0_amult_hlmac_RESULTA_bus[27];
+assign Mult1_aMult0_amult_hlmac_resulta = Mult1_aMult0_amult_hlmac_RESULTA_bus[28];
+assign Mult1_aMult0_a937 = Mult1_aMult0_amult_hlmac_RESULTA_bus[29];
+assign Mult1_aMult0_a938 = Mult1_aMult0_amult_hlmac_RESULTA_bus[30];
+assign Mult1_aMult0_a494 = Mult1_aMult0_amult_hlmac_RESULTA_bus[31];
+assign Mult1_aMult0_a495 = Mult1_aMult0_amult_hlmac_RESULTA_bus[32];
+assign Mult1_aMult0_a496 = Mult1_aMult0_amult_hlmac_RESULTA_bus[33];
+assign Mult1_aMult0_a497 = Mult1_aMult0_amult_hlmac_RESULTA_bus[34];
+assign Mult1_aMult0_a498 = Mult1_aMult0_amult_hlmac_RESULTA_bus[35];
+assign Mult1_aMult0_a499 = Mult1_aMult0_amult_hlmac_RESULTA_bus[36];
+assign Mult1_aMult0_a500 = Mult1_aMult0_amult_hlmac_RESULTA_bus[37];
+assign Mult1_aMult0_a501 = Mult1_aMult0_amult_hlmac_RESULTA_bus[38];
+assign Mult1_aMult0_a502 = Mult1_aMult0_amult_hlmac_RESULTA_bus[39];
+assign Mult1_aMult0_a503 = Mult1_aMult0_amult_hlmac_RESULTA_bus[40];
+assign Mult1_aMult0_a504 = Mult1_aMult0_amult_hlmac_RESULTA_bus[41];
+assign Mult1_aMult0_a505 = Mult1_aMult0_amult_hlmac_RESULTA_bus[42];
+assign Mult1_aMult0_a506 = Mult1_aMult0_amult_hlmac_RESULTA_bus[43];
+assign Mult1_aMult0_a507 = Mult1_aMult0_amult_hlmac_RESULTA_bus[44];
+assign Mult1_aMult0_a508 = Mult1_aMult0_amult_hlmac_RESULTA_bus[45];
+assign Mult1_aMult0_a509 = Mult1_aMult0_amult_hlmac_RESULTA_bus[46];
+assign Mult1_aMult0_a510 = Mult1_aMult0_amult_hlmac_RESULTA_bus[47];
+assign Mult1_aMult0_a511 = Mult1_aMult0_amult_hlmac_RESULTA_bus[48];
+assign Mult1_aMult0_a512 = Mult1_aMult0_amult_hlmac_RESULTA_bus[49];
+assign Mult1_aMult0_a513 = Mult1_aMult0_amult_hlmac_RESULTA_bus[50];
+assign Mult1_aMult0_a514 = Mult1_aMult0_amult_hlmac_RESULTA_bus[51];
+assign Mult1_aMult0_a515 = Mult1_aMult0_amult_hlmac_RESULTA_bus[52];
+assign Mult1_aMult0_a516 = Mult1_aMult0_amult_hlmac_RESULTA_bus[53];
+assign Mult1_aMult0_a517 = Mult1_aMult0_amult_hlmac_RESULTA_bus[54];
+assign Mult1_aMult0_a518 = Mult1_aMult0_amult_hlmac_RESULTA_bus[55];
+assign Mult1_aMult0_a519 = Mult1_aMult0_amult_hlmac_RESULTA_bus[56];
+assign Mult1_aMult0_a520 = Mult1_aMult0_amult_hlmac_RESULTA_bus[57];
+assign Mult1_aMult0_a521 = Mult1_aMult0_amult_hlmac_RESULTA_bus[58];
+assign Mult1_aMult0_a522 = Mult1_aMult0_amult_hlmac_RESULTA_bus[59];
+assign Mult1_aMult0_a523 = Mult1_aMult0_amult_hlmac_RESULTA_bus[60];
+assign Mult1_aMult0_a524 = Mult1_aMult0_amult_hlmac_RESULTA_bus[61];
+assign Mult1_aMult0_a525 = Mult1_aMult0_amult_hlmac_RESULTA_bus[62];
+assign Mult1_aMult0_a526 = Mult1_aMult0_amult_hlmac_RESULTA_bus[63];
+
+assign Mult0_aMult0_amac_resulta = Mult0_aMult0_amac_RESULTA_bus[0];
+assign Mult0_aMult0_a451 = Mult0_aMult0_amac_RESULTA_bus[1];
+assign Mult0_aMult0_a452 = Mult0_aMult0_amac_RESULTA_bus[2];
+assign Mult0_aMult0_a453 = Mult0_aMult0_amac_RESULTA_bus[3];
+assign Mult0_aMult0_a454 = Mult0_aMult0_amac_RESULTA_bus[4];
+assign Mult0_aMult0_a455 = Mult0_aMult0_amac_RESULTA_bus[5];
+assign Mult0_aMult0_a456 = Mult0_aMult0_amac_RESULTA_bus[6];
+assign Mult0_aMult0_a457 = Mult0_aMult0_amac_RESULTA_bus[7];
+assign Mult0_aMult0_a458 = Mult0_aMult0_amac_RESULTA_bus[8];
+assign Mult0_aMult0_a459 = Mult0_aMult0_amac_RESULTA_bus[9];
+assign Mult0_aMult0_a460 = Mult0_aMult0_amac_RESULTA_bus[10];
+assign Mult0_aMult0_a461 = Mult0_aMult0_amac_RESULTA_bus[11];
+assign Mult0_aMult0_a462 = Mult0_aMult0_amac_RESULTA_bus[12];
+assign Mult0_aMult0_a463 = Mult0_aMult0_amac_RESULTA_bus[13];
+assign Addr0_ao_res[11] = Mult0_aMult0_amac_RESULTA_bus[14];
+assign Addr0_ao_res[12] = Mult0_aMult0_amac_RESULTA_bus[15];
+assign Addr0_ao_res[13] = Mult0_aMult0_amac_RESULTA_bus[16];
+assign Addr0_ao_res[14] = Mult0_aMult0_amac_RESULTA_bus[17];
+assign Addr0_ao_res[15] = Mult0_aMult0_amac_RESULTA_bus[18];
+assign Addr0_ao_res[16] = Mult0_aMult0_amac_RESULTA_bus[19];
+assign Addr0_ao_res[17] = Mult0_aMult0_amac_RESULTA_bus[20];
+assign Addr0_ao_res[18] = Mult0_aMult0_amac_RESULTA_bus[21];
+assign Addr0_ao_res[19] = Mult0_aMult0_amac_RESULTA_bus[22];
+assign Addr0_ao_res[20] = Mult0_aMult0_amac_RESULTA_bus[23];
+assign Addr0_ao_res[21] = Mult0_aMult0_amac_RESULTA_bus[24];
+assign Addr0_ao_res[22] = Mult0_aMult0_amac_RESULTA_bus[25];
+assign Addr0_ao_res[23] = Mult0_aMult0_amac_RESULTA_bus[26];
+assign Addr0_ao_res[24] = Mult0_aMult0_amac_RESULTA_bus[27];
+assign Addr0_ao_res[25] = Mult0_aMult0_amac_RESULTA_bus[28];
+assign Addr0_ao_res[26] = Mult0_aMult0_amac_RESULTA_bus[29];
+assign Addr0_ao_res[27] = Mult0_aMult0_amac_RESULTA_bus[30];
+assign Addr0_ao_res[28] = Mult0_aMult0_amac_RESULTA_bus[31];
+assign Addr0_ao_res[29] = Mult0_aMult0_amac_RESULTA_bus[32];
+assign Addr0_ao_res[30] = Mult0_aMult0_amac_RESULTA_bus[33];
+assign Addr0_ao_res[31] = Mult0_aMult0_amac_RESULTA_bus[34];
+assign Mult0_aMult0_a12 = Mult0_aMult0_amac_RESULTA_bus[35];
+assign Mult0_aMult0_a13 = Mult0_aMult0_amac_RESULTA_bus[36];
+assign Mult0_aMult0_a14 = Mult0_aMult0_amac_RESULTA_bus[37];
+assign Mult0_aMult0_a15 = Mult0_aMult0_amac_RESULTA_bus[38];
+assign Mult0_aMult0_a16 = Mult0_aMult0_amac_RESULTA_bus[39];
+assign Mult0_aMult0_a17 = Mult0_aMult0_amac_RESULTA_bus[40];
+assign Mult0_aMult0_a18 = Mult0_aMult0_amac_RESULTA_bus[41];
+assign Mult0_aMult0_a19 = Mult0_aMult0_amac_RESULTA_bus[42];
+assign Mult0_aMult0_a20 = Mult0_aMult0_amac_RESULTA_bus[43];
+assign Mult0_aMult0_a21 = Mult0_aMult0_amac_RESULTA_bus[44];
+assign Mult0_aMult0_a22 = Mult0_aMult0_amac_RESULTA_bus[45];
+assign Mult0_aMult0_a23 = Mult0_aMult0_amac_RESULTA_bus[46];
+assign Mult0_aMult0_a24 = Mult0_aMult0_amac_RESULTA_bus[47];
+assign Mult0_aMult0_a25 = Mult0_aMult0_amac_RESULTA_bus[48];
+assign Mult0_aMult0_a26 = Mult0_aMult0_amac_RESULTA_bus[49];
+assign Mult0_aMult0_a27 = Mult0_aMult0_amac_RESULTA_bus[50];
+assign Mult0_aMult0_a28 = Mult0_aMult0_amac_RESULTA_bus[51];
+assign Mult0_aMult0_a29 = Mult0_aMult0_amac_RESULTA_bus[52];
+assign Mult0_aMult0_a30 = Mult0_aMult0_amac_RESULTA_bus[53];
+assign Mult0_aMult0_a31 = Mult0_aMult0_amac_RESULTA_bus[54];
+assign Mult0_aMult0_a32 = Mult0_aMult0_amac_RESULTA_bus[55];
+assign Mult0_aMult0_a33 = Mult0_aMult0_amac_RESULTA_bus[56];
+assign Mult0_aMult0_a34 = Mult0_aMult0_amac_RESULTA_bus[57];
+assign Mult0_aMult0_a35 = Mult0_aMult0_amac_RESULTA_bus[58];
+assign Mult0_aMult0_a36 = Mult0_aMult0_amac_RESULTA_bus[59];
+assign Mult0_aMult0_a37 = Mult0_aMult0_amac_RESULTA_bus[60];
+assign Mult0_aMult0_a38 = Mult0_aMult0_amac_RESULTA_bus[61];
+assign Mult0_aMult0_a39 = Mult0_aMult0_amac_RESULTA_bus[62];
+assign Mult0_aMult0_a40 = Mult0_aMult0_amac_RESULTA_bus[63];
+
+// Location: MLABCELL_X114_Y59_N3
+twentynm_io_obuf o_valid_aoutput1(
+	.i(o_valid_a0_combout),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_valid_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_valid_aoutput1.bus_hold = "false";
+defparam o_valid_aoutput1.open_drain_output = "false";
+defparam o_valid_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y58_N0
+twentynm_io_obuf o_ready_aoutput1(
+	.i(i_ready_ainput3),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_ready_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_ready_aoutput1.bus_hold = "false";
+defparam o_ready_aoutput1.open_drain_output = "false";
+defparam o_ready_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y59_N6
+twentynm_io_obuf o_y_a0_a_aoutput1(
+	.i(y_Q[0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a0_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a0_a_aoutput1.bus_hold = "false";
+defparam o_y_a0_a_aoutput1.open_drain_output = "false";
+defparam o_y_a0_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y59_N15
+twentynm_io_obuf o_y_a1_a_aoutput1(
+	.i(y_Q[1]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a1_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a1_a_aoutput1.bus_hold = "false";
+defparam o_y_a1_a_aoutput1.open_drain_output = "false";
+defparam o_y_a1_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y59_N18
+twentynm_io_obuf o_y_a2_a_aoutput1(
+	.i(y_Q[2]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a2_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a2_a_aoutput1.bus_hold = "false";
+defparam o_y_a2_a_aoutput1.open_drain_output = "false";
+defparam o_y_a2_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y59_N33
+twentynm_io_obuf o_y_a3_a_aoutput1(
+	.i(y_Q[3]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a3_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a3_a_aoutput1.bus_hold = "false";
+defparam o_y_a3_a_aoutput1.open_drain_output = "false";
+defparam o_y_a3_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X113_Y60_N3
+twentynm_io_obuf o_y_a4_a_aoutput1(
+	.i(y_Q[4]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a4_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a4_a_aoutput1.bus_hold = "false";
+defparam o_y_a4_a_aoutput1.open_drain_output = "false";
+defparam o_y_a4_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: LABCELL_X118_Y60_N3
+twentynm_io_obuf o_y_a5_a_aoutput1(
+	.i(y_Q[5]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a5_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a5_a_aoutput1.bus_hold = "false";
+defparam o_y_a5_a_aoutput1.open_drain_output = "false";
+defparam o_y_a5_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N0
+twentynm_io_obuf o_y_a6_a_aoutput1(
+	.i(y_Q[6]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a6_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a6_a_aoutput1.bus_hold = "false";
+defparam o_y_a6_a_aoutput1.open_drain_output = "false";
+defparam o_y_a6_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X113_Y60_N6
+twentynm_io_obuf o_y_a7_a_aoutput1(
+	.i(y_Q[7]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a7_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a7_a_aoutput1.bus_hold = "false";
+defparam o_y_a7_a_aoutput1.open_drain_output = "false";
+defparam o_y_a7_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N9
+twentynm_io_obuf o_y_a8_a_aoutput1(
+	.i(y_Q[8]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a8_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a8_a_aoutput1.bus_hold = "false";
+defparam o_y_a8_a_aoutput1.open_drain_output = "false";
+defparam o_y_a8_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N12
+twentynm_io_obuf o_y_a9_a_aoutput1(
+	.i(y_Q[9]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a9_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a9_a_aoutput1.bus_hold = "false";
+defparam o_y_a9_a_aoutput1.open_drain_output = "false";
+defparam o_y_a9_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N21
+twentynm_io_obuf o_y_a10_a_aoutput1(
+	.i(y_Q[10]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a10_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a10_a_aoutput1.bus_hold = "false";
+defparam o_y_a10_a_aoutput1.open_drain_output = "false";
+defparam o_y_a10_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N24
+twentynm_io_obuf o_y_a11_a_aoutput1(
+	.i(y_Q[11]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a11_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a11_a_aoutput1.bus_hold = "false";
+defparam o_y_a11_a_aoutput1.open_drain_output = "false";
+defparam o_y_a11_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N30
+twentynm_io_obuf o_y_a12_a_aoutput1(
+	.i(y_Q[12]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a12_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a12_a_aoutput1.bus_hold = "false";
+defparam o_y_a12_a_aoutput1.open_drain_output = "false";
+defparam o_y_a12_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N27
+twentynm_io_obuf o_y_a13_a_aoutput1(
+	.i(y_Q[13]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a13_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a13_a_aoutput1.bus_hold = "false";
+defparam o_y_a13_a_aoutput1.open_drain_output = "false";
+defparam o_y_a13_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X113_Y60_N15
+twentynm_io_obuf o_y_a14_a_aoutput1(
+	.i(y_Q[14]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a14_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a14_a_aoutput1.bus_hold = "false";
+defparam o_y_a14_a_aoutput1.open_drain_output = "false";
+defparam o_y_a14_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N39
+twentynm_io_obuf o_y_a15_a_aoutput1(
+	.i(y_Q[15]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a15_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a15_a_aoutput1.bus_hold = "false";
+defparam o_y_a15_a_aoutput1.open_drain_output = "false";
+defparam o_y_a15_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N45
+twentynm_io_obuf o_y_a16_a_aoutput1(
+	.i(y_Q[16]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a16_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a16_a_aoutput1.bus_hold = "false";
+defparam o_y_a16_a_aoutput1.open_drain_output = "false";
+defparam o_y_a16_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N48
+twentynm_io_obuf o_y_a17_a_aoutput1(
+	.i(y_Q[17]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a17_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a17_a_aoutput1.bus_hold = "false";
+defparam o_y_a17_a_aoutput1.open_drain_output = "false";
+defparam o_y_a17_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X113_Y60_N21
+twentynm_io_obuf o_y_a18_a_aoutput1(
+	.i(y_Q[18]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a18_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a18_a_aoutput1.bus_hold = "false";
+defparam o_y_a18_a_aoutput1.open_drain_output = "false";
+defparam o_y_a18_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N6
+twentynm_io_obuf o_y_a19_a_aoutput1(
+	.i(y_Q[19]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a19_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a19_a_aoutput1.bus_hold = "false";
+defparam o_y_a19_a_aoutput1.open_drain_output = "false";
+defparam o_y_a19_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N18
+twentynm_io_obuf o_y_a20_a_aoutput1(
+	.i(y_Q[20]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a20_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a20_a_aoutput1.bus_hold = "false";
+defparam o_y_a20_a_aoutput1.open_drain_output = "false";
+defparam o_y_a20_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N51
+twentynm_io_obuf o_y_a21_a_aoutput1(
+	.i(y_Q[21]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a21_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a21_a_aoutput1.bus_hold = "false";
+defparam o_y_a21_a_aoutput1.open_drain_output = "false";
+defparam o_y_a21_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N33
+twentynm_io_obuf o_y_a22_a_aoutput1(
+	.i(y_Q[22]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a22_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a22_a_aoutput1.bus_hold = "false";
+defparam o_y_a22_a_aoutput1.open_drain_output = "false";
+defparam o_y_a22_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N57
+twentynm_io_obuf o_y_a23_a_aoutput1(
+	.i(y_Q[23]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a23_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a23_a_aoutput1.bus_hold = "false";
+defparam o_y_a23_a_aoutput1.open_drain_output = "false";
+defparam o_y_a23_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N36
+twentynm_io_obuf o_y_a24_a_aoutput1(
+	.i(y_Q[24]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a24_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a24_a_aoutput1.bus_hold = "false";
+defparam o_y_a24_a_aoutput1.open_drain_output = "false";
+defparam o_y_a24_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y57_N0
+twentynm_io_obuf o_y_a25_a_aoutput1(
+	.i(y_Q[25]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a25_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a25_a_aoutput1.bus_hold = "false";
+defparam o_y_a25_a_aoutput1.open_drain_output = "false";
+defparam o_y_a25_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N15
+twentynm_io_obuf o_y_a26_a_aoutput1(
+	.i(y_Q[26]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a26_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a26_a_aoutput1.bus_hold = "false";
+defparam o_y_a26_a_aoutput1.open_drain_output = "false";
+defparam o_y_a26_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N54
+twentynm_io_obuf o_y_a27_a_aoutput1(
+	.i(y_Q[27]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a27_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a27_a_aoutput1.bus_hold = "false";
+defparam o_y_a27_a_aoutput1.open_drain_output = "false";
+defparam o_y_a27_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y58_N12
+twentynm_io_obuf o_y_a28_a_aoutput1(
+	.i(y_Q[28]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a28_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a28_a_aoutput1.bus_hold = "false";
+defparam o_y_a28_a_aoutput1.open_drain_output = "false";
+defparam o_y_a28_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y57_N6
+twentynm_io_obuf o_y_a29_a_aoutput1(
+	.i(y_Q[29]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a29_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a29_a_aoutput1.bus_hold = "false";
+defparam o_y_a29_a_aoutput1.open_drain_output = "false";
+defparam o_y_a29_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N42
+twentynm_io_obuf o_y_a30_a_aoutput1(
+	.i(y_Q[30]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a30_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a30_a_aoutput1.bus_hold = "false";
+defparam o_y_a30_a_aoutput1.open_drain_output = "false";
+defparam o_y_a30_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y60_N3
+twentynm_io_obuf o_y_a31_a_aoutput1(
+	.i(y_Q[31]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(o_y_a31_a_aoutput1_o),
+	.obar());
+// synopsys translate_off
+defparam o_y_a31_a_aoutput1.bus_hold = "false";
+defparam o_y_a31_a_aoutput1.open_drain_output = "false";
+defparam o_y_a31_a_aoutput1.shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X78_Y196_N47
+twentynm_io_ibuf clk_ainput(
+	.i(clk),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(clk_ainput_o));
+// synopsys translate_off
+defparam clk_ainput.bus_hold = "false";
+defparam clk_ainput.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_2L_G_I7
+twentynm_clkena clk_ainputCLKENA0(
+	.inclk(clk_ainput_o),
+	.ena(vcc),
+	.outclk(clk_ainputCLKENA0_outclk),
+	.enaout());
+// synopsys translate_off
+defparam clk_ainputCLKENA0.clock_type = "global clock";
+defparam clk_ainputCLKENA0.disable_mode = "low";
+defparam clk_ainputCLKENA0.ena_register_mode = "always enabled";
+defparam clk_ainputCLKENA0.ena_register_power_up = "high";
+defparam clk_ainputCLKENA0.test_syn = "high";
+// synopsys translate_on
+
+// Location: MLABCELL_X114_Y59_N24
+twentynm_io_ibuf i_valid_ainput2(
+	.i(i_valid),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_valid_ainput3));
+// synopsys translate_off
+defparam i_valid_ainput2.bus_hold = "false";
+defparam i_valid_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y59_N21
+twentynm_io_ibuf reset_ainput2(
+	.i(reset),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(reset_ainput3));
+// synopsys translate_off
+defparam reset_ainput2.bus_hold = "false";
+defparam reset_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y58_N9
+twentynm_io_ibuf i_ready_ainput2(
+	.i(i_ready),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_ready_ainput3));
+// synopsys translate_off
+defparam i_ready_ainput2.bus_hold = "false";
+defparam i_ready_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: FF_X115_Y59_N4
+dffeas valid_Q1(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(i_valid_ainput3),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(valid_Q1_aq),
+	.prn(vcc));
+// synopsys translate_off
+defparam valid_Q1.is_wysiwyg = "true";
+defparam valid_Q1.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y59_N2
+dffeas valid_Q2(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(valid_Q1_aq),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(valid_Q2_aq),
+	.prn(vcc));
+// synopsys translate_off
+defparam valid_Q2.is_wysiwyg = "true";
+defparam valid_Q2.power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y59_N0
+twentynm_lcell_comb o_valid_a0(
+// Equation(s):
+// o_valid_a0_combout = ( valid_Q2_aq & ( i_ready_ainput3 ) )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(!valid_Q2_aq),
+	.dataf(!i_ready_ainput3),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(o_valid_a0_combout),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam o_valid_a0.extended_lut = "off";
+defparam o_valid_a0.lut_mask = 64'h000000000000FFFF;
+defparam o_valid_a0.shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y59_N30
+twentynm_io_ibuf i_x_a0_a_ainput2(
+	.i(i_x[0]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a0_a_ainput3));
+// synopsys translate_off
+defparam i_x_a0_a_ainput2.bus_hold = "false";
+defparam i_x_a0_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y61_N21
+twentynm_io_ibuf i_x_a1_a_ainput2(
+	.i(i_x[1]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a1_a_ainput3));
+// synopsys translate_off
+defparam i_x_a1_a_ainput2.bus_hold = "false";
+defparam i_x_a1_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y59_N39
+twentynm_io_ibuf i_x_a2_a_ainput2(
+	.i(i_x[2]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a2_a_ainput3));
+// synopsys translate_off
+defparam i_x_a2_a_ainput2.bus_hold = "false";
+defparam i_x_a2_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y61_N39
+twentynm_io_ibuf i_x_a3_a_ainput2(
+	.i(i_x[3]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a3_a_ainput3));
+// synopsys translate_off
+defparam i_x_a3_a_ainput2.bus_hold = "false";
+defparam i_x_a3_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y61_N12
+twentynm_io_ibuf i_x_a4_a_ainput2(
+	.i(i_x[4]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a4_a_ainput3));
+// synopsys translate_off
+defparam i_x_a4_a_ainput2.bus_hold = "false";
+defparam i_x_a4_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y61_N18
+twentynm_io_ibuf i_x_a5_a_ainput2(
+	.i(i_x[5]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a5_a_ainput3));
+// synopsys translate_off
+defparam i_x_a5_a_ainput2.bus_hold = "false";
+defparam i_x_a5_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y61_N30
+twentynm_io_ibuf i_x_a6_a_ainput2(
+	.i(i_x[6]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a6_a_ainput3));
+// synopsys translate_off
+defparam i_x_a6_a_ainput2.bus_hold = "false";
+defparam i_x_a6_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y61_N33
+twentynm_io_ibuf i_x_a7_a_ainput2(
+	.i(i_x[7]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a7_a_ainput3));
+// synopsys translate_off
+defparam i_x_a7_a_ainput2.bus_hold = "false";
+defparam i_x_a7_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y59_N45
+twentynm_io_ibuf i_x_a8_a_ainput2(
+	.i(i_x[8]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a8_a_ainput3));
+// synopsys translate_off
+defparam i_x_a8_a_ainput2.bus_hold = "false";
+defparam i_x_a8_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y61_N15
+twentynm_io_ibuf i_x_a9_a_ainput2(
+	.i(i_x[9]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a9_a_ainput3));
+// synopsys translate_off
+defparam i_x_a9_a_ainput2.bus_hold = "false";
+defparam i_x_a9_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y61_N45
+twentynm_io_ibuf i_x_a10_a_ainput2(
+	.i(i_x[10]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a10_a_ainput3));
+// synopsys translate_off
+defparam i_x_a10_a_ainput2.bus_hold = "false";
+defparam i_x_a10_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y59_N12
+twentynm_io_ibuf i_x_a11_a_ainput2(
+	.i(i_x[11]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a11_a_ainput3));
+// synopsys translate_off
+defparam i_x_a11_a_ainput2.bus_hold = "false";
+defparam i_x_a11_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y61_N54
+twentynm_io_ibuf i_x_a12_a_ainput2(
+	.i(i_x[12]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a12_a_ainput3));
+// synopsys translate_off
+defparam i_x_a12_a_ainput2.bus_hold = "false";
+defparam i_x_a12_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y59_N3
+twentynm_io_ibuf i_x_a13_a_ainput2(
+	.i(i_x[13]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a13_a_ainput3));
+// synopsys translate_off
+defparam i_x_a13_a_ainput2.bus_hold = "false";
+defparam i_x_a13_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y59_N51
+twentynm_io_ibuf i_x_a14_a_ainput2(
+	.i(i_x[14]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a14_a_ainput3));
+// synopsys translate_off
+defparam i_x_a14_a_ainput2.bus_hold = "false";
+defparam i_x_a14_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X117_Y59_N57
+twentynm_io_ibuf i_x_a15_a_ainput2(
+	.i(i_x[15]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(i_x_a15_a_ainput3));
+// synopsys translate_off
+defparam i_x_a15_a_ainput2.bus_hold = "false";
+defparam i_x_a15_a_ainput2.simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MPDSP_X116_Y67_N0
+twentynm_mac Mult0_aMult0_amac(
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({gnd,gnd,gnd,gnd,gnd,gnd,gnd,vcc,gnd,gnd,gnd,vcc,gnd,gnd,gnd}),
+	.ay({i_x_a15_a_ainput3,i_x_a14_a_ainput3,i_x_a13_a_ainput3,i_x_a12_a_ainput3,i_x_a11_a_ainput3,i_x_a10_a_ainput3,i_x_a9_a_ainput3,i_x_a8_a_ainput3,i_x_a7_a_ainput3,i_x_a6_a_ainput3,i_x_a5_a_ainput3,i_x_a4_a_ainput3,i_x_a3_a_ainput3,i_x_a2_a_ainput3,i_x_a1_a_ainput3,
+i_x_a0_a_ainput3}),
+	.az(26'b00000000000000000000000000),
+	.bx({gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,vcc,gnd,vcc,gnd,vcc,gnd}),
+	.by({vcc,gnd,vcc,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd}),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk({gnd,gnd,clk_ainputCLKENA0_outclk}),
+	.aclr({gnd,reset_ainput3}),
+	.ena({vcc,vcc,i_ready_ainput3}),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(Mult0_aMult0_amac_RESULTA_bus),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam Mult0_aMult0_amac.accum_pipeline_clock = "none";
+defparam Mult0_aMult0_amac.accumulate_clock = "none";
+defparam Mult0_aMult0_amac.ax_clock = "none";
+defparam Mult0_aMult0_amac.ax_width = 15;
+defparam Mult0_aMult0_amac.ay_scan_in_clock = "0";
+defparam Mult0_aMult0_amac.ay_scan_in_width = 16;
+defparam Mult0_aMult0_amac.ay_use_scan_in = "false";
+defparam Mult0_aMult0_amac.az_clock = "none";
+defparam Mult0_aMult0_amac.bx_clock = "none";
+defparam Mult0_aMult0_amac.bx_width = 17;
+defparam Mult0_aMult0_amac.by_clock = "none";
+defparam Mult0_aMult0_amac.by_use_scan_in = "false";
+defparam Mult0_aMult0_amac.by_width = 18;
+defparam Mult0_aMult0_amac.bz_clock = "none";
+defparam Mult0_aMult0_amac.coef_a_0 = 0;
+defparam Mult0_aMult0_amac.coef_a_1 = 0;
+defparam Mult0_aMult0_amac.coef_a_2 = 0;
+defparam Mult0_aMult0_amac.coef_a_3 = 0;
+defparam Mult0_aMult0_amac.coef_a_4 = 0;
+defparam Mult0_aMult0_amac.coef_a_5 = 0;
+defparam Mult0_aMult0_amac.coef_a_6 = 0;
+defparam Mult0_aMult0_amac.coef_a_7 = 0;
+defparam Mult0_aMult0_amac.coef_b_0 = 0;
+defparam Mult0_aMult0_amac.coef_b_1 = 0;
+defparam Mult0_aMult0_amac.coef_b_2 = 0;
+defparam Mult0_aMult0_amac.coef_b_3 = 0;
+defparam Mult0_aMult0_amac.coef_b_4 = 0;
+defparam Mult0_aMult0_amac.coef_b_5 = 0;
+defparam Mult0_aMult0_amac.coef_b_6 = 0;
+defparam Mult0_aMult0_amac.coef_b_7 = 0;
+defparam Mult0_aMult0_amac.coef_sel_a_clock = "none";
+defparam Mult0_aMult0_amac.coef_sel_b_clock = "none";
+defparam Mult0_aMult0_amac.delay_scan_out_ay = "false";
+defparam Mult0_aMult0_amac.delay_scan_out_by = "false";
+defparam Mult0_aMult0_amac.enable_double_accum = "false";
+defparam Mult0_aMult0_amac.input_pipeline_clock = "none";
+defparam Mult0_aMult0_amac.load_const_clock = "none";
+defparam Mult0_aMult0_amac.load_const_pipeline_clock = "none";
+defparam Mult0_aMult0_amac.load_const_value = 0;
+defparam Mult0_aMult0_amac.mode_sub_location = 0;
+defparam Mult0_aMult0_amac.negate_clock = "none";
+defparam Mult0_aMult0_amac.negate_pipeline_clock = "none";
+defparam Mult0_aMult0_amac.operand_source_max = "input";
+defparam Mult0_aMult0_amac.operand_source_may = "input";
+defparam Mult0_aMult0_amac.operand_source_mbx = "input";
+defparam Mult0_aMult0_amac.operand_source_mby = "input";
+defparam Mult0_aMult0_amac.operation_mode = "m18x18_plus36";
+defparam Mult0_aMult0_amac.output_clock = "none";
+defparam Mult0_aMult0_amac.preadder_subtract_a = "false";
+defparam Mult0_aMult0_amac.preadder_subtract_b = "false";
+defparam Mult0_aMult0_amac.result_a_width = 64;
+defparam Mult0_aMult0_amac.signed_max = "false";
+defparam Mult0_aMult0_amac.signed_may = "false";
+defparam Mult0_aMult0_amac.signed_mbx = "false";
+defparam Mult0_aMult0_amac.signed_mby = "false";
+defparam Mult0_aMult0_amac.sub_clock = "none";
+defparam Mult0_aMult0_amac.sub_pipeline_clock = "none";
+defparam Mult0_aMult0_amac.use_chainadder = "false";
+// synopsys translate_on
+
+// Location: MPDSP_X116_Y66_N0
+twentynm_mac Mult1_aMult0_a12(
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({i_x_a15_a_ainput3,i_x_a14_a_ainput3,i_x_a13_a_ainput3,i_x_a12_a_ainput3,i_x_a11_a_ainput3,i_x_a10_a_ainput3,i_x_a9_a_ainput3,i_x_a8_a_ainput3,i_x_a7_a_ainput3,i_x_a6_a_ainput3,i_x_a5_a_ainput3,i_x_a4_a_ainput3,i_x_a3_a_ainput3,i_x_a2_a_ainput3,i_x_a1_a_ainput3,
+i_x_a0_a_ainput3}),
+	.ay({Addr0_ao_res[17],Addr0_ao_res[16],Addr0_ao_res[15],Addr0_ao_res[14],Addr0_ao_res[13],Addr0_ao_res[12],Addr0_ao_res[11],Mult0_aMult0_a463,Mult0_aMult0_a462,Mult0_aMult0_a461,Mult0_aMult0_a460,Mult0_aMult0_a459,Mult0_aMult0_a458,Mult0_aMult0_a457,Mult0_aMult0_a456,Mult0_aMult0_a455,Mult0_aMult0_a454,
+Mult0_aMult0_a453}),
+	.az(26'b00000000000000000000000000),
+	.bx(18'b000000000000000000),
+	.by(19'b0000000000000000000),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk({gnd,gnd,clk_ainputCLKENA0_outclk}),
+	.aclr({gnd,reset_ainput3}),
+	.ena({vcc,vcc,i_ready_ainput3}),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(Mult1_aMult0_a12_RESULTA_bus),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam Mult1_aMult0_a12.accum_pipeline_clock = "none";
+defparam Mult1_aMult0_a12.accumulate_clock = "none";
+defparam Mult1_aMult0_a12.ax_clock = "0";
+defparam Mult1_aMult0_a12.ax_width = 16;
+defparam Mult1_aMult0_a12.ay_scan_in_clock = "none";
+defparam Mult1_aMult0_a12.ay_scan_in_width = 18;
+defparam Mult1_aMult0_a12.ay_use_scan_in = "false";
+defparam Mult1_aMult0_a12.az_clock = "none";
+defparam Mult1_aMult0_a12.bx_clock = "none";
+defparam Mult1_aMult0_a12.by_clock = "none";
+defparam Mult1_aMult0_a12.by_use_scan_in = "false";
+defparam Mult1_aMult0_a12.bz_clock = "none";
+defparam Mult1_aMult0_a12.coef_a_0 = 0;
+defparam Mult1_aMult0_a12.coef_a_1 = 0;
+defparam Mult1_aMult0_a12.coef_a_2 = 0;
+defparam Mult1_aMult0_a12.coef_a_3 = 0;
+defparam Mult1_aMult0_a12.coef_a_4 = 0;
+defparam Mult1_aMult0_a12.coef_a_5 = 0;
+defparam Mult1_aMult0_a12.coef_a_6 = 0;
+defparam Mult1_aMult0_a12.coef_a_7 = 0;
+defparam Mult1_aMult0_a12.coef_b_0 = 0;
+defparam Mult1_aMult0_a12.coef_b_1 = 0;
+defparam Mult1_aMult0_a12.coef_b_2 = 0;
+defparam Mult1_aMult0_a12.coef_b_3 = 0;
+defparam Mult1_aMult0_a12.coef_b_4 = 0;
+defparam Mult1_aMult0_a12.coef_b_5 = 0;
+defparam Mult1_aMult0_a12.coef_b_6 = 0;
+defparam Mult1_aMult0_a12.coef_b_7 = 0;
+defparam Mult1_aMult0_a12.coef_sel_a_clock = "none";
+defparam Mult1_aMult0_a12.coef_sel_b_clock = "none";
+defparam Mult1_aMult0_a12.delay_scan_out_ay = "false";
+defparam Mult1_aMult0_a12.delay_scan_out_by = "false";
+defparam Mult1_aMult0_a12.enable_double_accum = "false";
+defparam Mult1_aMult0_a12.input_pipeline_clock = "none";
+defparam Mult1_aMult0_a12.load_const_clock = "none";
+defparam Mult1_aMult0_a12.load_const_pipeline_clock = "none";
+defparam Mult1_aMult0_a12.load_const_value = 0;
+defparam Mult1_aMult0_a12.mode_sub_location = 0;
+defparam Mult1_aMult0_a12.negate_clock = "none";
+defparam Mult1_aMult0_a12.negate_pipeline_clock = "none";
+defparam Mult1_aMult0_a12.operand_source_max = "input";
+defparam Mult1_aMult0_a12.operand_source_may = "input";
+defparam Mult1_aMult0_a12.operand_source_mbx = "input";
+defparam Mult1_aMult0_a12.operand_source_mby = "input";
+defparam Mult1_aMult0_a12.operation_mode = "m18x18_full";
+defparam Mult1_aMult0_a12.output_clock = "none";
+defparam Mult1_aMult0_a12.preadder_subtract_a = "false";
+defparam Mult1_aMult0_a12.preadder_subtract_b = "false";
+defparam Mult1_aMult0_a12.result_a_width = 64;
+defparam Mult1_aMult0_a12.signed_max = "false";
+defparam Mult1_aMult0_a12.signed_may = "false";
+defparam Mult1_aMult0_a12.signed_mbx = "false";
+defparam Mult1_aMult0_a12.signed_mby = "false";
+defparam Mult1_aMult0_a12.sub_clock = "none";
+defparam Mult1_aMult0_a12.sub_pipeline_clock = "none";
+defparam Mult1_aMult0_a12.use_chainadder = "false";
+// synopsys translate_on
+
+// Location: MPDSP_X116_Y65_N0
+twentynm_mac Mult1_aMult0_amult_hlmac(
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({Addr0_ao_res[31],Addr0_ao_res[30],Addr0_ao_res[29],Addr0_ao_res[28],Addr0_ao_res[27],Addr0_ao_res[26],Addr0_ao_res[25],Addr0_ao_res[24],Addr0_ao_res[23],Addr0_ao_res[22],Addr0_ao_res[21],Addr0_ao_res[20],Addr0_ao_res[19],Addr0_ao_res[18]}),
+	.ay({i_x_a15_a_ainput3,i_x_a14_a_ainput3,i_x_a13_a_ainput3,i_x_a12_a_ainput3,i_x_a11_a_ainput3,i_x_a10_a_ainput3,i_x_a9_a_ainput3,i_x_a8_a_ainput3,i_x_a7_a_ainput3,i_x_a6_a_ainput3,i_x_a5_a_ainput3,i_x_a4_a_ainput3,i_x_a3_a_ainput3,i_x_a2_a_ainput3,i_x_a1_a_ainput3,
+i_x_a0_a_ainput3}),
+	.az(26'b00000000000000000000000000),
+	.bx({gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd}),
+	.by({gnd,gnd,Mult1_aMult0_a41,Mult1_aMult0_a40,Mult1_aMult0_a39,Mult1_aMult0_a38,Mult1_aMult0_a37,Mult1_aMult0_a36,Mult1_aMult0_a35,Mult1_aMult0_a34,Mult1_aMult0_a33,Mult1_aMult0_a32,Mult1_aMult0_a31,Mult1_aMult0_a30,Mult1_aMult0_a29,Mult1_aMult0_a28,Mult1_aMult0_a27,
+Mult1_aMult0_a26}),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk({gnd,gnd,clk_ainputCLKENA0_outclk}),
+	.aclr({gnd,reset_ainput3}),
+	.ena({vcc,vcc,i_ready_ainput3}),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(Mult1_aMult0_amult_hlmac_RESULTA_bus),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam Mult1_aMult0_amult_hlmac.accum_pipeline_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.accumulate_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.ax_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.ax_width = 14;
+defparam Mult1_aMult0_amult_hlmac.ay_scan_in_clock = "0";
+defparam Mult1_aMult0_amult_hlmac.ay_scan_in_width = 16;
+defparam Mult1_aMult0_amult_hlmac.ay_use_scan_in = "false";
+defparam Mult1_aMult0_amult_hlmac.az_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.bx_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.bx_width = 13;
+defparam Mult1_aMult0_amult_hlmac.by_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.by_use_scan_in = "false";
+defparam Mult1_aMult0_amult_hlmac.by_width = 18;
+defparam Mult1_aMult0_amult_hlmac.bz_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.coef_a_0 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_a_1 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_a_2 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_a_3 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_a_4 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_a_5 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_a_6 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_a_7 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_b_0 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_b_1 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_b_2 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_b_3 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_b_4 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_b_5 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_b_6 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_b_7 = 0;
+defparam Mult1_aMult0_amult_hlmac.coef_sel_a_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.coef_sel_b_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.delay_scan_out_ay = "false";
+defparam Mult1_aMult0_amult_hlmac.delay_scan_out_by = "false";
+defparam Mult1_aMult0_amult_hlmac.enable_double_accum = "false";
+defparam Mult1_aMult0_amult_hlmac.input_pipeline_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.load_const_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.load_const_pipeline_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.load_const_value = 0;
+defparam Mult1_aMult0_amult_hlmac.mode_sub_location = 0;
+defparam Mult1_aMult0_amult_hlmac.negate_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.negate_pipeline_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.operand_source_max = "input";
+defparam Mult1_aMult0_amult_hlmac.operand_source_may = "input";
+defparam Mult1_aMult0_amult_hlmac.operand_source_mbx = "input";
+defparam Mult1_aMult0_amult_hlmac.operand_source_mby = "input";
+defparam Mult1_aMult0_amult_hlmac.operation_mode = "m18x18_plus36";
+defparam Mult1_aMult0_amult_hlmac.output_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.preadder_subtract_a = "false";
+defparam Mult1_aMult0_amult_hlmac.preadder_subtract_b = "false";
+defparam Mult1_aMult0_amult_hlmac.result_a_width = 64;
+defparam Mult1_aMult0_amult_hlmac.signed_max = "false";
+defparam Mult1_aMult0_amult_hlmac.signed_may = "false";
+defparam Mult1_aMult0_amult_hlmac.signed_mbx = "false";
+defparam Mult1_aMult0_amult_hlmac.signed_mby = "false";
+defparam Mult1_aMult0_amult_hlmac.sub_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.sub_pipeline_clock = "none";
+defparam Mult1_aMult0_amult_hlmac.use_chainadder = "false";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N0
+twentynm_lcell_comb Addr1_aAdd0_a1(
+// Equation(s):
+// Addr1_aAdd0_a1_sumout = SUM(( Mult1_ao_res[12] ) + ( VCC ) + ( !VCC ))
+// Addr1_aAdd0_a2 = CARRY(( Mult1_ao_res[12] ) + ( VCC ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[12]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a1_sumout),
+	.cout(Addr1_aAdd0_a2),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a1.extended_lut = "off";
+defparam Addr1_aAdd0_a1.lut_mask = 64'h00000000000000FF;
+defparam Addr1_aAdd0_a1.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N3
+twentynm_lcell_comb Addr1_aAdd0_a5(
+// Equation(s):
+// Addr1_aAdd0_a5_sumout = SUM(( GND ) + ( Mult1_ao_res[13] ) + ( Addr1_aAdd0_a2 ))
+// Addr1_aAdd0_a6 = CARRY(( GND ) + ( Mult1_ao_res[13] ) + ( Addr1_aAdd0_a2 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult1_ao_res[13]),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a2),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a5_sumout),
+	.cout(Addr1_aAdd0_a6),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a5.extended_lut = "off";
+defparam Addr1_aAdd0_a5.lut_mask = 64'h0000FF0000000000;
+defparam Addr1_aAdd0_a5.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N6
+twentynm_lcell_comb Addr1_aAdd0_a9(
+// Equation(s):
+// Addr1_aAdd0_a9_sumout = SUM(( VCC ) + ( Mult1_ao_res[14] ) + ( Addr1_aAdd0_a6 ))
+// Addr1_aAdd0_a10 = CARRY(( VCC ) + ( Mult1_ao_res[14] ) + ( Addr1_aAdd0_a6 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult1_ao_res[14]),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a6),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a9_sumout),
+	.cout(Addr1_aAdd0_a10),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a9.extended_lut = "off";
+defparam Addr1_aAdd0_a9.lut_mask = 64'h0000FF000000FFFF;
+defparam Addr1_aAdd0_a9.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N9
+twentynm_lcell_comb Addr1_aAdd0_a13(
+// Equation(s):
+// Addr1_aAdd0_a13_sumout = SUM(( GND ) + ( Mult1_ao_res[15] ) + ( Addr1_aAdd0_a10 ))
+// Addr1_aAdd0_a14 = CARRY(( GND ) + ( Mult1_ao_res[15] ) + ( Addr1_aAdd0_a10 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult1_ao_res[15]),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a10),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a13_sumout),
+	.cout(Addr1_aAdd0_a14),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a13.extended_lut = "off";
+defparam Addr1_aAdd0_a13.lut_mask = 64'h0000FF0000000000;
+defparam Addr1_aAdd0_a13.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N12
+twentynm_lcell_comb Addr1_aAdd0_a17(
+// Equation(s):
+// Addr1_aAdd0_a17_sumout = SUM(( Mult1_ao_res[16] ) + ( VCC ) + ( Addr1_aAdd0_a14 ))
+// Addr1_aAdd0_a18 = CARRY(( Mult1_ao_res[16] ) + ( VCC ) + ( Addr1_aAdd0_a14 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[16]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a14),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a17_sumout),
+	.cout(Addr1_aAdd0_a18),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a17.extended_lut = "off";
+defparam Addr1_aAdd0_a17.lut_mask = 64'h00000000000000FF;
+defparam Addr1_aAdd0_a17.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N15
+twentynm_lcell_comb Addr1_aAdd0_a21(
+// Equation(s):
+// Addr1_aAdd0_a21_sumout = SUM(( Mult1_ao_res[17] ) + ( GND ) + ( Addr1_aAdd0_a18 ))
+// Addr1_aAdd0_a22 = CARRY(( Mult1_ao_res[17] ) + ( GND ) + ( Addr1_aAdd0_a18 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[17]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a18),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a21_sumout),
+	.cout(Addr1_aAdd0_a22),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a21.extended_lut = "off";
+defparam Addr1_aAdd0_a21.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr1_aAdd0_a21.shared_arith = "off";
+// synopsys translate_on
+
+// Location: MPDSP_X116_Y64_N0
+twentynm_mac Mult2_aMult0_a12(
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({i_x_a15_a_ainput3,i_x_a14_a_ainput3,i_x_a13_a_ainput3,i_x_a12_a_ainput3,i_x_a11_a_ainput3,i_x_a10_a_ainput3,i_x_a9_a_ainput3,i_x_a8_a_ainput3,i_x_a7_a_ainput3,i_x_a6_a_ainput3,i_x_a5_a_ainput3,i_x_a4_a_ainput3,i_x_a3_a_ainput3,i_x_a2_a_ainput3,i_x_a1_a_ainput3,
+i_x_a0_a_ainput3}),
+	.ay({Addr1_aAdd0_a21_sumout,Addr1_aAdd0_a17_sumout,Addr1_aAdd0_a13_sumout,Addr1_aAdd0_a9_sumout,Addr1_aAdd0_a5_sumout,Addr1_aAdd0_a1_sumout,Mult1_ao_res[11],Mult1_ao_res[10],Mult1_ao_res[9],Mult1_ao_res[8],Mult1_ao_res[7],Mult1_ao_res[6],Mult1_ao_res[5],Mult1_ao_res[4],Mult1_ao_res[3],Mult1_ao_res[2],
+Mult1_ao_res[1],Mult1_ao_res[0]}),
+	.az(26'b00000000000000000000000000),
+	.bx(18'b000000000000000000),
+	.by(19'b0000000000000000000),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk({gnd,gnd,clk_ainputCLKENA0_outclk}),
+	.aclr({gnd,reset_ainput3}),
+	.ena({vcc,vcc,i_ready_ainput3}),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(Mult2_aMult0_a12_RESULTA_bus),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam Mult2_aMult0_a12.accum_pipeline_clock = "none";
+defparam Mult2_aMult0_a12.accumulate_clock = "none";
+defparam Mult2_aMult0_a12.ax_clock = "0";
+defparam Mult2_aMult0_a12.ax_width = 16;
+defparam Mult2_aMult0_a12.ay_scan_in_clock = "none";
+defparam Mult2_aMult0_a12.ay_scan_in_width = 18;
+defparam Mult2_aMult0_a12.ay_use_scan_in = "false";
+defparam Mult2_aMult0_a12.az_clock = "none";
+defparam Mult2_aMult0_a12.bx_clock = "none";
+defparam Mult2_aMult0_a12.by_clock = "none";
+defparam Mult2_aMult0_a12.by_use_scan_in = "false";
+defparam Mult2_aMult0_a12.bz_clock = "none";
+defparam Mult2_aMult0_a12.coef_a_0 = 0;
+defparam Mult2_aMult0_a12.coef_a_1 = 0;
+defparam Mult2_aMult0_a12.coef_a_2 = 0;
+defparam Mult2_aMult0_a12.coef_a_3 = 0;
+defparam Mult2_aMult0_a12.coef_a_4 = 0;
+defparam Mult2_aMult0_a12.coef_a_5 = 0;
+defparam Mult2_aMult0_a12.coef_a_6 = 0;
+defparam Mult2_aMult0_a12.coef_a_7 = 0;
+defparam Mult2_aMult0_a12.coef_b_0 = 0;
+defparam Mult2_aMult0_a12.coef_b_1 = 0;
+defparam Mult2_aMult0_a12.coef_b_2 = 0;
+defparam Mult2_aMult0_a12.coef_b_3 = 0;
+defparam Mult2_aMult0_a12.coef_b_4 = 0;
+defparam Mult2_aMult0_a12.coef_b_5 = 0;
+defparam Mult2_aMult0_a12.coef_b_6 = 0;
+defparam Mult2_aMult0_a12.coef_b_7 = 0;
+defparam Mult2_aMult0_a12.coef_sel_a_clock = "none";
+defparam Mult2_aMult0_a12.coef_sel_b_clock = "none";
+defparam Mult2_aMult0_a12.delay_scan_out_ay = "false";
+defparam Mult2_aMult0_a12.delay_scan_out_by = "false";
+defparam Mult2_aMult0_a12.enable_double_accum = "false";
+defparam Mult2_aMult0_a12.input_pipeline_clock = "none";
+defparam Mult2_aMult0_a12.load_const_clock = "none";
+defparam Mult2_aMult0_a12.load_const_pipeline_clock = "none";
+defparam Mult2_aMult0_a12.load_const_value = 0;
+defparam Mult2_aMult0_a12.mode_sub_location = 0;
+defparam Mult2_aMult0_a12.negate_clock = "none";
+defparam Mult2_aMult0_a12.negate_pipeline_clock = "none";
+defparam Mult2_aMult0_a12.operand_source_max = "input";
+defparam Mult2_aMult0_a12.operand_source_may = "input";
+defparam Mult2_aMult0_a12.operand_source_mbx = "input";
+defparam Mult2_aMult0_a12.operand_source_mby = "input";
+defparam Mult2_aMult0_a12.operation_mode = "m18x18_full";
+defparam Mult2_aMult0_a12.output_clock = "none";
+defparam Mult2_aMult0_a12.preadder_subtract_a = "false";
+defparam Mult2_aMult0_a12.preadder_subtract_b = "false";
+defparam Mult2_aMult0_a12.result_a_width = 64;
+defparam Mult2_aMult0_a12.signed_max = "false";
+defparam Mult2_aMult0_a12.signed_may = "false";
+defparam Mult2_aMult0_a12.signed_mbx = "false";
+defparam Mult2_aMult0_a12.signed_mby = "false";
+defparam Mult2_aMult0_a12.sub_clock = "none";
+defparam Mult2_aMult0_a12.sub_pipeline_clock = "none";
+defparam Mult2_aMult0_a12.use_chainadder = "false";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N18
+twentynm_lcell_comb Addr1_aAdd0_a25(
+// Equation(s):
+// Addr1_aAdd0_a25_sumout = SUM(( Mult1_ao_res[18] ) + ( VCC ) + ( Addr1_aAdd0_a22 ))
+// Addr1_aAdd0_a26 = CARRY(( Mult1_ao_res[18] ) + ( VCC ) + ( Addr1_aAdd0_a22 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[18]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a22),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a25_sumout),
+	.cout(Addr1_aAdd0_a26),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a25.extended_lut = "off";
+defparam Addr1_aAdd0_a25.lut_mask = 64'h00000000000000FF;
+defparam Addr1_aAdd0_a25.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N21
+twentynm_lcell_comb Addr1_aAdd0_a29(
+// Equation(s):
+// Addr1_aAdd0_a29_sumout = SUM(( GND ) + ( Mult1_ao_res[19] ) + ( Addr1_aAdd0_a26 ))
+// Addr1_aAdd0_a30 = CARRY(( GND ) + ( Mult1_ao_res[19] ) + ( Addr1_aAdd0_a26 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult1_ao_res[19]),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a26),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a29_sumout),
+	.cout(Addr1_aAdd0_a30),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a29.extended_lut = "off";
+defparam Addr1_aAdd0_a29.lut_mask = 64'h0000FF0000000000;
+defparam Addr1_aAdd0_a29.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N24
+twentynm_lcell_comb Addr1_aAdd0_a33(
+// Equation(s):
+// Addr1_aAdd0_a33_sumout = SUM(( Mult1_ao_res[20] ) + ( VCC ) + ( Addr1_aAdd0_a30 ))
+// Addr1_aAdd0_a34 = CARRY(( Mult1_ao_res[20] ) + ( VCC ) + ( Addr1_aAdd0_a30 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[20]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a30),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a33_sumout),
+	.cout(Addr1_aAdd0_a34),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a33.extended_lut = "off";
+defparam Addr1_aAdd0_a33.lut_mask = 64'h00000000000000FF;
+defparam Addr1_aAdd0_a33.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N27
+twentynm_lcell_comb Addr1_aAdd0_a37(
+// Equation(s):
+// Addr1_aAdd0_a37_sumout = SUM(( Mult1_ao_res[21] ) + ( GND ) + ( Addr1_aAdd0_a34 ))
+// Addr1_aAdd0_a38 = CARRY(( Mult1_ao_res[21] ) + ( GND ) + ( Addr1_aAdd0_a34 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[21]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a34),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a37_sumout),
+	.cout(Addr1_aAdd0_a38),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a37.extended_lut = "off";
+defparam Addr1_aAdd0_a37.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr1_aAdd0_a37.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N30
+twentynm_lcell_comb Addr1_aAdd0_a41(
+// Equation(s):
+// Addr1_aAdd0_a41_sumout = SUM(( Mult1_ao_res[22] ) + ( VCC ) + ( Addr1_aAdd0_a38 ))
+// Addr1_aAdd0_a42 = CARRY(( Mult1_ao_res[22] ) + ( VCC ) + ( Addr1_aAdd0_a38 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[22]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a38),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a41_sumout),
+	.cout(Addr1_aAdd0_a42),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a41.extended_lut = "off";
+defparam Addr1_aAdd0_a41.lut_mask = 64'h00000000000000FF;
+defparam Addr1_aAdd0_a41.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N33
+twentynm_lcell_comb Addr1_aAdd0_a45(
+// Equation(s):
+// Addr1_aAdd0_a45_sumout = SUM(( GND ) + ( Mult1_ao_res[23] ) + ( Addr1_aAdd0_a42 ))
+// Addr1_aAdd0_a46 = CARRY(( GND ) + ( Mult1_ao_res[23] ) + ( Addr1_aAdd0_a42 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult1_ao_res[23]),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a42),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a45_sumout),
+	.cout(Addr1_aAdd0_a46),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a45.extended_lut = "off";
+defparam Addr1_aAdd0_a45.lut_mask = 64'h0000FF0000000000;
+defparam Addr1_aAdd0_a45.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N36
+twentynm_lcell_comb Addr1_aAdd0_a49(
+// Equation(s):
+// Addr1_aAdd0_a49_sumout = SUM(( Mult1_ao_res[24] ) + ( GND ) + ( Addr1_aAdd0_a46 ))
+// Addr1_aAdd0_a50 = CARRY(( Mult1_ao_res[24] ) + ( GND ) + ( Addr1_aAdd0_a46 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[24]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a46),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a49_sumout),
+	.cout(Addr1_aAdd0_a50),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a49.extended_lut = "off";
+defparam Addr1_aAdd0_a49.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr1_aAdd0_a49.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N39
+twentynm_lcell_comb Addr1_aAdd0_a53(
+// Equation(s):
+// Addr1_aAdd0_a53_sumout = SUM(( Mult1_ao_res[25] ) + ( GND ) + ( Addr1_aAdd0_a50 ))
+// Addr1_aAdd0_a54 = CARRY(( Mult1_ao_res[25] ) + ( GND ) + ( Addr1_aAdd0_a50 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[25]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a50),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a53_sumout),
+	.cout(Addr1_aAdd0_a54),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a53.extended_lut = "off";
+defparam Addr1_aAdd0_a53.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr1_aAdd0_a53.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N42
+twentynm_lcell_comb Addr1_aAdd0_a57(
+// Equation(s):
+// Addr1_aAdd0_a57_sumout = SUM(( Mult1_ao_res[26] ) + ( GND ) + ( Addr1_aAdd0_a54 ))
+// Addr1_aAdd0_a58 = CARRY(( Mult1_ao_res[26] ) + ( GND ) + ( Addr1_aAdd0_a54 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[26]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a54),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a57_sumout),
+	.cout(Addr1_aAdd0_a58),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a57.extended_lut = "off";
+defparam Addr1_aAdd0_a57.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr1_aAdd0_a57.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N45
+twentynm_lcell_comb Addr1_aAdd0_a61(
+// Equation(s):
+// Addr1_aAdd0_a61_sumout = SUM(( GND ) + ( Mult1_ao_res[27] ) + ( Addr1_aAdd0_a58 ))
+// Addr1_aAdd0_a62 = CARRY(( GND ) + ( Mult1_ao_res[27] ) + ( Addr1_aAdd0_a58 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult1_ao_res[27]),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a58),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a61_sumout),
+	.cout(Addr1_aAdd0_a62),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a61.extended_lut = "off";
+defparam Addr1_aAdd0_a61.lut_mask = 64'h0000FF0000000000;
+defparam Addr1_aAdd0_a61.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N48
+twentynm_lcell_comb Addr1_aAdd0_a65(
+// Equation(s):
+// Addr1_aAdd0_a65_sumout = SUM(( Mult1_ao_res[28] ) + ( GND ) + ( Addr1_aAdd0_a62 ))
+// Addr1_aAdd0_a66 = CARRY(( Mult1_ao_res[28] ) + ( GND ) + ( Addr1_aAdd0_a62 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[28]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a62),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a65_sumout),
+	.cout(Addr1_aAdd0_a66),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a65.extended_lut = "off";
+defparam Addr1_aAdd0_a65.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr1_aAdd0_a65.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N51
+twentynm_lcell_comb Addr1_aAdd0_a69(
+// Equation(s):
+// Addr1_aAdd0_a69_sumout = SUM(( Mult1_ao_res[29] ) + ( GND ) + ( Addr1_aAdd0_a66 ))
+// Addr1_aAdd0_a70 = CARRY(( Mult1_ao_res[29] ) + ( GND ) + ( Addr1_aAdd0_a66 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult1_ao_res[29]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a66),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a69_sumout),
+	.cout(Addr1_aAdd0_a70),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a69.extended_lut = "off";
+defparam Addr1_aAdd0_a69.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr1_aAdd0_a69.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N54
+twentynm_lcell_comb Addr1_aAdd0_a73(
+// Equation(s):
+// Addr1_aAdd0_a73_sumout = SUM(( GND ) + ( Mult1_ao_res[30] ) + ( Addr1_aAdd0_a70 ))
+// Addr1_aAdd0_a74 = CARRY(( GND ) + ( Mult1_ao_res[30] ) + ( Addr1_aAdd0_a70 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult1_ao_res[30]),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a70),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a73_sumout),
+	.cout(Addr1_aAdd0_a74),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a73.extended_lut = "off";
+defparam Addr1_aAdd0_a73.lut_mask = 64'h0000FF0000000000;
+defparam Addr1_aAdd0_a73.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y64_N57
+twentynm_lcell_comb Addr1_aAdd0_a77(
+// Equation(s):
+// Addr1_aAdd0_a77_sumout = SUM(( GND ) + ( Mult1_ao_res[31] ) + ( Addr1_aAdd0_a74 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult1_ao_res[31]),
+	.datag(gnd),
+	.cin(Addr1_aAdd0_a74),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr1_aAdd0_a77_sumout),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam Addr1_aAdd0_a77.extended_lut = "off";
+defparam Addr1_aAdd0_a77.lut_mask = 64'h0000FF0000000000;
+defparam Addr1_aAdd0_a77.shared_arith = "off";
+// synopsys translate_on
+
+// Location: MPDSP_X116_Y63_N0
+twentynm_mac Mult2_aMult0_amult_hlmac(
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({Addr1_aAdd0_a77_sumout,Addr1_aAdd0_a73_sumout,Addr1_aAdd0_a69_sumout,Addr1_aAdd0_a65_sumout,Addr1_aAdd0_a61_sumout,Addr1_aAdd0_a57_sumout,Addr1_aAdd0_a53_sumout,Addr1_aAdd0_a49_sumout,Addr1_aAdd0_a45_sumout,Addr1_aAdd0_a41_sumout,Addr1_aAdd0_a37_sumout,
+Addr1_aAdd0_a33_sumout,Addr1_aAdd0_a29_sumout,Addr1_aAdd0_a25_sumout}),
+	.ay({i_x_a15_a_ainput3,i_x_a14_a_ainput3,i_x_a13_a_ainput3,i_x_a12_a_ainput3,i_x_a11_a_ainput3,i_x_a10_a_ainput3,i_x_a9_a_ainput3,i_x_a8_a_ainput3,i_x_a7_a_ainput3,i_x_a6_a_ainput3,i_x_a5_a_ainput3,i_x_a4_a_ainput3,i_x_a3_a_ainput3,i_x_a2_a_ainput3,i_x_a1_a_ainput3,
+i_x_a0_a_ainput3}),
+	.az(26'b00000000000000000000000000),
+	.bx({gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd}),
+	.by({gnd,gnd,Mult2_aMult0_a41,Mult2_aMult0_a40,Mult2_aMult0_a39,Mult2_aMult0_a38,Mult2_aMult0_a37,Mult2_aMult0_a36,Mult2_aMult0_a35,Mult2_aMult0_a34,Mult2_aMult0_a33,Mult2_aMult0_a32,Mult2_aMult0_a31,Mult2_aMult0_a30,Mult2_aMult0_a29,Mult2_aMult0_a28,Mult2_aMult0_a27,
+Mult2_aMult0_a26}),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk({gnd,gnd,clk_ainputCLKENA0_outclk}),
+	.aclr({gnd,reset_ainput3}),
+	.ena({vcc,vcc,i_ready_ainput3}),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(Mult2_aMult0_amult_hlmac_RESULTA_bus),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam Mult2_aMult0_amult_hlmac.accum_pipeline_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.accumulate_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.ax_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.ax_width = 14;
+defparam Mult2_aMult0_amult_hlmac.ay_scan_in_clock = "0";
+defparam Mult2_aMult0_amult_hlmac.ay_scan_in_width = 16;
+defparam Mult2_aMult0_amult_hlmac.ay_use_scan_in = "false";
+defparam Mult2_aMult0_amult_hlmac.az_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.bx_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.bx_width = 13;
+defparam Mult2_aMult0_amult_hlmac.by_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.by_use_scan_in = "false";
+defparam Mult2_aMult0_amult_hlmac.by_width = 18;
+defparam Mult2_aMult0_amult_hlmac.bz_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.coef_a_0 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_a_1 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_a_2 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_a_3 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_a_4 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_a_5 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_a_6 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_a_7 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_b_0 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_b_1 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_b_2 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_b_3 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_b_4 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_b_5 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_b_6 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_b_7 = 0;
+defparam Mult2_aMult0_amult_hlmac.coef_sel_a_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.coef_sel_b_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.delay_scan_out_ay = "false";
+defparam Mult2_aMult0_amult_hlmac.delay_scan_out_by = "false";
+defparam Mult2_aMult0_amult_hlmac.enable_double_accum = "false";
+defparam Mult2_aMult0_amult_hlmac.input_pipeline_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.load_const_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.load_const_pipeline_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.load_const_value = 0;
+defparam Mult2_aMult0_amult_hlmac.mode_sub_location = 0;
+defparam Mult2_aMult0_amult_hlmac.negate_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.negate_pipeline_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.operand_source_max = "input";
+defparam Mult2_aMult0_amult_hlmac.operand_source_may = "input";
+defparam Mult2_aMult0_amult_hlmac.operand_source_mbx = "input";
+defparam Mult2_aMult0_amult_hlmac.operand_source_mby = "input";
+defparam Mult2_aMult0_amult_hlmac.operation_mode = "m18x18_plus36";
+defparam Mult2_aMult0_amult_hlmac.output_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.preadder_subtract_a = "false";
+defparam Mult2_aMult0_amult_hlmac.preadder_subtract_b = "false";
+defparam Mult2_aMult0_amult_hlmac.result_a_width = 64;
+defparam Mult2_aMult0_amult_hlmac.signed_max = "false";
+defparam Mult2_aMult0_amult_hlmac.signed_may = "false";
+defparam Mult2_aMult0_amult_hlmac.signed_mbx = "false";
+defparam Mult2_aMult0_amult_hlmac.signed_mby = "false";
+defparam Mult2_aMult0_amult_hlmac.sub_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.sub_pipeline_clock = "none";
+defparam Mult2_aMult0_amult_hlmac.use_chainadder = "false";
+// synopsys translate_on
+
+// Location: MPDSP_X116_Y62_N0
+twentynm_mac Mult3_aMult0_a12(
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({i_x_a15_a_ainput3,i_x_a14_a_ainput3,i_x_a13_a_ainput3,i_x_a12_a_ainput3,i_x_a11_a_ainput3,i_x_a10_a_ainput3,i_x_a9_a_ainput3,i_x_a8_a_ainput3,i_x_a7_a_ainput3,i_x_a6_a_ainput3,i_x_a5_a_ainput3,i_x_a4_a_ainput3,i_x_a3_a_ainput3,i_x_a2_a_ainput3,i_x_a1_a_ainput3,
+i_x_a0_a_ainput3}),
+	.ay({Mult2_ao_res[17],Mult2_ao_res[16],Mult2_ao_res[15],Mult2_ao_res[14],Mult2_ao_res[13],Mult2_ao_res[12],Mult2_ao_res[11],Mult2_ao_res[10],Mult2_ao_res[9],Mult2_ao_res[8],Mult2_ao_res[7],Mult2_ao_res[6],Mult2_ao_res[5],Mult2_ao_res[4],Mult2_ao_res[3],Mult2_ao_res[2],Mult2_ao_res[1],Mult2_ao_res[0]}),
+	.az(26'b00000000000000000000000000),
+	.bx(18'b000000000000000000),
+	.by(19'b0000000000000000000),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk({gnd,gnd,clk_ainputCLKENA0_outclk}),
+	.aclr({gnd,reset_ainput3}),
+	.ena({vcc,vcc,i_ready_ainput3}),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(Mult3_aMult0_a12_RESULTA_bus),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam Mult3_aMult0_a12.accum_pipeline_clock = "none";
+defparam Mult3_aMult0_a12.accumulate_clock = "none";
+defparam Mult3_aMult0_a12.ax_clock = "0";
+defparam Mult3_aMult0_a12.ax_width = 16;
+defparam Mult3_aMult0_a12.ay_scan_in_clock = "none";
+defparam Mult3_aMult0_a12.ay_scan_in_width = 18;
+defparam Mult3_aMult0_a12.ay_use_scan_in = "false";
+defparam Mult3_aMult0_a12.az_clock = "none";
+defparam Mult3_aMult0_a12.bx_clock = "none";
+defparam Mult3_aMult0_a12.by_clock = "none";
+defparam Mult3_aMult0_a12.by_use_scan_in = "false";
+defparam Mult3_aMult0_a12.bz_clock = "none";
+defparam Mult3_aMult0_a12.coef_a_0 = 0;
+defparam Mult3_aMult0_a12.coef_a_1 = 0;
+defparam Mult3_aMult0_a12.coef_a_2 = 0;
+defparam Mult3_aMult0_a12.coef_a_3 = 0;
+defparam Mult3_aMult0_a12.coef_a_4 = 0;
+defparam Mult3_aMult0_a12.coef_a_5 = 0;
+defparam Mult3_aMult0_a12.coef_a_6 = 0;
+defparam Mult3_aMult0_a12.coef_a_7 = 0;
+defparam Mult3_aMult0_a12.coef_b_0 = 0;
+defparam Mult3_aMult0_a12.coef_b_1 = 0;
+defparam Mult3_aMult0_a12.coef_b_2 = 0;
+defparam Mult3_aMult0_a12.coef_b_3 = 0;
+defparam Mult3_aMult0_a12.coef_b_4 = 0;
+defparam Mult3_aMult0_a12.coef_b_5 = 0;
+defparam Mult3_aMult0_a12.coef_b_6 = 0;
+defparam Mult3_aMult0_a12.coef_b_7 = 0;
+defparam Mult3_aMult0_a12.coef_sel_a_clock = "none";
+defparam Mult3_aMult0_a12.coef_sel_b_clock = "none";
+defparam Mult3_aMult0_a12.delay_scan_out_ay = "false";
+defparam Mult3_aMult0_a12.delay_scan_out_by = "false";
+defparam Mult3_aMult0_a12.enable_double_accum = "false";
+defparam Mult3_aMult0_a12.input_pipeline_clock = "none";
+defparam Mult3_aMult0_a12.load_const_clock = "none";
+defparam Mult3_aMult0_a12.load_const_pipeline_clock = "none";
+defparam Mult3_aMult0_a12.load_const_value = 0;
+defparam Mult3_aMult0_a12.mode_sub_location = 0;
+defparam Mult3_aMult0_a12.negate_clock = "none";
+defparam Mult3_aMult0_a12.negate_pipeline_clock = "none";
+defparam Mult3_aMult0_a12.operand_source_max = "input";
+defparam Mult3_aMult0_a12.operand_source_may = "input";
+defparam Mult3_aMult0_a12.operand_source_mbx = "input";
+defparam Mult3_aMult0_a12.operand_source_mby = "input";
+defparam Mult3_aMult0_a12.operation_mode = "m18x18_full";
+defparam Mult3_aMult0_a12.output_clock = "none";
+defparam Mult3_aMult0_a12.preadder_subtract_a = "false";
+defparam Mult3_aMult0_a12.preadder_subtract_b = "false";
+defparam Mult3_aMult0_a12.result_a_width = 64;
+defparam Mult3_aMult0_a12.signed_max = "false";
+defparam Mult3_aMult0_a12.signed_may = "false";
+defparam Mult3_aMult0_a12.signed_mbx = "false";
+defparam Mult3_aMult0_a12.signed_mby = "false";
+defparam Mult3_aMult0_a12.sub_clock = "none";
+defparam Mult3_aMult0_a12.sub_pipeline_clock = "none";
+defparam Mult3_aMult0_a12.use_chainadder = "false";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y61_N30
+twentynm_lcell_comb Addr2_aAdd0_a1(
+// Equation(s):
+// Addr2_aAdd0_a1_sumout = SUM(( VCC ) + ( Mult2_ao_res[24] ) + ( !VCC ))
+// Addr2_aAdd0_a2 = CARRY(( VCC ) + ( Mult2_ao_res[24] ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult2_ao_res[24]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr2_aAdd0_a1_sumout),
+	.cout(Addr2_aAdd0_a2),
+	.shareout());
+// synopsys translate_off
+defparam Addr2_aAdd0_a1.extended_lut = "off";
+defparam Addr2_aAdd0_a1.lut_mask = 64'h0000FF000000FFFF;
+defparam Addr2_aAdd0_a1.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y61_N33
+twentynm_lcell_comb Addr2_aAdd0_a5(
+// Equation(s):
+// Addr2_aAdd0_a5_sumout = SUM(( GND ) + ( Mult2_ao_res[25] ) + ( Addr2_aAdd0_a2 ))
+// Addr2_aAdd0_a6 = CARRY(( GND ) + ( Mult2_ao_res[25] ) + ( Addr2_aAdd0_a2 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult2_ao_res[25]),
+	.datag(gnd),
+	.cin(Addr2_aAdd0_a2),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr2_aAdd0_a5_sumout),
+	.cout(Addr2_aAdd0_a6),
+	.shareout());
+// synopsys translate_off
+defparam Addr2_aAdd0_a5.extended_lut = "off";
+defparam Addr2_aAdd0_a5.lut_mask = 64'h0000FF0000000000;
+defparam Addr2_aAdd0_a5.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y61_N36
+twentynm_lcell_comb Addr2_aAdd0_a9(
+// Equation(s):
+// Addr2_aAdd0_a9_sumout = SUM(( Mult2_ao_res[26] ) + ( GND ) + ( Addr2_aAdd0_a6 ))
+// Addr2_aAdd0_a10 = CARRY(( Mult2_ao_res[26] ) + ( GND ) + ( Addr2_aAdd0_a6 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult2_ao_res[26]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr2_aAdd0_a6),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr2_aAdd0_a9_sumout),
+	.cout(Addr2_aAdd0_a10),
+	.shareout());
+// synopsys translate_off
+defparam Addr2_aAdd0_a9.extended_lut = "off";
+defparam Addr2_aAdd0_a9.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr2_aAdd0_a9.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y61_N39
+twentynm_lcell_comb Addr2_aAdd0_a13(
+// Equation(s):
+// Addr2_aAdd0_a13_sumout = SUM(( Mult2_ao_res[27] ) + ( GND ) + ( Addr2_aAdd0_a10 ))
+// Addr2_aAdd0_a14 = CARRY(( Mult2_ao_res[27] ) + ( GND ) + ( Addr2_aAdd0_a10 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult2_ao_res[27]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr2_aAdd0_a10),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr2_aAdd0_a13_sumout),
+	.cout(Addr2_aAdd0_a14),
+	.shareout());
+// synopsys translate_off
+defparam Addr2_aAdd0_a13.extended_lut = "off";
+defparam Addr2_aAdd0_a13.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr2_aAdd0_a13.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y61_N42
+twentynm_lcell_comb Addr2_aAdd0_a17(
+// Equation(s):
+// Addr2_aAdd0_a17_sumout = SUM(( Mult2_ao_res[28] ) + ( GND ) + ( Addr2_aAdd0_a14 ))
+// Addr2_aAdd0_a18 = CARRY(( Mult2_ao_res[28] ) + ( GND ) + ( Addr2_aAdd0_a14 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult2_ao_res[28]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr2_aAdd0_a14),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr2_aAdd0_a17_sumout),
+	.cout(Addr2_aAdd0_a18),
+	.shareout());
+// synopsys translate_off
+defparam Addr2_aAdd0_a17.extended_lut = "off";
+defparam Addr2_aAdd0_a17.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr2_aAdd0_a17.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y61_N45
+twentynm_lcell_comb Addr2_aAdd0_a21(
+// Equation(s):
+// Addr2_aAdd0_a21_sumout = SUM(( Mult2_ao_res[29] ) + ( GND ) + ( Addr2_aAdd0_a18 ))
+// Addr2_aAdd0_a22 = CARRY(( Mult2_ao_res[29] ) + ( GND ) + ( Addr2_aAdd0_a18 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult2_ao_res[29]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr2_aAdd0_a18),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr2_aAdd0_a21_sumout),
+	.cout(Addr2_aAdd0_a22),
+	.shareout());
+// synopsys translate_off
+defparam Addr2_aAdd0_a21.extended_lut = "off";
+defparam Addr2_aAdd0_a21.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr2_aAdd0_a21.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y61_N48
+twentynm_lcell_comb Addr2_aAdd0_a25(
+// Equation(s):
+// Addr2_aAdd0_a25_sumout = SUM(( Mult2_ao_res[30] ) + ( GND ) + ( Addr2_aAdd0_a22 ))
+// Addr2_aAdd0_a26 = CARRY(( Mult2_ao_res[30] ) + ( GND ) + ( Addr2_aAdd0_a22 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult2_ao_res[30]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr2_aAdd0_a22),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr2_aAdd0_a25_sumout),
+	.cout(Addr2_aAdd0_a26),
+	.shareout());
+// synopsys translate_off
+defparam Addr2_aAdd0_a25.extended_lut = "off";
+defparam Addr2_aAdd0_a25.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr2_aAdd0_a25.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y61_N51
+twentynm_lcell_comb Addr2_aAdd0_a29(
+// Equation(s):
+// Addr2_aAdd0_a29_sumout = SUM(( Mult2_ao_res[31] ) + ( GND ) + ( Addr2_aAdd0_a26 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult2_ao_res[31]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr2_aAdd0_a26),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr2_aAdd0_a29_sumout),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam Addr2_aAdd0_a29.extended_lut = "off";
+defparam Addr2_aAdd0_a29.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr2_aAdd0_a29.shared_arith = "off";
+// synopsys translate_on
+
+// Location: MPDSP_X116_Y61_N0
+twentynm_mac Mult3_aMult0_amult_hlmac(
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({Addr2_aAdd0_a29_sumout,Addr2_aAdd0_a25_sumout,Addr2_aAdd0_a21_sumout,Addr2_aAdd0_a17_sumout,Addr2_aAdd0_a13_sumout,Addr2_aAdd0_a9_sumout,Addr2_aAdd0_a5_sumout,Addr2_aAdd0_a1_sumout,Mult2_ao_res[23],Mult2_ao_res[22],Mult2_ao_res[21],Mult2_ao_res[20],Mult2_ao_res[19],Mult2_ao_res[18]}),
+	.ay({i_x_a15_a_ainput3,i_x_a14_a_ainput3,i_x_a13_a_ainput3,i_x_a12_a_ainput3,i_x_a11_a_ainput3,i_x_a10_a_ainput3,i_x_a9_a_ainput3,i_x_a8_a_ainput3,i_x_a7_a_ainput3,i_x_a6_a_ainput3,i_x_a5_a_ainput3,i_x_a4_a_ainput3,i_x_a3_a_ainput3,i_x_a2_a_ainput3,i_x_a1_a_ainput3,
+i_x_a0_a_ainput3}),
+	.az(26'b00000000000000000000000000),
+	.bx({gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd}),
+	.by({gnd,gnd,Mult3_aMult0_a41,Mult3_aMult0_a40,Mult3_aMult0_a39,Mult3_aMult0_a38,Mult3_aMult0_a37,Mult3_aMult0_a36,Mult3_aMult0_a35,Mult3_aMult0_a34,Mult3_aMult0_a33,Mult3_aMult0_a32,Mult3_aMult0_a31,Mult3_aMult0_a30,Mult3_aMult0_a29,Mult3_aMult0_a28,Mult3_aMult0_a27,
+Mult3_aMult0_a26}),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk({gnd,gnd,clk_ainputCLKENA0_outclk}),
+	.aclr({gnd,reset_ainput3}),
+	.ena({vcc,vcc,i_ready_ainput3}),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(Mult3_aMult0_amult_hlmac_RESULTA_bus),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam Mult3_aMult0_amult_hlmac.accum_pipeline_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.accumulate_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.ax_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.ax_width = 14;
+defparam Mult3_aMult0_amult_hlmac.ay_scan_in_clock = "0";
+defparam Mult3_aMult0_amult_hlmac.ay_scan_in_width = 16;
+defparam Mult3_aMult0_amult_hlmac.ay_use_scan_in = "false";
+defparam Mult3_aMult0_amult_hlmac.az_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.bx_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.bx_width = 13;
+defparam Mult3_aMult0_amult_hlmac.by_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.by_use_scan_in = "false";
+defparam Mult3_aMult0_amult_hlmac.by_width = 18;
+defparam Mult3_aMult0_amult_hlmac.bz_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.coef_a_0 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_a_1 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_a_2 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_a_3 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_a_4 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_a_5 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_a_6 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_a_7 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_b_0 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_b_1 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_b_2 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_b_3 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_b_4 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_b_5 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_b_6 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_b_7 = 0;
+defparam Mult3_aMult0_amult_hlmac.coef_sel_a_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.coef_sel_b_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.delay_scan_out_ay = "false";
+defparam Mult3_aMult0_amult_hlmac.delay_scan_out_by = "false";
+defparam Mult3_aMult0_amult_hlmac.enable_double_accum = "false";
+defparam Mult3_aMult0_amult_hlmac.input_pipeline_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.load_const_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.load_const_pipeline_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.load_const_value = 0;
+defparam Mult3_aMult0_amult_hlmac.mode_sub_location = 0;
+defparam Mult3_aMult0_amult_hlmac.negate_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.negate_pipeline_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.operand_source_max = "input";
+defparam Mult3_aMult0_amult_hlmac.operand_source_may = "input";
+defparam Mult3_aMult0_amult_hlmac.operand_source_mbx = "input";
+defparam Mult3_aMult0_amult_hlmac.operand_source_mby = "input";
+defparam Mult3_aMult0_amult_hlmac.operation_mode = "m18x18_plus36";
+defparam Mult3_aMult0_amult_hlmac.output_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.preadder_subtract_a = "false";
+defparam Mult3_aMult0_amult_hlmac.preadder_subtract_b = "false";
+defparam Mult3_aMult0_amult_hlmac.result_a_width = 64;
+defparam Mult3_aMult0_amult_hlmac.signed_max = "false";
+defparam Mult3_aMult0_amult_hlmac.signed_may = "false";
+defparam Mult3_aMult0_amult_hlmac.signed_mbx = "false";
+defparam Mult3_aMult0_amult_hlmac.signed_mby = "false";
+defparam Mult3_aMult0_amult_hlmac.sub_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.sub_pipeline_clock = "none";
+defparam Mult3_aMult0_amult_hlmac.use_chainadder = "false";
+// synopsys translate_on
+
+// Location: MPDSP_X116_Y59_N0
+twentynm_mac Mult4_aMult0_a12(
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({i_x_a15_a_ainput3,i_x_a14_a_ainput3,i_x_a13_a_ainput3,i_x_a12_a_ainput3,i_x_a11_a_ainput3,i_x_a10_a_ainput3,i_x_a9_a_ainput3,i_x_a8_a_ainput3,i_x_a7_a_ainput3,i_x_a6_a_ainput3,i_x_a5_a_ainput3,i_x_a4_a_ainput3,i_x_a3_a_ainput3,i_x_a2_a_ainput3,i_x_a1_a_ainput3,
+i_x_a0_a_ainput3}),
+	.ay({Mult3_ao_res[17],Mult3_ao_res[16],Mult3_ao_res[15],Mult3_ao_res[14],Mult3_ao_res[13],Mult3_ao_res[12],Mult3_ao_res[11],Mult3_ao_res[10],Mult3_ao_res[9],Mult3_ao_res[8],Mult3_ao_res[7],Mult3_ao_res[6],Mult3_ao_res[5],Mult3_ao_res[4],Mult3_ao_res[3],Mult3_ao_res[2],Mult3_ao_res[1],Mult3_ao_res[0]}),
+	.az(26'b00000000000000000000000000),
+	.bx(18'b000000000000000000),
+	.by(19'b0000000000000000000),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk({gnd,gnd,clk_ainputCLKENA0_outclk}),
+	.aclr({gnd,reset_ainput3}),
+	.ena({vcc,vcc,i_ready_ainput3}),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(Mult4_aMult0_a12_RESULTA_bus),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam Mult4_aMult0_a12.accum_pipeline_clock = "none";
+defparam Mult4_aMult0_a12.accumulate_clock = "none";
+defparam Mult4_aMult0_a12.ax_clock = "0";
+defparam Mult4_aMult0_a12.ax_width = 16;
+defparam Mult4_aMult0_a12.ay_scan_in_clock = "none";
+defparam Mult4_aMult0_a12.ay_scan_in_width = 18;
+defparam Mult4_aMult0_a12.ay_use_scan_in = "false";
+defparam Mult4_aMult0_a12.az_clock = "none";
+defparam Mult4_aMult0_a12.bx_clock = "none";
+defparam Mult4_aMult0_a12.by_clock = "none";
+defparam Mult4_aMult0_a12.by_use_scan_in = "false";
+defparam Mult4_aMult0_a12.bz_clock = "none";
+defparam Mult4_aMult0_a12.coef_a_0 = 0;
+defparam Mult4_aMult0_a12.coef_a_1 = 0;
+defparam Mult4_aMult0_a12.coef_a_2 = 0;
+defparam Mult4_aMult0_a12.coef_a_3 = 0;
+defparam Mult4_aMult0_a12.coef_a_4 = 0;
+defparam Mult4_aMult0_a12.coef_a_5 = 0;
+defparam Mult4_aMult0_a12.coef_a_6 = 0;
+defparam Mult4_aMult0_a12.coef_a_7 = 0;
+defparam Mult4_aMult0_a12.coef_b_0 = 0;
+defparam Mult4_aMult0_a12.coef_b_1 = 0;
+defparam Mult4_aMult0_a12.coef_b_2 = 0;
+defparam Mult4_aMult0_a12.coef_b_3 = 0;
+defparam Mult4_aMult0_a12.coef_b_4 = 0;
+defparam Mult4_aMult0_a12.coef_b_5 = 0;
+defparam Mult4_aMult0_a12.coef_b_6 = 0;
+defparam Mult4_aMult0_a12.coef_b_7 = 0;
+defparam Mult4_aMult0_a12.coef_sel_a_clock = "none";
+defparam Mult4_aMult0_a12.coef_sel_b_clock = "none";
+defparam Mult4_aMult0_a12.delay_scan_out_ay = "false";
+defparam Mult4_aMult0_a12.delay_scan_out_by = "false";
+defparam Mult4_aMult0_a12.enable_double_accum = "false";
+defparam Mult4_aMult0_a12.input_pipeline_clock = "none";
+defparam Mult4_aMult0_a12.load_const_clock = "none";
+defparam Mult4_aMult0_a12.load_const_pipeline_clock = "none";
+defparam Mult4_aMult0_a12.load_const_value = 0;
+defparam Mult4_aMult0_a12.mode_sub_location = 0;
+defparam Mult4_aMult0_a12.negate_clock = "none";
+defparam Mult4_aMult0_a12.negate_pipeline_clock = "none";
+defparam Mult4_aMult0_a12.operand_source_max = "input";
+defparam Mult4_aMult0_a12.operand_source_may = "input";
+defparam Mult4_aMult0_a12.operand_source_mbx = "input";
+defparam Mult4_aMult0_a12.operand_source_mby = "input";
+defparam Mult4_aMult0_a12.operation_mode = "m18x18_full";
+defparam Mult4_aMult0_a12.output_clock = "none";
+defparam Mult4_aMult0_a12.preadder_subtract_a = "false";
+defparam Mult4_aMult0_a12.preadder_subtract_b = "false";
+defparam Mult4_aMult0_a12.result_a_width = 64;
+defparam Mult4_aMult0_a12.signed_max = "false";
+defparam Mult4_aMult0_a12.signed_may = "false";
+defparam Mult4_aMult0_a12.signed_mbx = "false";
+defparam Mult4_aMult0_a12.signed_mby = "false";
+defparam Mult4_aMult0_a12.sub_clock = "none";
+defparam Mult4_aMult0_a12.sub_pipeline_clock = "none";
+defparam Mult4_aMult0_a12.use_chainadder = "false";
+// synopsys translate_on
+
+// Location: FF_X115_Y59_N23
+dffeas y_Q_a0_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Mult4_ao_res[0]),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a0_a.is_wysiwyg = "true";
+defparam y_Q_a0_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y59_N44
+dffeas y_Q_a1_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Mult4_ao_res[1]),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a1_a.is_wysiwyg = "true";
+defparam y_Q_a1_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y59_N56
+dffeas y_Q_a2_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[2]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a2_a.is_wysiwyg = "true";
+defparam y_Q_a2_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y59_N38
+dffeas y_Q_a3_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Mult4_ao_res[3]),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[3]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a3_a.is_wysiwyg = "true";
+defparam y_Q_a3_a.power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N0
+twentynm_lcell_comb Addr3_aAdd0_a1(
+// Equation(s):
+// Addr3_aAdd0_a1_sumout = SUM(( VCC ) + ( Mult3_ao_res[25] ) + ( !VCC ))
+// Addr3_aAdd0_a2 = CARRY(( VCC ) + ( Mult3_ao_res[25] ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult3_ao_res[25]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr3_aAdd0_a1_sumout),
+	.cout(Addr3_aAdd0_a2),
+	.shareout());
+// synopsys translate_off
+defparam Addr3_aAdd0_a1.extended_lut = "off";
+defparam Addr3_aAdd0_a1.lut_mask = 64'h0000FF000000FFFF;
+defparam Addr3_aAdd0_a1.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N3
+twentynm_lcell_comb Addr3_aAdd0_a5(
+// Equation(s):
+// Addr3_aAdd0_a5_sumout = SUM(( Mult3_ao_res[26] ) + ( GND ) + ( Addr3_aAdd0_a2 ))
+// Addr3_aAdd0_a6 = CARRY(( Mult3_ao_res[26] ) + ( GND ) + ( Addr3_aAdd0_a2 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!Mult3_ao_res[26]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr3_aAdd0_a2),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr3_aAdd0_a5_sumout),
+	.cout(Addr3_aAdd0_a6),
+	.shareout());
+// synopsys translate_off
+defparam Addr3_aAdd0_a5.extended_lut = "off";
+defparam Addr3_aAdd0_a5.lut_mask = 64'h0000FFFF00000F0F;
+defparam Addr3_aAdd0_a5.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N6
+twentynm_lcell_comb Addr3_aAdd0_a9(
+// Equation(s):
+// Addr3_aAdd0_a9_sumout = SUM(( GND ) + ( Mult3_ao_res[27] ) + ( Addr3_aAdd0_a6 ))
+// Addr3_aAdd0_a10 = CARRY(( GND ) + ( Mult3_ao_res[27] ) + ( Addr3_aAdd0_a6 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult3_ao_res[27]),
+	.datag(gnd),
+	.cin(Addr3_aAdd0_a6),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr3_aAdd0_a9_sumout),
+	.cout(Addr3_aAdd0_a10),
+	.shareout());
+// synopsys translate_off
+defparam Addr3_aAdd0_a9.extended_lut = "off";
+defparam Addr3_aAdd0_a9.lut_mask = 64'h0000FF0000000000;
+defparam Addr3_aAdd0_a9.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N9
+twentynm_lcell_comb Addr3_aAdd0_a13(
+// Equation(s):
+// Addr3_aAdd0_a13_sumout = SUM(( GND ) + ( Mult3_ao_res[28] ) + ( Addr3_aAdd0_a10 ))
+// Addr3_aAdd0_a14 = CARRY(( GND ) + ( Mult3_ao_res[28] ) + ( Addr3_aAdd0_a10 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult3_ao_res[28]),
+	.datag(gnd),
+	.cin(Addr3_aAdd0_a10),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr3_aAdd0_a13_sumout),
+	.cout(Addr3_aAdd0_a14),
+	.shareout());
+// synopsys translate_off
+defparam Addr3_aAdd0_a13.extended_lut = "off";
+defparam Addr3_aAdd0_a13.lut_mask = 64'h0000FF0000000000;
+defparam Addr3_aAdd0_a13.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N12
+twentynm_lcell_comb Addr3_aAdd0_a17(
+// Equation(s):
+// Addr3_aAdd0_a17_sumout = SUM(( Mult3_ao_res[29] ) + ( GND ) + ( Addr3_aAdd0_a14 ))
+// Addr3_aAdd0_a18 = CARRY(( Mult3_ao_res[29] ) + ( GND ) + ( Addr3_aAdd0_a14 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!Mult3_ao_res[29]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr3_aAdd0_a14),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr3_aAdd0_a17_sumout),
+	.cout(Addr3_aAdd0_a18),
+	.shareout());
+// synopsys translate_off
+defparam Addr3_aAdd0_a17.extended_lut = "off";
+defparam Addr3_aAdd0_a17.lut_mask = 64'h0000FFFF00000F0F;
+defparam Addr3_aAdd0_a17.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N15
+twentynm_lcell_comb Addr3_aAdd0_a21(
+// Equation(s):
+// Addr3_aAdd0_a21_sumout = SUM(( Mult3_ao_res[30] ) + ( GND ) + ( Addr3_aAdd0_a18 ))
+// Addr3_aAdd0_a22 = CARRY(( Mult3_ao_res[30] ) + ( GND ) + ( Addr3_aAdd0_a18 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult3_ao_res[30]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr3_aAdd0_a18),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr3_aAdd0_a21_sumout),
+	.cout(Addr3_aAdd0_a22),
+	.shareout());
+// synopsys translate_off
+defparam Addr3_aAdd0_a21.extended_lut = "off";
+defparam Addr3_aAdd0_a21.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr3_aAdd0_a21.shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N18
+twentynm_lcell_comb Addr3_aAdd0_a25(
+// Equation(s):
+// Addr3_aAdd0_a25_sumout = SUM(( Mult3_ao_res[31] ) + ( GND ) + ( Addr3_aAdd0_a22 ))
+
+	.dataa(gnd),
+	.datab(!Mult3_ao_res[31]),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr3_aAdd0_a22),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr3_aAdd0_a25_sumout),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam Addr3_aAdd0_a25.extended_lut = "off";
+defparam Addr3_aAdd0_a25.lut_mask = 64'h0000FFFF00003333;
+defparam Addr3_aAdd0_a25.shared_arith = "off";
+// synopsys translate_on
+
+// Location: MPDSP_X116_Y60_N0
+twentynm_mac Mult4_aMult0_amult_hlmac(
+	.sub(gnd),
+	.negate(gnd),
+	.accumulate(gnd),
+	.loadconst(gnd),
+	.ax({Addr3_aAdd0_a25_sumout,Addr3_aAdd0_a21_sumout,Addr3_aAdd0_a17_sumout,Addr3_aAdd0_a13_sumout,Addr3_aAdd0_a9_sumout,Addr3_aAdd0_a5_sumout,Addr3_aAdd0_a1_sumout,Mult3_ao_res[24],Mult3_ao_res[23],Mult3_ao_res[22],Mult3_ao_res[21],Mult3_ao_res[20],Mult3_ao_res[19],Mult3_ao_res[18]}),
+	.ay({i_x_a15_a_ainput3,i_x_a14_a_ainput3,i_x_a13_a_ainput3,i_x_a12_a_ainput3,i_x_a11_a_ainput3,i_x_a10_a_ainput3,i_x_a9_a_ainput3,i_x_a8_a_ainput3,i_x_a7_a_ainput3,i_x_a6_a_ainput3,i_x_a5_a_ainput3,i_x_a4_a_ainput3,i_x_a3_a_ainput3,i_x_a2_a_ainput3,i_x_a1_a_ainput3,
+i_x_a0_a_ainput3}),
+	.az(26'b00000000000000000000000000),
+	.bx({gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd,gnd}),
+	.by({gnd,gnd,Mult4_aMult0_a41,Mult4_aMult0_a40,Mult4_aMult0_a39,Mult4_aMult0_a38,Mult4_aMult0_a37,Mult4_aMult0_a36,Mult4_aMult0_a35,Mult4_aMult0_a34,Mult4_aMult0_a33,Mult4_aMult0_a32,Mult4_aMult0_a31,Mult4_aMult0_a30,Mult4_aMult0_a29,Mult4_aMult0_a28,Mult4_aMult0_a27,
+Mult4_aMult0_a26}),
+	.bz(18'b000000000000000000),
+	.coefsela(3'b000),
+	.coefselb(3'b000),
+	.clk({gnd,gnd,clk_ainputCLKENA0_outclk}),
+	.aclr({gnd,reset_ainput3}),
+	.ena({vcc,vcc,i_ready_ainput3}),
+	.scanin(27'b000000000000000000000000000),
+	.chainin(1'b0),
+	.dftout(),
+	.resulta(Mult4_aMult0_amult_hlmac_RESULTA_bus),
+	.resultb(),
+	.scanout(),
+	.chainout());
+// synopsys translate_off
+defparam Mult4_aMult0_amult_hlmac.accum_pipeline_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.accumulate_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.ax_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.ax_width = 14;
+defparam Mult4_aMult0_amult_hlmac.ay_scan_in_clock = "0";
+defparam Mult4_aMult0_amult_hlmac.ay_scan_in_width = 16;
+defparam Mult4_aMult0_amult_hlmac.ay_use_scan_in = "false";
+defparam Mult4_aMult0_amult_hlmac.az_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.bx_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.bx_width = 13;
+defparam Mult4_aMult0_amult_hlmac.by_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.by_use_scan_in = "false";
+defparam Mult4_aMult0_amult_hlmac.by_width = 18;
+defparam Mult4_aMult0_amult_hlmac.bz_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.coef_a_0 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_a_1 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_a_2 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_a_3 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_a_4 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_a_5 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_a_6 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_a_7 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_b_0 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_b_1 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_b_2 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_b_3 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_b_4 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_b_5 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_b_6 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_b_7 = 0;
+defparam Mult4_aMult0_amult_hlmac.coef_sel_a_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.coef_sel_b_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.delay_scan_out_ay = "false";
+defparam Mult4_aMult0_amult_hlmac.delay_scan_out_by = "false";
+defparam Mult4_aMult0_amult_hlmac.enable_double_accum = "false";
+defparam Mult4_aMult0_amult_hlmac.input_pipeline_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.load_const_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.load_const_pipeline_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.load_const_value = 0;
+defparam Mult4_aMult0_amult_hlmac.mode_sub_location = 0;
+defparam Mult4_aMult0_amult_hlmac.negate_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.negate_pipeline_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.operand_source_max = "input";
+defparam Mult4_aMult0_amult_hlmac.operand_source_may = "input";
+defparam Mult4_aMult0_amult_hlmac.operand_source_mbx = "input";
+defparam Mult4_aMult0_amult_hlmac.operand_source_mby = "input";
+defparam Mult4_aMult0_amult_hlmac.operation_mode = "m18x18_plus36";
+defparam Mult4_aMult0_amult_hlmac.output_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.preadder_subtract_a = "false";
+defparam Mult4_aMult0_amult_hlmac.preadder_subtract_b = "false";
+defparam Mult4_aMult0_amult_hlmac.result_a_width = 64;
+defparam Mult4_aMult0_amult_hlmac.signed_max = "false";
+defparam Mult4_aMult0_amult_hlmac.signed_may = "false";
+defparam Mult4_aMult0_amult_hlmac.signed_mbx = "false";
+defparam Mult4_aMult0_amult_hlmac.signed_mby = "false";
+defparam Mult4_aMult0_amult_hlmac.sub_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.sub_pipeline_clock = "none";
+defparam Mult4_aMult0_amult_hlmac.use_chainadder = "false";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N46
+dffeas y_Q_a4_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[4]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[4]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a4_a.is_wysiwyg = "true";
+defparam y_Q_a4_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X117_Y60_N28
+dffeas y_Q_a5_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Mult4_ao_res[5]),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[5]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a5_a.is_wysiwyg = "true";
+defparam y_Q_a5_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N2
+dffeas y_Q_a6_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[6]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[6]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a6_a.is_wysiwyg = "true";
+defparam y_Q_a6_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N37
+dffeas y_Q_a7_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[7]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[7]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a7_a.is_wysiwyg = "true";
+defparam y_Q_a7_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N35
+dffeas y_Q_a8_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[8]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[8]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a8_a.is_wysiwyg = "true";
+defparam y_Q_a8_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N43
+dffeas y_Q_a9_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[9]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[9]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a9_a.is_wysiwyg = "true";
+defparam y_Q_a9_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N14
+dffeas y_Q_a10_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[10]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[10]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a10_a.is_wysiwyg = "true";
+defparam y_Q_a10_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N41
+dffeas y_Q_a11_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[11]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[11]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a11_a.is_wysiwyg = "true";
+defparam y_Q_a11_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N59
+dffeas y_Q_a12_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Mult4_ao_res[12]),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[12]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a12_a.is_wysiwyg = "true";
+defparam y_Q_a12_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N23
+dffeas y_Q_a13_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[13]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[13]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a13_a.is_wysiwyg = "true";
+defparam y_Q_a13_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N5
+dffeas y_Q_a14_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[14]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[14]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a14_a.is_wysiwyg = "true";
+defparam y_Q_a14_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N8
+dffeas y_Q_a15_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[15]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[15]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a15_a.is_wysiwyg = "true";
+defparam y_Q_a15_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N20
+dffeas y_Q_a16_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[16]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[16]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a16_a.is_wysiwyg = "true";
+defparam y_Q_a16_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N50
+dffeas y_Q_a17_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[17]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[17]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a17_a.is_wysiwyg = "true";
+defparam y_Q_a17_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N17
+dffeas y_Q_a18_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[18]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[18]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a18_a.is_wysiwyg = "true";
+defparam y_Q_a18_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N53
+dffeas y_Q_a19_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[19]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[19]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a19_a.is_wysiwyg = "true";
+defparam y_Q_a19_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N26
+dffeas y_Q_a20_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[20]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[20]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a20_a.is_wysiwyg = "true";
+defparam y_Q_a20_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N32
+dffeas y_Q_a21_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[21]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[21]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a21_a.is_wysiwyg = "true";
+defparam y_Q_a21_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N29
+dffeas y_Q_a22_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Mult4_ao_res[22]),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[22]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a22_a.is_wysiwyg = "true";
+defparam y_Q_a22_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N11
+dffeas y_Q_a23_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(gnd),
+	.asdata(Mult4_ao_res[23]),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[23]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a23_a.is_wysiwyg = "true";
+defparam y_Q_a23_a.power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N56
+dffeas y_Q_a24_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Mult4_ao_res[24]),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[24]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a24_a.is_wysiwyg = "true";
+defparam y_Q_a24_a.power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N30
+twentynm_lcell_comb Addr4_aAdd0_a1(
+// Equation(s):
+// Addr4_aAdd0_a1_sumout = SUM(( Mult4_ao_res[25] ) + ( VCC ) + ( !VCC ))
+// Addr4_aAdd0_a2 = CARRY(( Mult4_ao_res[25] ) + ( VCC ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult4_ao_res[25]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr4_aAdd0_a1_sumout),
+	.cout(Addr4_aAdd0_a2),
+	.shareout());
+// synopsys translate_off
+defparam Addr4_aAdd0_a1.extended_lut = "off";
+defparam Addr4_aAdd0_a1.lut_mask = 64'h00000000000000FF;
+defparam Addr4_aAdd0_a1.shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N31
+dffeas y_Q_a25_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Addr4_aAdd0_a1_sumout),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[25]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a25_a.is_wysiwyg = "true";
+defparam y_Q_a25_a.power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N33
+twentynm_lcell_comb Addr4_aAdd0_a5(
+// Equation(s):
+// Addr4_aAdd0_a5_sumout = SUM(( Mult4_ao_res[26] ) + ( GND ) + ( Addr4_aAdd0_a2 ))
+// Addr4_aAdd0_a6 = CARRY(( Mult4_ao_res[26] ) + ( GND ) + ( Addr4_aAdd0_a2 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult4_ao_res[26]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr4_aAdd0_a2),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr4_aAdd0_a5_sumout),
+	.cout(Addr4_aAdd0_a6),
+	.shareout());
+// synopsys translate_off
+defparam Addr4_aAdd0_a5.extended_lut = "off";
+defparam Addr4_aAdd0_a5.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr4_aAdd0_a5.shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N34
+dffeas y_Q_a26_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Addr4_aAdd0_a5_sumout),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[26]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a26_a.is_wysiwyg = "true";
+defparam y_Q_a26_a.power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N36
+twentynm_lcell_comb Addr4_aAdd0_a9(
+// Equation(s):
+// Addr4_aAdd0_a9_sumout = SUM(( Mult4_ao_res[27] ) + ( GND ) + ( Addr4_aAdd0_a6 ))
+// Addr4_aAdd0_a10 = CARRY(( Mult4_ao_res[27] ) + ( GND ) + ( Addr4_aAdd0_a6 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!Mult4_ao_res[27]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr4_aAdd0_a6),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr4_aAdd0_a9_sumout),
+	.cout(Addr4_aAdd0_a10),
+	.shareout());
+// synopsys translate_off
+defparam Addr4_aAdd0_a9.extended_lut = "off";
+defparam Addr4_aAdd0_a9.lut_mask = 64'h0000FFFF00000F0F;
+defparam Addr4_aAdd0_a9.shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N38
+dffeas y_Q_a27_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Addr4_aAdd0_a9_sumout),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[27]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a27_a.is_wysiwyg = "true";
+defparam y_Q_a27_a.power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N39
+twentynm_lcell_comb Addr4_aAdd0_a13(
+// Equation(s):
+// Addr4_aAdd0_a13_sumout = SUM(( GND ) + ( Mult4_ao_res[28] ) + ( Addr4_aAdd0_a10 ))
+// Addr4_aAdd0_a14 = CARRY(( GND ) + ( Mult4_ao_res[28] ) + ( Addr4_aAdd0_a10 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!Mult4_ao_res[28]),
+	.datag(gnd),
+	.cin(Addr4_aAdd0_a10),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr4_aAdd0_a13_sumout),
+	.cout(Addr4_aAdd0_a14),
+	.shareout());
+// synopsys translate_off
+defparam Addr4_aAdd0_a13.extended_lut = "off";
+defparam Addr4_aAdd0_a13.lut_mask = 64'h0000FF0000000000;
+defparam Addr4_aAdd0_a13.shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N40
+dffeas y_Q_a28_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Addr4_aAdd0_a13_sumout),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[28]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a28_a.is_wysiwyg = "true";
+defparam y_Q_a28_a.power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N42
+twentynm_lcell_comb Addr4_aAdd0_a17(
+// Equation(s):
+// Addr4_aAdd0_a17_sumout = SUM(( Mult4_ao_res[29] ) + ( GND ) + ( Addr4_aAdd0_a14 ))
+// Addr4_aAdd0_a18 = CARRY(( Mult4_ao_res[29] ) + ( GND ) + ( Addr4_aAdd0_a14 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult4_ao_res[29]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr4_aAdd0_a14),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr4_aAdd0_a17_sumout),
+	.cout(Addr4_aAdd0_a18),
+	.shareout());
+// synopsys translate_off
+defparam Addr4_aAdd0_a17.extended_lut = "off";
+defparam Addr4_aAdd0_a17.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr4_aAdd0_a17.shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N44
+dffeas y_Q_a29_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Addr4_aAdd0_a17_sumout),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[29]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a29_a.is_wysiwyg = "true";
+defparam y_Q_a29_a.power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N45
+twentynm_lcell_comb Addr4_aAdd0_a21(
+// Equation(s):
+// Addr4_aAdd0_a21_sumout = SUM(( Mult4_ao_res[30] ) + ( GND ) + ( Addr4_aAdd0_a18 ))
+// Addr4_aAdd0_a22 = CARRY(( Mult4_ao_res[30] ) + ( GND ) + ( Addr4_aAdd0_a18 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult4_ao_res[30]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr4_aAdd0_a18),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr4_aAdd0_a21_sumout),
+	.cout(Addr4_aAdd0_a22),
+	.shareout());
+// synopsys translate_off
+defparam Addr4_aAdd0_a21.extended_lut = "off";
+defparam Addr4_aAdd0_a21.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr4_aAdd0_a21.shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N47
+dffeas y_Q_a30_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Addr4_aAdd0_a21_sumout),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[30]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a30_a.is_wysiwyg = "true";
+defparam y_Q_a30_a.power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X115_Y60_N48
+twentynm_lcell_comb Addr4_aAdd0_a25(
+// Equation(s):
+// Addr4_aAdd0_a25_sumout = SUM(( Mult4_ao_res[31] ) + ( GND ) + ( Addr4_aAdd0_a22 ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!Mult4_ao_res[31]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(Addr4_aAdd0_a22),
+	.sharein(gnd),
+	.combout(),
+	.sumout(Addr4_aAdd0_a25_sumout),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam Addr4_aAdd0_a25.extended_lut = "off";
+defparam Addr4_aAdd0_a25.lut_mask = 64'h0000FFFF000000FF;
+defparam Addr4_aAdd0_a25.shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X115_Y60_N49
+dffeas y_Q_a31_a(
+	.clk(clk_ainputCLKENA0_outclk),
+	.d(Addr4_aAdd0_a25_sumout),
+	.asdata(vcc),
+	.clrn(!reset_ainput3),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(i_ready_ainput3),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(y_Q[31]),
+	.prn(vcc));
+// synopsys translate_off
+defparam y_Q_a31_a.is_wysiwyg = "true";
+defparam y_Q_a31_a.power_up = "low";
+// synopsys translate_on
+
+assign o_valid = o_valid_aoutput1_o;
+
+assign o_ready = o_ready_aoutput1_o;
+
+assign o_y[0] = o_y_a0_a_aoutput1_o;
+
+assign o_y[1] = o_y_a1_a_aoutput1_o;
+
+assign o_y[2] = o_y_a2_a_aoutput1_o;
+
+assign o_y[3] = o_y_a3_a_aoutput1_o;
+
+assign o_y[4] = o_y_a4_a_aoutput1_o;
+
+assign o_y[5] = o_y_a5_a_aoutput1_o;
+
+assign o_y[6] = o_y_a6_a_aoutput1_o;
+
+assign o_y[7] = o_y_a7_a_aoutput1_o;
+
+assign o_y[8] = o_y_a8_a_aoutput1_o;
+
+assign o_y[9] = o_y_a9_a_aoutput1_o;
+
+assign o_y[10] = o_y_a10_a_aoutput1_o;
+
+assign o_y[11] = o_y_a11_a_aoutput1_o;
+
+assign o_y[12] = o_y_a12_a_aoutput1_o;
+
+assign o_y[13] = o_y_a13_a_aoutput1_o;
+
+assign o_y[14] = o_y_a14_a_aoutput1_o;
+
+assign o_y[15] = o_y_a15_a_aoutput1_o;
+
+assign o_y[16] = o_y_a16_a_aoutput1_o;
+
+assign o_y[17] = o_y_a17_a_aoutput1_o;
+
+assign o_y[18] = o_y_a18_a_aoutput1_o;
+
+assign o_y[19] = o_y_a19_a_aoutput1_o;
+
+assign o_y[20] = o_y_a20_a_aoutput1_o;
+
+assign o_y[21] = o_y_a21_a_aoutput1_o;
+
+assign o_y[22] = o_y_a22_a_aoutput1_o;
+
+assign o_y[23] = o_y_a23_a_aoutput1_o;
+
+assign o_y[24] = o_y_a24_a_aoutput1_o;
+
+assign o_y[25] = o_y_a25_a_aoutput1_o;
+
+assign o_y[26] = o_y_a26_a_aoutput1_o;
+
+assign o_y[27] = o_y_a27_a_aoutput1_o;
+
+assign o_y[28] = o_y_a28_a_aoutput1_o;
+
+assign o_y[29] = o_y_a29_a_aoutput1_o;
+
+assign o_y[30] = o_y_a30_a_aoutput1_o;
+
+assign o_y[31] = o_y_a31_a_aoutput1_o;
+
+endmodule

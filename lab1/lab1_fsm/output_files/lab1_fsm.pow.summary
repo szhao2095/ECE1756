@@ -1,0 +1,15 @@
+Power Analyzer Status : Successful - Fri Oct 08 20:30:52 2021
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+Revision Name : lab1_fsm
+Top-level Entity Name : lab1_fsm
+Family : Arria 10
+Device : 10AX115N2F45I1SG
+Power Models : Final
+Total Thermal Power Dissipation : 1706.55 mW
+Transceiver Standby Thermal Power Dissipation : 0.00 mW
+Transceiver Dynamic Thermal Power Dissipation : 0.00 mW
+I/O Standby Thermal Power Dissipation : 0.06 mW
+I/O Dynamic Thermal Power Dissipation : 0.11 mW
+Core Dynamic Thermal Power Dissipation : 2.52 mW
+Device Static Thermal Power Dissipation : 1703.85 mW
+Power Estimation Confidence : Medium: user provided moderately complete toggle rate data

@@ -1,0 +1,67 @@
+{
+	"title" : "Flow Summary",
+	"data" : {
+		"data" : [
+			{
+				"0" : "Quartus Prime Version",
+				"1" : "20.1.1 Build 720 11/11/2020 SJ Standard Edition"
+			},
+			{
+				"0" : "Revision Name",
+				"1" : "lab2"
+			},
+			{
+				"0" : "Top-level Entity Name",
+				"1" : "lab2"
+			},
+			{
+				"0" : "Family",
+				"1" : "Arria 10"
+			},
+			{
+				"0" : "Device",
+				"1" : "10AX115N1F45I1SG"
+			},
+			{
+				"0" : "Timing Models",
+				"1" : "Final"
+			},
+			{
+				"0" : "Logic utilization (in ALMs)",
+				"1" : "2,496 / 427,200 ( < 1 % )"
+			},
+			{
+				"0" : "Total registers",
+				"1" : "9572"
+			},
+			{
+				"0" : "Total pins",
+				"1" : "1 / 992 ( < 1 % )"
+			},
+			{
+				"0" : "Total virtual pins",
+				"1" : "93"
+			},
+			{
+				"0" : "Total block memory bits",
+				"1" : "0 / 55,562,240 ( 0 % )"
+			},
+			{
+				"0" : "Total DSP Blocks",
+				"1" : "9 / 1,518 ( < 1 % )"
+			},
+			{
+				"0" : "Total HSSI RX channels",
+				"1" : "0 / 48 ( 0 % )"
+			},
+			{
+				"0" : "Total HSSI TX channels",
+				"1" : "0 / 48 ( 0 % )"
+			},
+			{
+				"0" : "Total PLLs",
+				"1" : "0 / 112 ( 0 % )"
+			}
+		]
+	}
+}

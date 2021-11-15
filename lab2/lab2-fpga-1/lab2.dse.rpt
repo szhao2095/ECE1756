@@ -1,0 +1,464 @@
+Exploration report for lab2
+Thu Oct 28 00:06:53 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
+
+
++------------------+
+; Table of Contents;
++------------------+
+  1. Legal Notice
+  2. Exploration Summary
+  3. DSE Messages
+
++-------------+
+; Legal Notice;
++-------------+
+Copyright (C) 1991-2021 Altera Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Exploration Summary                                                                                                                                  ;
++-----------------+--------------+--------------+---------------+--------------+------------------+-----------------+-----------------+----------------+
+;Exploration Point;Quality of Fit;f(MAX) Geomean;WC Slack: Setup;WC Slack: Hold;WC Slack: Recovery;WC Slack: Removal;Logic Utilization;Compilation Time;
++-----------------+--------------+--------------+---------------+--------------+------------------+-----------------+-----------------+----------------+
+;dse1_1           ;        -1.410;412.880 MHz   ;         -1.422;         0.016;No Data           ;No Data          ;2,495            ;00:06:53        ;
+;dse1_2           ;        -1.320;429.000 MHz   ;         -1.331;         0.015;No Data           ;No Data          ;2,496            ;00:06:53        ;
+;dse1_3           ;        -1.320;429.000 MHz   ;         -1.331;         0.016;No Data           ;No Data          ;2,495            ;00:06:45        ;
+;dse1_4           ;        -1.320;429.180 MHz   ;         -1.330;         0.015;No Data           ;No Data          ;2,497            ;00:06:38        ;
+;dse1_5           ;        -1.320;429.180 MHz   ;         -1.330;         0.017;No Data           ;No Data          ;2,497            ;00:07:02        ;
+;dse1_6           ;        -1.320;429.000 MHz   ;         -1.331;         0.017;No Data           ;No Data          ;2,495            ;00:06:54        ;
+;dse1_7           ;        -1.320;428.820 MHz   ;         -1.332;         0.016;No Data           ;No Data          ;2,495            ;00:06:15        ;
+;dse1_8           ;        -1.350;423.910 MHz   ;         -1.359;         0.015;No Data           ;No Data          ;2,496            ;00:06:17        ;
+;dse1_9           ;        -1.320;428.820 MHz   ;         -1.332;         0.016;No Data           ;No Data          ;2,495            ;00:06:16        ;
+;dse1_10          ;        -1.320;428.820 MHz   ;         -1.332;         0.016;No Data           ;No Data          ;2,495            ;00:07:08        ;
+;dse1_11          ;        -1.400;415.110 MHz   ;         -1.409;         0.016;No Data           ;No Data          ;2,496            ;00:07:06        ;
+;dse1_12          ;        -1.320;429.000 MHz   ;         -1.331;         0.017;No Data           ;No Data          ;2,495            ;00:07:01        ;
+;dse1_13          ;        -1.320;428.820 MHz   ;         -1.332;         0.016;No Data           ;No Data          ;2,498            ;00:05:48        ;
+;dse1_14          ;        -1.260;441.500 MHz   ;         -1.265;         0.017;No Data           ;No Data          ;2,497            ;00:05:52        ;
+;dse1_15          ;        -1.320;428.820 MHz   ;         -1.332;         0.016;No Data           ;No Data          ;2,498            ;00:05:51        ;
+;dse1_base        ;        -1.320;429.000 MHz   ;         -1.331;         0.016;No Data           ;No Data          ;2,496            ;00:05:59        ;
++-----------------+--------------+--------------+---------------+--------------+------------------+-----------------+-----------------+----------------+
+
++-------------+
+; DSE Messages;
++-------------+
+Info: Archiving C:/Users/ZaKaye/Desktop/Pixiv/MEng_Study_2021_Fall/FPGA/lab2/lab2-fpga-1/lab2.qpf revision lab2 ...
+Info: Job 1 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 2 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 3 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 4 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 5 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 6 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 7 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 8 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 9 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 10 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 11 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 12 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 13 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 14 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 15 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Job 16 : quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Explorer server: http://localhost:62868 started.
+Info: Starting all optimization modes exploration
+Info: Revision: dse1_base will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_base reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_base reported: Successfully registered with server.
+Info: Exploration Point dse1_base reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_base reported: Sent timestamps successfully
+Info: Exploration Point dse1_base reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_base reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_base reported: Finished download.
+Info: Exploration Point dse1_base reported: Verified dse/dse1/dse1_base\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_base reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_base reported: Finished download.
+Info: Exploration Point dse1_base reported: Verified dse/dse1/dse1_base\lab2.qar exists.
+Info: Exploration Point dse1_base reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_base reported: Running quartus_sh --restore -output dse/dse1/dse1_base dse/dse1/dse1_base\lab2.qar
+Info: Exploration Point dse1_base reported: Downloading dse1_base.qsf ...
+Info: Exploration Point dse1_base reported: Finished download.
+Info: Exploration Point dse1_base reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_base\lab2.qsf exists.
+Info: Exploration Point dse1_base reported: Downloading dse1_base.qpf ...
+Info: Exploration Point dse1_base reported: Finished download.
+Info: Exploration Point dse1_base reported: Verified dse/dse1/dse1_base\lab2.qpf exists.
+Info: Exploration Point dse1_base reported: Sent timestamps successfully
+Info: Exploration Point dse1_base reported: Sent timestamps successfully
+Info: Exploration Point dse1_base reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_base reported: Processing keep results option: all
+Info: Revision: dse1_1 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_1 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_1 reported: Successfully registered with server.
+Info: Exploration Point dse1_1 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_1 reported: Sent timestamps successfully
+Info: Exploration Point dse1_1 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_1 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_1 reported: Finished download.
+Info: Exploration Point dse1_1 reported: Verified dse/dse1/dse1_1\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_1 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_1 reported: Finished download.
+Info: Exploration Point dse1_1 reported: Verified dse/dse1/dse1_1\lab2.qar exists.
+Info: Exploration Point dse1_1 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_1 reported: Running quartus_sh --restore -output dse/dse1/dse1_1 dse/dse1/dse1_1\lab2.qar
+Info: Exploration Point dse1_1 reported: Downloading dse1_1.qsf ...
+Info: Exploration Point dse1_1 reported: Finished download.
+Info: Exploration Point dse1_1 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_1\lab2.qsf exists.
+Info: Exploration Point dse1_1 reported: Downloading dse1_1.qpf ...
+Info: Exploration Point dse1_1 reported: Finished download.
+Info: Exploration Point dse1_1 reported: Verified dse/dse1/dse1_1\lab2.qpf exists.
+Info: Exploration Point dse1_1 reported: Sent timestamps successfully
+Info: Exploration Point dse1_1 reported: Sent timestamps successfully
+Info: Exploration Point dse1_1 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_1 reported: Processing keep results option: all
+Info: Revision: dse1_2 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_2 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_2 reported: Successfully registered with server.
+Info: Exploration Point dse1_2 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_2 reported: Sent timestamps successfully
+Info: Exploration Point dse1_2 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_2 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_2 reported: Finished download.
+Info: Exploration Point dse1_2 reported: Verified dse/dse1/dse1_2\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_2 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_2 reported: Finished download.
+Info: Exploration Point dse1_2 reported: Verified dse/dse1/dse1_2\lab2.qar exists.
+Info: Exploration Point dse1_2 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_2 reported: Running quartus_sh --restore -output dse/dse1/dse1_2 dse/dse1/dse1_2\lab2.qar
+Info: Exploration Point dse1_2 reported: Downloading dse1_2.qsf ...
+Info: Exploration Point dse1_2 reported: Finished download.
+Info: Exploration Point dse1_2 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_2\lab2.qsf exists.
+Info: Exploration Point dse1_2 reported: Downloading dse1_2.qpf ...
+Info: Exploration Point dse1_2 reported: Finished download.
+Info: Exploration Point dse1_2 reported: Verified dse/dse1/dse1_2\lab2.qpf exists.
+Info: Exploration Point dse1_2 reported: Sent timestamps successfully
+Info: Exploration Point dse1_2 reported: Sent timestamps successfully
+Info: Exploration Point dse1_2 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_2 reported: Processing keep results option: all
+Info: Revision: dse1_3 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_3 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_3 reported: Successfully registered with server.
+Info: Exploration Point dse1_3 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_3 reported: Sent timestamps successfully
+Info: Exploration Point dse1_3 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_3 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_3 reported: Finished download.
+Info: Exploration Point dse1_3 reported: Verified dse/dse1/dse1_3\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_3 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_3 reported: Finished download.
+Info: Exploration Point dse1_3 reported: Verified dse/dse1/dse1_3\lab2.qar exists.
+Info: Exploration Point dse1_3 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_3 reported: Running quartus_sh --restore -output dse/dse1/dse1_3 dse/dse1/dse1_3\lab2.qar
+Info: Exploration Point dse1_3 reported: Downloading dse1_3.qsf ...
+Info: Exploration Point dse1_3 reported: Finished download.
+Info: Exploration Point dse1_3 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_3\lab2.qsf exists.
+Info: Exploration Point dse1_3 reported: Downloading dse1_3.qpf ...
+Info: Exploration Point dse1_3 reported: Finished download.
+Info: Exploration Point dse1_3 reported: Verified dse/dse1/dse1_3\lab2.qpf exists.
+Info: Exploration Point dse1_3 reported: Sent timestamps successfully
+Info: Exploration Point dse1_3 reported: Sent timestamps successfully
+Info: Exploration Point dse1_3 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_3 reported: Processing keep results option: all
+Info: Revision: dse1_4 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_4 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_4 reported: Successfully registered with server.
+Info: Exploration Point dse1_4 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_4 reported: Sent timestamps successfully
+Info: Exploration Point dse1_4 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_4 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_4 reported: Finished download.
+Info: Exploration Point dse1_4 reported: Verified dse/dse1/dse1_4\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_4 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_4 reported: Finished download.
+Info: Exploration Point dse1_4 reported: Verified dse/dse1/dse1_4\lab2.qar exists.
+Info: Exploration Point dse1_4 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_4 reported: Running quartus_sh --restore -output dse/dse1/dse1_4 dse/dse1/dse1_4\lab2.qar
+Info: Exploration Point dse1_4 reported: Downloading dse1_4.qsf ...
+Info: Exploration Point dse1_4 reported: Finished download.
+Info: Exploration Point dse1_4 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_4\lab2.qsf exists.
+Info: Exploration Point dse1_4 reported: Downloading dse1_4.qpf ...
+Info: Exploration Point dse1_4 reported: Finished download.
+Info: Exploration Point dse1_4 reported: Verified dse/dse1/dse1_4\lab2.qpf exists.
+Info: Exploration Point dse1_4 reported: Sent timestamps successfully
+Info: Exploration Point dse1_4 reported: Sent timestamps successfully
+Info: Exploration Point dse1_4 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_4 reported: Processing keep results option: all
+Info: Revision: dse1_5 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_5 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_5 reported: Successfully registered with server.
+Info: Exploration Point dse1_5 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_5 reported: Sent timestamps successfully
+Info: Exploration Point dse1_5 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_5 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_5 reported: Finished download.
+Info: Exploration Point dse1_5 reported: Verified dse/dse1/dse1_5\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_5 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_5 reported: Finished download.
+Info: Exploration Point dse1_5 reported: Verified dse/dse1/dse1_5\lab2.qar exists.
+Info: Exploration Point dse1_5 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_5 reported: Running quartus_sh --restore -output dse/dse1/dse1_5 dse/dse1/dse1_5\lab2.qar
+Info: Exploration Point dse1_5 reported: Downloading dse1_5.qsf ...
+Info: Exploration Point dse1_5 reported: Finished download.
+Info: Exploration Point dse1_5 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_5\lab2.qsf exists.
+Info: Exploration Point dse1_5 reported: Downloading dse1_5.qpf ...
+Info: Exploration Point dse1_5 reported: Finished download.
+Info: Exploration Point dse1_5 reported: Verified dse/dse1/dse1_5\lab2.qpf exists.
+Info: Exploration Point dse1_5 reported: Sent timestamps successfully
+Info: Exploration Point dse1_5 reported: Sent timestamps successfully
+Info: Exploration Point dse1_5 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_5 reported: Processing keep results option: all
+Info: Revision: dse1_6 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_6 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_6 reported: Successfully registered with server.
+Info: Exploration Point dse1_6 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_6 reported: Sent timestamps successfully
+Info: Exploration Point dse1_6 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_6 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_6 reported: Finished download.
+Info: Exploration Point dse1_6 reported: Verified dse/dse1/dse1_6\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_6 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_6 reported: Finished download.
+Info: Exploration Point dse1_6 reported: Verified dse/dse1/dse1_6\lab2.qar exists.
+Info: Exploration Point dse1_6 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_6 reported: Running quartus_sh --restore -output dse/dse1/dse1_6 dse/dse1/dse1_6\lab2.qar
+Info: Exploration Point dse1_6 reported: Downloading dse1_6.qsf ...
+Info: Exploration Point dse1_6 reported: Finished download.
+Info: Exploration Point dse1_6 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_6\lab2.qsf exists.
+Info: Exploration Point dse1_6 reported: Downloading dse1_6.qpf ...
+Info: Exploration Point dse1_6 reported: Finished download.
+Info: Exploration Point dse1_6 reported: Verified dse/dse1/dse1_6\lab2.qpf exists.
+Info: Exploration Point dse1_6 reported: Sent timestamps successfully
+Info: Exploration Point dse1_6 reported: Sent timestamps successfully
+Info: Exploration Point dse1_6 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_6 reported: Processing keep results option: all
+Info: Revision: dse1_7 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_7 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_7 reported: Successfully registered with server.
+Info: Exploration Point dse1_7 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_7 reported: Sent timestamps successfully
+Info: Exploration Point dse1_7 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_7 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_7 reported: Finished download.
+Info: Exploration Point dse1_7 reported: Verified dse/dse1/dse1_7\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_7 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_7 reported: Finished download.
+Info: Exploration Point dse1_7 reported: Verified dse/dse1/dse1_7\lab2.qar exists.
+Info: Exploration Point dse1_7 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_7 reported: Running quartus_sh --restore -output dse/dse1/dse1_7 dse/dse1/dse1_7\lab2.qar
+Info: Exploration Point dse1_7 reported: Downloading dse1_7.qsf ...
+Info: Exploration Point dse1_7 reported: Finished download.
+Info: Exploration Point dse1_7 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_7\lab2.qsf exists.
+Info: Exploration Point dse1_7 reported: Downloading dse1_7.qpf ...
+Info: Exploration Point dse1_7 reported: Finished download.
+Info: Exploration Point dse1_7 reported: Verified dse/dse1/dse1_7\lab2.qpf exists.
+Info: Exploration Point dse1_7 reported: Sent timestamps successfully
+Info: Exploration Point dse1_7 reported: Sent timestamps successfully
+Info: Exploration Point dse1_7 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_7 reported: Processing keep results option: all
+Info: Revision: dse1_8 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_8 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_8 reported: Successfully registered with server.
+Info: Exploration Point dse1_8 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_8 reported: Sent timestamps successfully
+Info: Exploration Point dse1_8 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_8 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_8 reported: Finished download.
+Info: Exploration Point dse1_8 reported: Verified dse/dse1/dse1_8\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_8 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_8 reported: Finished download.
+Info: Exploration Point dse1_8 reported: Verified dse/dse1/dse1_8\lab2.qar exists.
+Info: Exploration Point dse1_8 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_8 reported: Running quartus_sh --restore -output dse/dse1/dse1_8 dse/dse1/dse1_8\lab2.qar
+Info: Exploration Point dse1_8 reported: Downloading dse1_8.qsf ...
+Info: Exploration Point dse1_8 reported: Finished download.
+Info: Exploration Point dse1_8 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_8\lab2.qsf exists.
+Info: Exploration Point dse1_8 reported: Downloading dse1_8.qpf ...
+Info: Exploration Point dse1_8 reported: Finished download.
+Info: Exploration Point dse1_8 reported: Verified dse/dse1/dse1_8\lab2.qpf exists.
+Info: Exploration Point dse1_8 reported: Sent timestamps successfully
+Info: Exploration Point dse1_8 reported: Sent timestamps successfully
+Info: Exploration Point dse1_8 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_8 reported: Processing keep results option: all
+Info: Revision: dse1_9 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_9 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_9 reported: Successfully registered with server.
+Info: Exploration Point dse1_9 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_9 reported: Sent timestamps successfully
+Info: Exploration Point dse1_9 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_9 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_9 reported: Finished download.
+Info: Exploration Point dse1_9 reported: Verified dse/dse1/dse1_9\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_9 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_9 reported: Finished download.
+Info: Exploration Point dse1_9 reported: Verified dse/dse1/dse1_9\lab2.qar exists.
+Info: Exploration Point dse1_9 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_9 reported: Running quartus_sh --restore -output dse/dse1/dse1_9 dse/dse1/dse1_9\lab2.qar
+Info: Exploration Point dse1_9 reported: Downloading dse1_9.qsf ...
+Info: Exploration Point dse1_9 reported: Finished download.
+Info: Exploration Point dse1_9 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_9\lab2.qsf exists.
+Info: Exploration Point dse1_9 reported: Downloading dse1_9.qpf ...
+Info: Exploration Point dse1_9 reported: Finished download.
+Info: Exploration Point dse1_9 reported: Verified dse/dse1/dse1_9\lab2.qpf exists.
+Info: Exploration Point dse1_9 reported: Sent timestamps successfully
+Info: Exploration Point dse1_9 reported: Sent timestamps successfully
+Info: Exploration Point dse1_9 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_9 reported: Processing keep results option: all
+Info: Revision: dse1_10 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_10 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_10 reported: Successfully registered with server.
+Info: Exploration Point dse1_10 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_10 reported: Sent timestamps successfully
+Info: Exploration Point dse1_10 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_10 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_10 reported: Finished download.
+Info: Exploration Point dse1_10 reported: Verified dse/dse1/dse1_10\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_10 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_10 reported: Finished download.
+Info: Exploration Point dse1_10 reported: Verified dse/dse1/dse1_10\lab2.qar exists.
+Info: Exploration Point dse1_10 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_10 reported: Running quartus_sh --restore -output dse/dse1/dse1_10 dse/dse1/dse1_10\lab2.qar
+Info: Exploration Point dse1_10 reported: Downloading dse1_10.qsf ...
+Info: Exploration Point dse1_10 reported: Finished download.
+Info: Exploration Point dse1_10 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_10\lab2.qsf exists.
+Info: Exploration Point dse1_10 reported: Downloading dse1_10.qpf ...
+Info: Exploration Point dse1_10 reported: Finished download.
+Info: Exploration Point dse1_10 reported: Verified dse/dse1/dse1_10\lab2.qpf exists.
+Info: Exploration Point dse1_10 reported: Sent timestamps successfully
+Info: Exploration Point dse1_10 reported: Sent timestamps successfully
+Info: Exploration Point dse1_10 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_10 reported: Processing keep results option: all
+Info: Revision: dse1_11 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_11 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_11 reported: Successfully registered with server.
+Info: Exploration Point dse1_11 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_11 reported: Sent timestamps successfully
+Info: Exploration Point dse1_11 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_11 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_11 reported: Finished download.
+Info: Exploration Point dse1_11 reported: Verified dse/dse1/dse1_11\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_11 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_11 reported: Finished download.
+Info: Exploration Point dse1_11 reported: Verified dse/dse1/dse1_11\lab2.qar exists.
+Info: Exploration Point dse1_11 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_11 reported: Running quartus_sh --restore -output dse/dse1/dse1_11 dse/dse1/dse1_11\lab2.qar
+Info: Exploration Point dse1_11 reported: Downloading dse1_11.qsf ...
+Info: Exploration Point dse1_11 reported: Finished download.
+Info: Exploration Point dse1_11 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_11\lab2.qsf exists.
+Info: Exploration Point dse1_11 reported: Downloading dse1_11.qpf ...
+Info: Exploration Point dse1_11 reported: Finished download.
+Info: Exploration Point dse1_11 reported: Verified dse/dse1/dse1_11\lab2.qpf exists.
+Info: Exploration Point dse1_11 reported: Sent timestamps successfully
+Info: Exploration Point dse1_11 reported: Sent timestamps successfully
+Info: Exploration Point dse1_11 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_11 reported: Processing keep results option: all
+Info: Revision: dse1_12 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_12 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_12 reported: Successfully registered with server.
+Info: Exploration Point dse1_12 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_12 reported: Sent timestamps successfully
+Info: Exploration Point dse1_12 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_12 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_12 reported: Finished download.
+Info: Exploration Point dse1_12 reported: Verified dse/dse1/dse1_12\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_12 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_12 reported: Finished download.
+Info: Exploration Point dse1_12 reported: Verified dse/dse1/dse1_12\lab2.qar exists.
+Info: Exploration Point dse1_12 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_12 reported: Running quartus_sh --restore -output dse/dse1/dse1_12 dse/dse1/dse1_12\lab2.qar
+Info: Exploration Point dse1_12 reported: Downloading dse1_12.qsf ...
+Info: Exploration Point dse1_12 reported: Finished download.
+Info: Exploration Point dse1_12 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_12\lab2.qsf exists.
+Info: Exploration Point dse1_12 reported: Downloading dse1_12.qpf ...
+Info: Exploration Point dse1_12 reported: Finished download.
+Info: Exploration Point dse1_12 reported: Verified dse/dse1/dse1_12\lab2.qpf exists.
+Info: Exploration Point dse1_12 reported: Sent timestamps successfully
+Info: Exploration Point dse1_12 reported: Sent timestamps successfully
+Info: Exploration Point dse1_12 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_12 reported: Processing keep results option: all
+Info: Revision: dse1_13 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_13 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_13 reported: Successfully registered with server.
+Info: Exploration Point dse1_13 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_13 reported: Sent timestamps successfully
+Info: Exploration Point dse1_13 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_13 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_13 reported: Finished download.
+Info: Exploration Point dse1_13 reported: Verified dse/dse1/dse1_13\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_13 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_13 reported: Finished download.
+Info: Exploration Point dse1_13 reported: Verified dse/dse1/dse1_13\lab2.qar exists.
+Info: Exploration Point dse1_13 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_13 reported: Running quartus_sh --restore -output dse/dse1/dse1_13 dse/dse1/dse1_13\lab2.qar
+Info: Exploration Point dse1_13 reported: Downloading dse1_13.qsf ...
+Info: Exploration Point dse1_13 reported: Finished download.
+Info: Exploration Point dse1_13 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_13\lab2.qsf exists.
+Info: Exploration Point dse1_13 reported: Downloading dse1_13.qpf ...
+Info: Exploration Point dse1_13 reported: Finished download.
+Info: Exploration Point dse1_13 reported: Verified dse/dse1/dse1_13\lab2.qpf exists.
+Info: Exploration Point dse1_13 reported: Sent timestamps successfully
+Info: Exploration Point dse1_13 reported: Sent timestamps successfully
+Info: Exploration Point dse1_13 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_13 reported: Processing keep results option: all
+Info: Revision: dse1_14 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_14 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_14 reported: Successfully registered with server.
+Info: Exploration Point dse1_14 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_14 reported: Sent timestamps successfully
+Info: Exploration Point dse1_14 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_14 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_14 reported: Finished download.
+Info: Exploration Point dse1_14 reported: Verified dse/dse1/dse1_14\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_14 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_14 reported: Finished download.
+Info: Exploration Point dse1_14 reported: Verified dse/dse1/dse1_14\lab2.qar exists.
+Info: Exploration Point dse1_14 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_14 reported: Running quartus_sh --restore -output dse/dse1/dse1_14 dse/dse1/dse1_14\lab2.qar
+Info: Exploration Point dse1_14 reported: Downloading dse1_14.qsf ...
+Info: Exploration Point dse1_14 reported: Finished download.
+Info: Exploration Point dse1_14 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_14\lab2.qsf exists.
+Info: Exploration Point dse1_14 reported: Downloading dse1_14.qpf ...
+Info: Exploration Point dse1_14 reported: Finished download.
+Info: Exploration Point dse1_14 reported: Verified dse/dse1/dse1_14\lab2.qpf exists.
+Info: Exploration Point dse1_14 reported: Sent timestamps successfully
+Info: Exploration Point dse1_14 reported: Sent timestamps successfully
+Info: Exploration Point dse1_14 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_14 reported: Processing keep results option: all
+Info: Revision: dse1_15 will be compiled on compute node: DESKTOP-G052NLR
+Info: Exploration Point dse1_15 reported: Registering self with server http://localhost:62868/api/v1.0/broker/server/
+Info: Exploration Point dse1_15 reported: Successfully registered with server.
+Info: Exploration Point dse1_15 reported: Starting compilation quartus_sh --ipc_json --flow compile lab2.qsf
+Info: Exploration Point dse1_15 reported: Sent timestamps successfully
+Info: Exploration Point dse1_15 reported: Preparing to compile lab2 ...
+Info: Exploration Point dse1_15 reported: Downloading lab2.qar.sha256 ...
+Info: Exploration Point dse1_15 reported: Finished download.
+Info: Exploration Point dse1_15 reported: Verified dse/dse1/dse1_15\lab2.qar.sha256 exists.
+Info: Exploration Point dse1_15 reported: Downloading lab2.qar ...
+Info: Exploration Point dse1_15 reported: Finished download.
+Info: Exploration Point dse1_15 reported: Verified dse/dse1/dse1_15\lab2.qar exists.
+Info: Exploration Point dse1_15 reported: Download successful. Checksum matched expected value.
+Info: Exploration Point dse1_15 reported: Running quartus_sh --restore -output dse/dse1/dse1_15 dse/dse1/dse1_15\lab2.qar
+Info: Exploration Point dse1_15 reported: Downloading dse1_15.qsf ...
+Info: Exploration Point dse1_15 reported: Finished download.
+Info: Exploration Point dse1_15 reported: Verified C:\Users\ZaKaye\Desktop\Pixiv\MEng_Study_2021_Fall\FPGA\lab2\lab2-fpga-1\dse/dse1/dse1_15\lab2.qsf exists.
+Info: Exploration Point dse1_15 reported: Downloading dse1_15.qpf ...
+Info: Exploration Point dse1_15 reported: Finished download.
+Info: Exploration Point dse1_15 reported: Verified dse/dse1/dse1_15\lab2.qpf exists.
+Info: Exploration Point dse1_15 reported: Sent timestamps successfully
+Info: Exploration Point dse1_15 reported: Sent timestamps successfully
+Info: Exploration Point dse1_15 reported: Compilation finished. 0 msgs
+Info: Exploration Point dse1_15 reported: Processing keep results option: all
+Info: Completed exploration. Results: 16 passed; 0 failed.
+Info: Processing ended: Thu Oct 28 00:06:43 2021
+Info: Elapsed time: 2:17:23
+

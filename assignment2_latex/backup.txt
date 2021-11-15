@@ -1,0 +1,569 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{siunitx}
+\usepackage{minted}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{ECE 1756}
+\newcommand\hwnumber{2}
+\newcommand\NetIDa{1003273913}
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+\section*{1.0 Introduction}
+
+The following document serves as the lab report for assignment 2 of ECE 1756 (Fall 2021). This report is written by Sheng Zhao (1003273913).
+
+Section 2.0 describes the FPGA implementation of the convolution function, its operation and performance while Section 3.0 describes the same metrics of the CPU and GPU implementation. A comparison of the different implementations will be done in Section 4.0.
+
+\section*{2.0 FPGA Implementation}
+
+To enable a comparison between FPGA, CPU and GPU, a convolution engine was implemented on an Intel Arria 10 GX device (10AX115N2F45I1SG). The following section describes the details of this implementation as well as performance metrics.
+
+\subsection*{2.1 Convolution and Input Data Details}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.85\linewidth]{lab2_sipo_explanation.jpg}
+\caption{Data input and shift register}
+\label{fig:lab2_sipo_explanation}
+\end{figure}
+
+The goal of the convolution engine implementation on the FPGA is to compute the convolutions on a 512 pixel wide, any height image, along with a provided 3x3 filter. As shown in the bottom half of Fig. \ref{fig:lab2_sipo_explanation}, image data is given in a row major format, sending in pixel by pixel starting with the top left. Convolution is then to be performed on every 3x3 set of pixels. 
+
+Given the row major input format, in order to compute convolutions on pixels that span across multiple rows, pixel data must be held for a period of time. To achieve this, a Serial-in, Parallel-out (SIPO) shift register is implemented. Given that the length of the image is fixed at 514 pixels (512 wide image with 0 padding), the minimum required length of the SIPO is 1031. Input pixels given in row major format will enter from the left (top half of Fig. \ref{fig:lab2_sipo_explanation}), with the data propagating to the next register every clock cycle. 
+
+To better illustrate the pixels involved the convolution, consider an example as shown in Fig. \ref{fig:lab2_sipo_explanation}. All the pixels required for the computation is highlighted in color, each with a different shade to better illustrate their position in the SIPO as the order is important in the correct calculation of the convolution.
+
+\subsection*{2.2 FPGA Datapath}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_valid_datapath.jpg}
+\caption{Data valid datapath}
+\label{fig:lab2_valid_datapath}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_data_datapath.jpg}
+\caption{Data datapath}
+\label{fig:lab2_data_datapath}
+\end{figure}
+
+With the insight from Section 2.1, the datapaths for the FPGA implementation is created. A streaming dataflow model is chosen for the implementation and computations are pipelined as much as possible to enable the highest operating frequency possible.
+
+The datapath for the computation is presented in Fig. \ref{fig:lab2_data_datapath}. The datapath has 9 multipliers performing the 9 multiplications in parallel while the outputs are summed in an adder tree. Data is pipelined in between each stage of multiplier and adders. 
+
+
+In a similar fashion, Fig. \ref{fig:lab2_valid_datapath} shows a SIPO shift register for the data valid bit. From this, 9 bits corresponding to the 9 pixels involved in the convolution are connected to an AND gate along with a counter that keeps track of the current input's column position. While not shown explicitly, the data\_valid\_mult output signal from the AND gate is propagated along with the data from multiplier and adder stages in sync.
+
+\clearpage
+\subsection*{2.3 Operation}
+
+During operation, input data and its valid bit is fed into the SIPO shift register, beginning with the 1st position (SIPO[0], data\_valid[0]), as long as it is valid and the downstream circuit is ready (i.e. i\_valid and i\_ready both high). With each clock cycle, data in the shift register propagates down and the same happens for the valid bits that correspond to each pixel (i.e. SIPO[i] = SIPO[i-1], data\_valid[i] = data\_valid[i-1]).
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\linewidth]{lab2_pixel_layout.jpg}
+\caption{Convolution filter and pixel mapping}
+\label{fig:lab2_pixel_layout}
+\end{figure}
+
+The multiply and accumulate portion of the circuit samples the 9 required pixels and the respective data valid bits from the SIPO shift registers according to Fig. \ref{fig:lab2_pixel_layout} and performs the computations continuously regardless of the validity of the pixels sampled. Instead, the valid bits are checked separately to ensure that all 9 pixels are valid. In addition, an additional check is performed on a counter, one that keeps track of the column position of the current input. This is to ensure that convolution is not being done when the first two pixels of each row is inserted, since that would be invalid (i.e. instead of performing a 3x3 convolution, a 3x2 and 3x1 or 3x1 and 3x2 set of pixels spanning 4 rows will be used instead). Once the AND gate from Fig. \ref{fig:lab2_valid_datapath} returns true, the output of the multipliers are now valid and this knowledge/status is passed along with the computed result via a separate set of valid bit registers that accompanies the multiplier and adder stages in sync with the computed values.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_clipping.jpg}
+\caption{Systemverilog clipping}
+\label{fig:lab2_clipping}
+\end{figure}
+
+Due to the fact that filter values are signed and pixel values are not. Pixel values are padded with a 0 in the MSB position to convert it to signed and ensure that the multiplication performed is signed as well. Results are also stored in a sufficiently wide register to ensure no overflow occurs throughout the multiplier and adder stages. Once the final addition is performed, the values are clipped to be between 0 and 255 as specified by the assignment (Fig. \ref{fig:lab2_clipping}). 
+
+\clearpage
+\subsection*{2.4 Correctness}
+
+The FPGA implementation successfully completes all test cases (Appendix A). 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{1}{|l|}{Test} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Completed? \end{tabular}} \\ \hline
+1  & Yes \\ \hline
+2  & Yes \\ \hline
+3a & Yes \\ \hline
+3b & Yes \\ \hline
+4a & Yes \\ \hline
+4b & Yes \\ \hline
+5a & Yes \\ \hline
+5b & Yes \\ \hline
+6a & Yes \\ \hline
+6b & Yes \\ \hline
+7a & Yes \\ \hline
+7b & Yes \\ \hline
+\end{tabular}
+\caption{FPGA implementation correctness}
+\label{tab:fpga_correctness}
+\end{table}
+
+\subsection*{2.5 Design Space Exploration}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.75\linewidth]{lab2_dse_1_1.jpg}
+\caption{Design space exploration optimization}
+\label{fig:lab2_dse_1_1}
+\end{figure}
+
+The design is further optimized using Intel's Design Space Explorer. A total of 15 different seeds were explored in search of a better performance. The final design chosen is des1\_14 as shown in Fig. \label{fig:lab2_dse_1_1}, which has a faster maximum operating frequency than the base compile.
+
+\subsection*{2.6 Performance Metrics}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+                                                     & Result (Appendix B) \\ \hline
+ALM Utilization                                      & 2497               \\ \hline
+DSP Utilization                                      & 9                  \\ \hline
+BRAM (M20K) Utilization                              & 0                  \\ \hline
+Maximum Operating Frequency (MHz)                    & 441.5              \\ \hline
+Cycles for Test 7a (Hinton)                          & 264216             \\ \hline
+Dynamic Power for one module @ maximum frequency (W) & \num{111.7878e-3}  \\ \hline
+Throughput of one module (GOPS)                      & 7.4466             \\ \hline
+Throughput of a full device (GOPS)                   & \num{1.2510e3}     \\ \hline
+Total Power for a full device (W)                    & 11.98              \\ \hline
+\end{tabular}
+\caption{FPGA implementation results}
+\label{tab:fpga_results}
+\end{table}
+
+Details regarding resource utilization and performance for the FPGA implementation is highlighted in Table \ref{tab:fpga_results}, calculations are included in Appendix B.
+
+\clearpage
+\section*{3.0 CPU and GPU Implementations}
+
+\subsection*{3.1 Operations}
+
+The CPU and GPU implementations are similar in function in that both computes the convolution of the image and filter given. There are minute differences in the way that the computation is implemented due to the different hardware that the code will be executed on. On the CPU, since there are no special hardware available to perform the mutliply and accumulate operations, for loops are used extensively to loop through the number of filters, rows and columns of the image and subsequently, depending on whether if the operation is vectorized, the filter as well. On the other hand, the implementation on GPU involves more optimization in terms of memory management as well as utilizing the CUDA cores effciently, leading to less nested loops.
+
+\subsection*{3.2 Performance Metrics}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+                                     & \multicolumn{4}{l|}{Runtime (ms) (Appendix C)}          \\ \hline
+No. of filters                       & 1         & 4         & 16       & 64      \\ \hline
+GPU                                  & 0.0297056 & 0.0994058 & 0.372583 & 1.47965 \\ \hline
+CPU (basic - no opt - 1 thread)      & 8.82178   & 35.0252   & 139.794  & 558.436 \\ \hline
+CPU (vectorized - no opt - 1 thread) & 5.34393   & 21.2444   & 87.1801  & 340.192 \\ \hline
+CPU (basic - O2 - 1 thread)          & 1.59544   & 6.37035   & 25.4466  & 101.752 \\ \hline
+CPU (vectorized - O2 - 1 thread)     & 1.26072   & 5.05124   & 23.0627  & 83.6116 \\ \hline
+CPU (basic - O3 - 1 thread)          & 0.679928  & 2.72494   & 10.8303  & 43.27   \\ \hline
+CPU (vectorized - O3 - 1 thread)     & 1.25945   & 5.03768   & 23.019   & 83.5155 \\ \hline
+CPU (basic - O3 - 4 threads)         & 0.728284  & 0.823869  & 2.93434  & 11.8149 \\ \hline
+CPU (vectorized - O3 - 4 threads)    & 1.19086   & 1.71489   & 7.82391  & 22.2321 \\ \hline
+\end{tabular}
+\caption{Runtimes of CPU and GPU convolution implementations}
+\label{tab:cpu_gpu_runtimes}
+\end{table}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{cpu_basic_vs_vectorized.jpg}
+\caption{CPU basic (right) vs vectorized (left) implementations}
+\label{fig:cpu_basic_vs_vectorized}
+\end{figure}
+
+From Table \ref{tab:cpu_gpu_runtimes}, with respect to CPU runtimes, we can see that for any given test case, runtimes increases with the number of filters roughly linearly. For any given optimization level, the vectorized version of convolution computation took less time to complete compared to the basic version unless the -O3 flag is enabled. This is due to more efficient calculations being done as shown by the fewer number of nested loops in Fig. \ref{fig:cpu_basic_vs_vectorized}. With respect to compilation optimizations (i.e. -O2 and -O3 flags), a higher level of optimization leads more aggressive optimizations being done by the compiler. These include unrolling more loops, and performing more aggressive instruction optimizations late in the compiler pipeline, all leading to lower runtimes. The basic version had more loops and likely benefited from the -O3 optimzation more than the vectorized version, thus leading to the lower runtimes. Finally, when multithreading is enabled, significant performance gain is seen in runs with higher number of filters, reducing the runtime by up to 4 times. With more CPU resources being used, the amount of work done by each thread is reduced, thus leading to faster completion.
+
+Comparing between GPU and CPU runtimes, we can see that GPU outperformed CPU by a significant amount due to the GPU being much more optimized for the calculations needed in a convolution calculation. There are also many more processing units upon which work can be divided compared to the CPU (i.e. this is equivalent to running on CPU with many many more threads), thus the lower runtime. 
+
+\clearpage
+\section*{4.0 Evaluations}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Device &
+  Model &
+  \begin{tabular}[c]{@{}c@{}}Process\\ Tech.\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Die Size\\ (mm\textsuperscript{2})\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}TDP\\ (W)\end{tabular} \\ \hline
+CPU  & Intel core i7-4790 (4 cores) & 22nm & 177       & 84  \\ \hline
+GPU  & Nvidia GeForce GTX 980       & 28nm & 396       & 165 \\ \hline
+FPGA & Arria 10 GX 1150             & 20nm & $\sim$350 & 70  \\ \hline
+\end{tabular}
+\caption{Specification of the three compute platforms}
+\label{tab:device_details}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+ &
+  \begin{tabular}[c]{@{}c@{}}Throughput\\ (GOPS)\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Power\\ (W)\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Energy Efficiency \\ (GOPS/W)\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}Area Efficiency \\ (GOPS/mm\textsuperscript{2})\end{tabular} \\ \hline
+FPGA (20nm)       & \num{1.2510e3} & 11.98 & 104.42 & 3.5743 \\ \hline
+GPU (28nm)        & 15.786 & 165 & 0.095673 & 0.39864 \\ \hline
+GPU (scaled 20nm) & 22.1 & 247.5 & 0.089293 & 0.055808 \\ \hline
+CPU (22nm)        & 163.72 & 84 & 1.9490 & 0.92497 \\ \hline
+\end{tabular}
+\caption{Device evaluations}
+\label{tab:device_evaluations}
+\end{table}
+
+Based on the results in Table \ref{tab:device_evaluations}, FPGA outperforms CPU and GPU by a wide margin. This is mostly due to the fact that the calculations for throughput is computed with only the operations that directly contribute to the convolutions. As a result, the FPGA which only performs performs computation directly related to the convolution has a significant advantage (due to the streaming dataflow model it uses) over both the CPU and GPU which involves lots of other operations that handles the control flow (loops, ifs) and other setup required for the convolution computations to be carried out. 
+
+In addition, power data used for the calculation in the CPU and GPU cases are the theoretical upper limit of those devices and it is very unlikely that these devices actually consumed this much power for the operation. The power data used for FPGA however, is much more accurate as it comes from a power analysis with realistic toggle rates based off of an ModelSim simulation.
+
+Furthermore, the area numbers also contributed to the significant advantage shown by the FPGA. Relative to the CPU and GPU, much more of the area used in the calculation for FPGA is actually involved in the convolution. This is due to the lack of overhead hardware required by the CPU and GPU to stay more generic/general purpose. 
+
+Finally, the throughput and power numbers used for FPGA may also be more optimistic than reality since they are estimates from a single module. Performance will likely not scale linearly, especially as the FPGA approaches full utilization. More power might be consumed and clock frequency will decrease due to non optimal routing/layout.
+
+With regards to estimation for GPU at a 20nm process, it is first worth while to note that while a smaller process means more transistors can be fit within the same area, companies rarely keep die sizes the same. Die sizes often change going from process to process as well as within each process as the technology matures and architecture design demand changes. However, assuming that we keep die sizes the same, and that the decrease in process does not lead to any additional complications with power (such as significantly increased current leakage), we can then expect the number of transistors to increase approximately linearly. Assuming proper utilization, we can expect this increase to be passed on to the throughput as well. Power, on the other hand, might scale less than ideally than linearly due to Dennard scaling breaking down beginning in 2006. With an arbitrary factor of 50\% more power than linear scaling, estimates in Table \ref{tab:device_evaluations} are calculated in Appendix D.
+
+% ############################
+% ############################
+
+\clearpage
+\section*{5.0 Appendix}
+\subsection*{Appendix A: FPGA Correctness}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test1.jpg}
+\caption{FPGA test 1 test bench}
+\label{fig:lab2_test1}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test2.jpg}
+\caption{FPGA test 2 test bench}
+\label{fig:lab2_test2}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test3a.jpg}
+\caption{FPGA test 3a test bench}
+\label{fig:lab2_test3a}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test3b.jpg}
+\caption{FPGA test 3b test bench}
+\label{fig:lab2_test3b}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test4a.jpg}
+\caption{FPGA test 4a test bench}
+\label{fig:lab2_test4a}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test4b.jpg}
+\caption{FPGA test 4b test bench}
+\label{fig:lab2_test4b}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test5a.jpg}
+\caption{FPGA test 5a test bench}
+\label{fig:lab2_test5a}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test5b.jpg}
+\caption{FPGA test 5b test bench}
+\label{fig:lab2_test5b}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test6a.jpg}
+\caption{FPGA test 6a test bench}
+\label{fig:lab2_test6a}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test6b.jpg}
+\caption{FPGA test 6b test bench}
+\label{fig:lab2_test6b}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test7a.jpg}
+\caption{FPGA test 7a test bench}
+\label{fig:lab2_test7a}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test7b.jpg}
+\caption{FPGA test 7b test bench}
+\label{fig:lab2_test7b}
+\end{figure}
+
+% ############################
+% ############################
+
+\clearpage
+\subsection*{Appendix B: FPGA Implementation Results Calculations}
+
+\subsubsection*{ALM, DSP, BRAM Utilization}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_alm_dsp_ram_utilization.jpg}
+\caption{FPGA ALM, DSP and BRAM utilization}
+\label{fig:lab2_alm_dsp_ram_utilization}
+\end{figure}
+
+\clearpage
+\subsubsection*{Maximum Operating Frequency}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_fmax_1.jpg}
+\caption{FPGA setup and hold times}
+\label{fig:lab2_fmax_1}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.85\linewidth]{lab2_fmax_2.jpg}
+\caption{FPGA maximum operating frequency}
+\label{fig:lab2_fmax_2}
+\end{figure}
+
+\clearpage
+\subsubsection*{Cycles for Test 7a (Hinton)}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_test7a_duration.jpg}
+\caption{Test 7a total elapsed time}
+\label{fig:lab2_test7a_duration}
+\end{figure}
+
+\[No.\ of\ cycles = 5284318000/20000 = 264216\ cycles\] 
+
+\clearpage
+\subsubsection*{Dynamic Power for one module @ 441.5MHz}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{lab2_power_diss_by_block_type.jpg}
+\caption{Power dissipation by block type}
+\label{fig:lab2_power_diss_by_block_type}
+\end{figure}
+
+\[Total\ Dynamic\ Power\ @50MHz =  0.36 + 2.21 + 3.84 + 0.13 + 6.12 = 12.66\ mW\]
+\[Total\ Dynamic\ Power\ @441.5MHz =  12.66 * (441.5/50) = 111.7878\ mW = \num{111.7878e-3}\ W\]
+
+\subsubsection*{Throughput of one module (GOPS)}
+
+To compute the convolution of one pixel, 9 multiplications and a total of 8 additions needs to be performed over a period of 5 cycles (output ready by the 6th cycle). For a 512x512 picture as is given in test 7a, that would take a total of: 
+
+\[(512*512)*(9+8) =  4456448 \ operations\]
+
+With a frequency of 441.5 MHz, 264216 cycles is equal to:
+
+\[(1/\num{441.5e6})*264216 \approx \num{5.9845e-4}\ seconds\]
+
+Which give us a total of:
+
+\[4456448/\num{5.9845e-4} \approx \num{7.4466e9} = 7.4466\ GOPs\]
+
+
+\subsubsection*{Throughput of a full device (GOPS)}
+
+\[Max.\ copies\ (based\ on\ ALM\ count) = 427200/2497 \approx 171\]
+\[Max.\ copies\ (based\ on\ DSP\ count) = 1518/9 \approx 168\]
+
+Since DSP count is the limiting factor, approximate maximum number of copies per device is 168. As a result, the throughput of a full device:
+
+\[\num{7.4466e9}*168 \approx \num{1.2510e12} = \num{1.2510e3}\ GOPs\]
+
+\subsubsection*{Total Power for a full device (W)}
+
+Assuming a fully packed device with 168 modules as calculated before (note that IO and clock dynamic power are not multiplied:
+
+\[Total\ Dynamic\ Power\ @50MHz =  (0.36 + 2.21 + 3.84) * 168 + 0.13 + 6.12 = 1083.13\ mW\]
+\[Total\ Dynamic\ Power\ @441.5MHz =  1083.13 * (441.5/50) = 9564.0379\ mW\]
+\[Total\ Power\ @441.5MHz =  9564.0379 + (0.43 + 2.37 + 11.51)*168 + 0.14 + 0.05 + 11.21\]
+\[= 11979.5179\ mW \approx 11.980\ W\]
+
+
+% ############################
+% ############################
+
+\clearpage
+\subsection*{Appendix C: Runtimes for CPU and GPU implementations}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{cpu_nop_1_thread.jpg}
+\caption{CPU no optimization runtimes}
+\label{fig:cpu_nop_1_thread}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{cpu_O2_1_thread.jpg}
+\caption{CPU runtimes with O2 optimization}
+\label{fig:cpu_O2_1_thread}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{cpu_O3_1_thread.jpg}
+\caption{CPU runtimes with O3 optimization}
+\label{fig:cpu_O3_1_thread}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{cpu_O3_4_thread.jpg}
+\caption{CPU runtimes with O3 optimization, multithreaded}
+\label{fig:cpu_O3_4_thread}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{gpu_1_4_16_64.jpg}
+\caption{GPU runtimes}
+\label{fig:gpu_1_4_16_64}
+\end{figure}
+
+% ############################
+% ############################
+
+\clearpage
+\subsection*{Appendix D: Evaluation Calculations}
+\subsubsection*{FPGA related}
+
+\[Energy\ Efficiency = \num{1.2510e3}/11.98 \approx 104.42\ GOPS/W\] 
+\[Area\ Efficiency = \num{1.2510e3}/350 \approx 3.5743\ GOPS/mm2\] 
+
+\subsubsection*{CPU related}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{cpu_basic_code.jpg}
+\caption{CPU basic code}
+\label{fig:cpu_basic_code}
+\end{figure}
+
+Based on Fig. \ref{fig:cpu_basic_code} above, we can estimate the number of operations that are performed for the convolution in the basic implementation on the CPU. 
+Number of operations within the most inner loop = 11.
+FILTER\_SIZE = 3
+image\_height = image\_width = 512 + 2
+num\_filters = 64
+Margin of error = 10\%
+
+\[Total\ Operations = ((((11*3*3) + 5)*514*514*64)*1.10)/\num{11.8149e-3}\]
+\[\approx 163.72\ GOPS\] 
+
+\[Energy\ Efficiency = 163.72/84 \approx 1.9490\ GOPS/W\] 
+\[Area\ Efficiency = 163.72/177 \approx 0.92497\ GOPS/mm2\] 
+
+\subsubsection*{GPU related}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{gpu_code.jpg}
+\caption{GPU code}
+\label{fig:gpu_code}
+\end{figure}
+
+Based on Fig. \ref{fig:gpu_code} above, we can estimate the number of operations that are performed for the convolution in the implementation on the GPU. 
+Number of operations within loop = 15
+TILE\_SIZE = 32
+TILE\_LOAD\_SIZE = 32 + 3 - 1 = 34
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{gpu_code_2.jpg}
+\caption{GPU code}
+\label{fig:gpu_code_2}
+\end{figure}
+
+Number of operations within loop = 9
+FILTER\_SIZE = 3
+Above repeated for each pixel.
+Number of operations outside loop = 9
+Margin of error = 10\%
+
+\[Total\ Operations = (15*((34*34)/(32*32)) + (9*3*3)*512*512 + 9)*1.10/\num{1.47965e-3}\]
+\[\approx 15.786\ GOPS\] 
+
+\[Energy\ Efficiency = 15.786/165 \approx 0.095673\ GOPS/W\] 
+\[Area\ Efficiency = 15.786/396 \approx 0.39864\ GOPS/mm2\] 
+
+\subsubsection*{GPU Estimation}
+
+\[Throughput = 15.786*(28/20) \approx 22.1\ GOPS\] 
+\[Power = 165*1.5 \approx 247.5\ W\] 
+\[Energy\ Efficiency = 22.1/247.5 \approx 0.089293\ GOPS/W\] 
+\[Area\ Efficiency = 22.1/396 \approx 0.055808\ GOPS/mm2\] 
+
+
+% ############################
+% ############################
+
+\clearpage
+\subsection*{Appendix E: .sv file for FPGA Implementation}
+\inputminted[breaklines]{SystemVerilog}{lab2.sv}
+
+% ############################
+% ############################
+
+\end{document}
+
