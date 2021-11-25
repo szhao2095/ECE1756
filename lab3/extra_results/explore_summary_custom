@@ -1,0 +1,4 @@
+Best test case: LUTRAM: 50.0%, LBs/LUTRAM: 2, Size_1: 8K, Width_1: 32, Ratio_1: 10, Size_2: 128K, Width_2: 64, Ratio_2: 300, With geomean area: 218734000.0
+Best test case: LUTRAM: 33.3333333333%, LBs/LUTRAM: 3, Size_1: 8K, Width_1: 32, Ratio_1: 10, Size_2: 128K, Width_2: 32, Ratio_2: 150, With geomean area: 212881000.0
+Best test case: LUTRAM: 25.0%, LBs/LUTRAM: 4, Size_1: 8K, Width_1: 32, Ratio_1: 10, Size_2: 128K, Width_2: 32, Ratio_2: 150, With geomean area: 210536000.0
+Best test case: LUTRAM: 10.0%, LBs/LUTRAM: 10, Size_1: 8K, Width_1: 32, Ratio_1: 10, Size_2: 128K, Width_2: 64, Ratio_2: 150, With geomean area: 209068000.0

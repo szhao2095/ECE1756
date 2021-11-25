@@ -1,0 +1,16 @@
+Best test case: LUTRAM: False, Size:1K, Width: 32, Ratio: 10, With geomean area: 593610000.0
+Best test case: LUTRAM: False, Size:2K, Width: 32, Ratio: 10, With geomean area: 393535000.0
+Best test case: LUTRAM: False, Size:4K, Width: 32, Ratio: 10, With geomean area: 293704000.0
+Best test case: LUTRAM: False, Size:8K, Width: 32, Ratio: 10, With geomean area: 245787000.0
+Best test case: LUTRAM: False, Size:16K, Width: 64, Ratio: 10, With geomean area: 233840000.0
+Best test case: LUTRAM: False, Size:32K, Width: 64, Ratio: 10, With geomean area: 253859000.0
+Best test case: LUTRAM: False, Size:64K, Width: 128, Ratio: 25, With geomean area: 300032000.0
+Best test case: LUTRAM: False, Size:128K, Width: 128, Ratio: 25, With geomean area: 357256000.0
+Best test case: LUTRAM: True, Size:1K, Width: 8, Ratio: 10, With geomean area: 460345000.0
+Best test case: LUTRAM: True, Size:2K, Width: 16, Ratio: 10, With geomean area: 337596000.0
+Best test case: LUTRAM: True, Size:4K, Width: 16, Ratio: 10, With geomean area: 255638000.0
+Best test case: LUTRAM: True, Size:8K, Width: 32, Ratio: 10, With geomean area: 216381000.0
+Best test case: LUTRAM: True, Size:16K, Width: 32, Ratio: 10, With geomean area: 214437000.0
+Best test case: LUTRAM: True, Size:32K, Width: 64, Ratio: 25, With geomean area: 219984000.0
+Best test case: LUTRAM: True, Size:64K, Width: 128, Ratio: 50, With geomean area: 236324000.0
+Best test case: LUTRAM: True, Size:128K, Width: 128, Ratio: 50, With geomean area: 257645000.0
