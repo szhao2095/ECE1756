@@ -6,3 +6,7 @@ Comparison between dataflow, fsm and pipelined circuits.
 
 ## Lab 2
 Dataflow convolution computation engine on FPGA.
+
+## Lab 3
+RAM mapper
+Detailed README.md in lab3 folder.
