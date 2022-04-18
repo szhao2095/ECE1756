@@ -1,0 +1,261 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{siunitx}
+\usepackage{minted}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{ECE 1756}
+\newcommand\hwnumber{4}
+\newcommand\NetIDa{1003273913}
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+\section*{1.0 Introduction}
+
+The following document serves as the lab report for assignment 4 of ECE 1756 (Fall 2021). This report is written by Sheng Zhao (1003273913).
+
+Section 2.0 describes results for the routing wire length study.
+Section 3.0 describes results for the block to routing connectivity study.
+Section 4.0 describes results for the optimization study.
+All studies conducted in this assignment was done across 5 different seeds. The results presented are the geomean values of all 8 test benches across the 5 different seeds.
+
+\section*{2.0 Routing Wire Length Study}
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+  \textbf{\begin{tabular}[c]{@{}c@{}}Architecture\\ (Length)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Min Channel\\ Width\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area per\\ Tile\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Crit. Path\\ Delay\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area\\ Delay\\ Product\end{tabular}} \\ 
+\hline
+1  & 50.65599  & 7284.84 & 7.47673 & 54466.78 \\ \hline
+2  & 50.05616  & 5227.42 & 6.09080 & 31839.16 \\ \hline
+4  & 58.38442  & 4654.36 & 5.89037 & 27415.91 \\ \hline
+8  & 91.82980  & 5457.34 & 6.86053 & 37440.23 \\ \hline
+16 & 192.58040 & 8357.36 & 8.99196 & 75149.08 \\ \hline
+\end{tabular}
+\caption{Geomean results for routing wire length study}
+\label{tab:routing_wire_length}
+\end{table}
+
+Table \ref{tab:routing_wire_length} shows the results from the routing wire length study. As the length of the wires increase, there is a clear upwards trend in the minimum channel width, area and delay. This is due to the increasing inflexibility that comes with a longer wire, which as a result causes more wires to be needed in the channel to allow for all the necessary connections. This is also likely the reason why area per tile is so high for an architecture with a wire length of 16. In addition, while longer wires are more efficient at carrying signals across more logic blocks, they are slower for connections that are closer since the additional length translates to more resistance and capacitance in the path.
+
+The minima seen in the area per tile and critical path delay metrics for length of 4 is likely due to the correct balance of routability and delay cost savings. As mentioned before, having wires of longer length reduces the delay since the additional delay caused by the length increase is lower than the delay cost of going through mutliple switch block muxes. However, the length are also not too long as to cause the channel width to blow up like in the case of length 16. As a result, we arrive at the lowest area-delay product at length 4.
+
+\clearpage
+\section*{3.0 Block to Routing Connectivity Study}
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}CLB\\ Fcin/Fcout\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Min Channel\\ Width\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area per\\ Tile\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Crit. Path\\ Delay\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area\\ Delay\\ Product\end{tabular}} \\ 
+\hline
+0.15 & 58.38441 & 4654.36 & 5.89037 & 27415.91 \\ \hline
+0.5  & 52.84038 & 5980.22 & 6.28279 & 37572.45 \\ \hline
+1.0  & 52.13359 & 7648.77 & 7.00239 & 53559.70 \\ \hline
+\end{tabular}
+\caption{Geomean results for block and routing connectivity study (CLB)}
+\label{tab:block_routing_clb}
+\end{table}
+
+With respect to Table \ref{tab:block_routing_clb}, we can see that as Fc increases for the inputs and outputs of CLBs, the minimum channel width decreases. This is due to the increased level of connectivity between CLBs (and therefore the wider FPGA architecture). The higher level of routability meant that less wires are needed in the channel for signals to be carried to where they need to be. However, despite the decrease in channel width and the area gains as a result, it is not enough to overcome the increase in area required for the additional circuitry needed to implement these additional connections. This can be seen from the increase in area per tile required. The additional circuitry also causes increase load on the wires, leading to an increase in delay. Overall, these two trends lead to an increase in the area-delay product. 
+
+\clearpage
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}IO\\ Fcin/Fcout\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Min Channel\\ Width\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area per\\ Tile\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Crit. Path\\ Delay\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area\\ Delay\\ Product\end{tabular}} \\ 
+\hline
+0.15 & 58.38442 & 4654.36 & 5.89037 & 27415.91 \\ \hline
+0.5  & 58.13474 & 4742.71 & 5.87096 & 27844.25 \\ \hline
+1.0  & 58.20492 & 4847.89 & 5.87689 & 28490.55 \\ \hline
+\end{tabular}
+\caption{Geomean results for block and routing connectivity study (IO)}
+\label{tab:block_routing_io}
+\end{table}
+
+Moving on to the Fc of IO blocks, it would seem like the effects of changing the Fc is very minor compared to changing that of CLBs. This is likely due to the lower usage of IO blocks when compared to CLBs. All circuit logic will have to be implemented mainly on CLBs and thus routability of CLBs have a much greater impact on the overall performance. 
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}CLB\\ Fcin/Fcout\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Min Channel\\ Width\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area per\\ Tile\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Crit. Path\\ Delay\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area\\ Delay\\ Product\end{tabular}} \\ 
+\hline
+0.15 & 130.70798 & 9535.70  & 7.39891 & 70553.71 \\ \hline
+0.5  & 100.377302 & 10377.35  & 8.09355 & 83989.60 \\ \hline
+1.0  & 81.09910  & 11105.02 & 8.80138 & 97739.48 \\ \hline
+\end{tabular}
+\caption{Geomean results for block and routing connectivity study with no local crossbar}
+\label{tab:block_routing_connectivity_no_crossbar}
+\end{table}
+
+Without the full local crossbar, additional restrictions will be placed on the routing. As a result, the original Fc of 0.15 is now too limiting and the minimum channel width has to be increased to make up for the decreased flexibility within the CLBs. This is supported by the decreasing trend of minimum channel width as Fc increases. Area per tile sees a upward trend with Fc value due to the increasing number of muxes and circuitry required to implement the Fc, delay also increases as a result of the increased load on the wires. 
+
+\clearpage
+\section*{4.0 Optimization Study}
+
+To arrive at the most optimal architecture, multiple smaller studies were conducted.
+
+\subsection*{4.1 Wire properties}
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Properties\\ R/C\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Min Channel\\ Width\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area per\\ Tile\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Crit. Path\\ Delay\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area\\ Delay\\ Product\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}101/22.5e-15\\ (Base)\end{tabular}    & 58.38442  & 4654.36 & 5.89037 & 27415.91 \\ \hline
+\begin{tabular}[c]{@{}c@{}}41/27e-15\\ (0.4R/1.2C)\end{tabular}  & 58.46167 & 4663.83 & 5.80307 & 27064.54 \\ \hline
+\begin{tabular}[c]{@{}c@{}}202/13.5e-15\\ (2R/0.6C)\end{tabular} & 58.17173 & 4634.35 & 5.65714 & 26217.17 \\ \hline
+\end{tabular}
+\caption{Geomean results for wire properties study}
+\label{tab:wire_properties}
+\end{table}
+
+The length 4 architecture is used as the base and the changes are made on top of that. With this, tests were run and the geomean results are presented in Table \ref{tab:wire_properties}. Based on the table, the decrease in capacitance by 40\% while having double the resistance seems to be the most effective at lowering the area-delay product, suggesting that capacitance pays a greater role in reducing the delay.
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Length A\\ /\\ Length B\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Min Channel\\ Width\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area per\\ Tile\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Crit. Path\\ Delay\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area\\ Delay\\ Product\end{tabular}} \\ \hline
+2 / 4 & 52.26888 & 4774.56 & 5.75658 & 27485.11 \\ \hline
+2 / 8 & 55.95871 & 4732.81 & 6.08804 & 28813.53 \\ \hline
+4 / 8 & 68.32751 & 4783.99 & 6.03582 & 28875.33 \\ \hline
+\end{tabular}
+\caption{Geomean results for duo length study}
+\label{tab:duo_length}
+\end{table}
+
+Next, a study was conducted on having two different lengths within the architecture. These wires connect to all the switches and CLBs present along their path and the results suggests that having duo lengths does not seem to improve the area-delay product.
+
+\clearpage
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.5\linewidth]{len_2_4_sb_cb.jpg}
+\caption{Alternating pattern}
+\label{fig:len_2_4_sb_cb}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.5\linewidth]{len_2_4_sb_cb_2.jpg}
+\caption{"Leapfrogging" pattern}
+\label{fig:len_2_4_sb_cb_2}
+\end{figure}
+
+With the most efficient duo length architecture, the switch block and connection block patterns are varied to see if doing so could further improve the area-delay product. The motivation for doing so is due to the fact that there are two different wire lengths and having the shorter length 2 wires focus on connecting the local CLBs while the length 4 is to be used for larger distances might improve the efficiency of routing. To do so, two different patterns are considered, the alternating pattern (Fig. \ref{fig:len_2_4_sb_cb}) and "leapfrogging" pattern (Fig. \ref{fig:len_2_4_sb_cb_2}).
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}SB/CB \\ Pattern\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Min Channel\\ Width\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area per\\ Tile\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Crit. Path\\ Delay\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area\\ Delay\\ Product\end{tabular}} \\ \hline
+Full           & 52.26888 & 4774.56 & 5.75658 & 27485.11 \\ \hline
+Alternating    & 58.37674 & 4661.02 & 5.84631 & 27249.78 \\ \hline
+"Leapfrogging" & 54.19312 & 4566.43 & 5.80761 & 26520.04 \\ \hline
+\end{tabular}
+\caption{Geomean results for 2/4 length, SB/CB pattern study}
+\label{tab:duo_length_sb_cb}
+\end{table}
+
+With those patterns, the results in Table \ref{tab:duo_length_sb_cb} are obtained, showing that the "leapfrogging" pattern can yield tangible improvements on the area-delay product. The reasons for which is likely as mentioned in the previous paragraph.
+
+\clearpage
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Properties\\ R/C\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Min Channel\\ Width\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area per\\ Tile\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Crit. Path\\ Delay\\ (Geomean)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Area\\ Delay\\ Product\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}101/22.5e-15\\ (Base)\end{tabular}    & 54.19312 & 4566.43 & 5.80761 & 26520.04 \\ \hline
+\begin{tabular}[c]{@{}c@{}}41/27e-15\\ (0.4R/1.2C)\end{tabular}  & 54.00696 & 4551.12 & 5.72004 & 26032.62 \\ \hline
+\begin{tabular}[c]{@{}c@{}}202/13.5e-15\\ (2R/0.6C)\end{tabular} & 54.38988 & 4575.81 & 5.61855 & 25709.40 \\ \hline
+\end{tabular}
+\caption{Geomean results for wire properties study with 2/4 len and "leapfrogging" pattern}
+\label{tab:len_2_4_sb_cb_2_wire_properties}
+\end{table}
+
+Combining the most optimal "leapfrogging" pattern with better electrical properties (Table \ref{len_2_4_sb_cb_2_wire_properties}), we arrive at a final area-delay product of 25709.40. The architecture file can be found in Appendix A.
+
+\clearpage
+\section*{5.0 Future Work}
+
+Due to how the different factors that affect the efficiency of the architecture (Fc, SB/CB pattern, wire lengths) play into each another, it is possible that more efficient architecture still exists since not all combinations are explored in the study. Splitting the wires across different metal layers was also not experimented with and could also be a potential source of improvement since having infrequent, longer wires on higher layers could benefit the design with the lower resistance wires for longer distance signals.
+
+
+% ############################
+% ############################
+
+\clearpage
+\section*{5.0 Appendix}
+\subsection*{Appendix A: .xml file for final architecture}
+\inputminted[breaklines]{XML}{k6_N10_40nm_double_2_alt_4_alt_ii.xml}
+
+% ############################
+% ############################
+
+\end{document}
+
